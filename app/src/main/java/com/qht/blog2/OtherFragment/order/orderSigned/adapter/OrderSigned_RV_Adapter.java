@@ -19,6 +19,9 @@ import java.util.List;
 
 /**
  * Created by QHT on 2017-04-18.
+ *
+ * 参考:  https://github.com/ruzhan123/ViewHolder-Slide-Helper
+ * 自己结合 BaseQuickAdapter
  */
 public class OrderSigned_RV_Adapter extends BaseQuickAdapter<OrderInfoLitePal> {
 
