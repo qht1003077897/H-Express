@@ -1,0 +1,42 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorSecondary">#ffffff</item>
+        <item name="actionOverflowMenuStyle">@style/MenuStyle</item>
+    </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="MenuStyle" parent="@style/Widget.AppCompat.Light.PopupMenu.Overflow">
+        <item name="overlapAnchor">false</item><!--把该属性改为false即可使menu位置位于toolbar之下-->
+        <!--按钮的背景颜色-->
+        <item name="android:popupBackground">@color/colorPrimary</item>
+        <!--弹出菜单与标题栏的垂直间距-->
+        <item name="android:dropDownVerticalOffset">10.0dip</item>
+        <!--menu菜单的字体颜色-->
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <!--menu字体大小-->
+        <item name="android:textSize">18sp</item>
+    </style>
+
+
+
+    <!--自定义dialog背景全透明无边框theme -->
+    <style name="MyDialog" parent="android:style/Theme.Dialog">
+        <!--背景颜色及和透明程度-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--是否去除标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <!--是否去除边框-->
+        <item name="android:windowFrame">@null</item>
+        <!--是否浮现在activity之上-->
+        <item name="android:windowIsFloating">true</item>
+        <!--是否模糊-->
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+</resources>

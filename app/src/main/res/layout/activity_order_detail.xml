@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        layout="@layout/toolbar_layout"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_activity_orderdetail_head"
+        android:layout_below="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="80dp" >
+
+        <ImageView
+            android:id="@+id/Iv_activity_orderdetail_head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/bottom_home_click"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_14"/>
+
+        <TextView
+            android:id="@+id/tv_activity_orderdetail_head_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/Iv_activity_orderdetail_head"
+            android:layout_marginLeft="@dimen/dp_22"
+            android:layout_marginTop="@dimen/dp_10"
+            android:text="已签收"
+            android:textSize="@dimen/sp_16"
+            android:textColor="@android:color/holo_orange_light"/>
+
+        <TextView
+            android:id="@+id/tv_activity_orderdetail_head_remark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/Iv_activity_orderdetail_head"
+            android:layout_marginLeft="@dimen/dp_22"
+            android:layout_marginTop="@dimen/dp_4"
+            android:layout_below="@+id/tv_activity_orderdetail_head_status"
+            android:text="备注"
+            android:textSize="@dimen/sp_16"
+            android:textColor="@android:color/darker_gray"/>
+
+        <TextView
+            android:id="@+id/tv_activity_orderdetail_head_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/Iv_activity_orderdetail_head"
+            android:layout_marginLeft="@dimen/dp_22"
+            android:layout_marginTop="@dimen/dp_4"
+            android:layout_below="@+id/tv_activity_orderdetail_head_remark"
+            android:text="快递单号"
+            android:textSize="@dimen/sp_16"
+            android:textColor="@android:color/black"/>
+
+    </RelativeLayout>
+    <View
+    android:id="@+id/tv_activity_orderdetail_line"
+    android:layout_width="wrap_content"
+    android:layout_height="5dp"
+    android:layout_below="@+id/rl_activity_orderdetail_head"
+    android:background="@color/line_1"/>
+
+    <TextView
+        android:id="@+id/tv_activity_orderdetail_detailtv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_activity_orderdetail_line"
+        android:paddingLeft="@dimen/dp_10"
+        android:layout_margin="6dp"
+        android:text="快递详情"
+        android:textSize="@dimen/sp_16"
+        android:layout_alignParentLeft="true"
+        android:textColor="@android:color/black"/>
+
+
+    <TextView
+        android:id="@+id/tv_activity_orderdetail_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_activity_orderdetail_line"
+        android:paddingRight="@dimen/dp_10"
+        android:layout_margin="6dp"
+        android:text="总耗时"
+        android:textSize="@dimen/sp_16"
+        android:layout_alignParentRight="true"
+        android:textColor="@android:color/holo_red_light"/>
+    <View
+        android:id="@+id/tv_activity_orderdetail_line2"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:layout_below="@+id/tv_activity_orderdetail_detailtv"
+        android:background="@color/line_1"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_activity_orderdetail"
+        android:layout_below="@+id/tv_activity_orderdetail_line2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.nightonke.boommenu.BoomMenuButton
+        android:id="@+id/bmb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        app:bmb_buttonEnum="textInsideCircle"
+        app:bmb_piecePlaceEnum="piecePlace_dot_3_1"
+        app:bmb_buttonPlaceEnum="buttonPlace_sc_3_1"
+        app:bmb_boomInWholeScreen="false"
+        />
+</RelativeLayout>

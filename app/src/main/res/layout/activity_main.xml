@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        layout="@layout/toolbar_layout"/>
+
+
+    <!-- 底部tab -->
+
+    <LinearLayout
+        android:id="@+id/ll_bottom_tab"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:baselineAligned="true">
+
+        <RelativeLayout
+            android:id="@+id/ll_bottom_rl_one"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0" >
+
+            <ImageView
+                android:id="@+id/ll_bottom_iv_one"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:src="@mipmap/bottom_home_normal"
+                android:contentDescription="@null"/>
+
+            <TextView
+                android:id="@+id/ll_bottom_tv_one"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll_bottom_iv_one"
+                android:layout_centerHorizontal="true"
+                android:text="one"
+                android:textColor="@android:color/black"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/ll_bottom_rl_two"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0" >
+
+            <ImageView
+                android:id="@+id/ll_bottom_iv_two"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:contentDescription="@null" />
+
+            <TextView
+                android:id="@+id/ll_bottom_tv_two"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_bottom_iv_two"
+                android:layout_centerHorizontal="true"
+                android:text="two"
+                android:textColor="@android:color/black"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/ll_bottom_rl_three"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0" >
+
+            <ImageView
+                android:id="@+id/ll_bottom_iv_three"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:contentDescription="@null" />
+
+
+            <TextView
+                android:id="@+id/ll_bottom_tv_three"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_bottom_iv_three"
+                android:layout_centerHorizontal="true"
+                android:text="three"
+                android:textColor="@android:color/black"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/ll_bottom_rl_four"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0" >
+
+            <ImageView
+                android:id="@+id/ll_bottom_iv_four"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:contentDescription="@null" />
+
+
+            <TextView
+                android:id="@+id/ll_bottom_tv_four"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_bottom_iv_four"
+                android:layout_centerHorizontal="true"
+                android:text="four"
+                android:textColor="@android:color/black"
+                android:textSize="12sp" />
+        </RelativeLayout>
+    </LinearLayout>
+    <!-- 内容部分， fragment切换 -->
+
+    <LinearLayout
+        android:id="@+id/content_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/line"
+        android:layout_below="@+id/toolbar"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@id/ll_bottom_tab"
+        android:background="@android:color/holo_orange_light" />
+</RelativeLayout>

@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Blog2</string>
+
+    <!--toorbar内容-->
+    <string name="toorbar_backhome">回到首页</string>
+    <string name="toorbar_share">分享</string>
+    <string name="toorbar_scale">扫一扫</string>
+
+    <!--空view重试按钮-->
+    <string name="empty_rebtn">重试</string>
+
+    <!--ViewPage指示器-->
+    <array name="FragmentTwo_viewpage_titles">
+        <item>全部</item>
+        <item>已签收</item>
+        <item>未签收</item>
+    </array>
+</resources>

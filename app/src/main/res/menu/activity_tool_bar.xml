@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <item
+        android:id="@+id/action_item1"
+        android:title="@string/toorbar_backhome"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_item2"
+        android:title="@string/toorbar_share"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/action_item3"
+        android:title="@string/toorbar_scale"
+        app:showAsAction="never"
+        />
+</menu>

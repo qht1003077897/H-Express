@@ -1,0 +1,95 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.qht.blog2.View.EmptyViewLayout
+        android:id="@+id/emptyView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:visibility="gone"/>
+    <RelativeLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/kuaidinuminput"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="0dp"
+        android:hint="快递单号"
+        android:focusable="true"
+        android:focusableInTouchMode="true" >
+
+        <EditText
+            android:id="@+id/kuaidinum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:singleLine="true"
+            android:textSize="@dimen/sp_16"
+            android:drawablePadding="@dimen/dp_14"
+            android:drawableLeft="@mipmap/fragment_home_ordernum"/>
+
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/kuaidicompanyinput"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/kuaidinuminput"
+        android:layout_alignLeft="@+id/kuaidinuminput"
+        android:hint="快递公司"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <EditText
+            android:id="@+id/kuaidicompany"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:textSize="@dimen/sp_16"
+            android:drawablePadding="@dimen/dp_14"
+            android:drawableLeft="@mipmap/fragment_home_company"
+            android:inputType="text" />
+
+    </android.support.design.widget.TextInputLayout>
+        <ImageView
+            android:id="@+id/scan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/fragment_home_scan"
+            android:layout_alignBottom="@+id/kuaidinuminput"
+            android:layout_toRightOf="@+id/kuaidinuminput"
+            android:layout_toEndOf="@+id/kuaidinuminput"
+            android:layout_marginBottom="8dp">
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/fragment_home_arrow"
+            android:layout_alignBottom="@+id/kuaidicompanyinput"
+            android:layout_toRightOf="@+id/kuaidicompanyinput"
+            android:layout_toEndOf="@+id/kuaidicompanyinput"
+            android:layout_marginBottom="8dp">
+
+        </ImageView>
+    <Button
+        android:id="@+id/querybutton"
+        style="?android:textAppearanceSmall"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColor="@android:color/darker_gray"
+        android:layout_below="@+id/kuaidicompanyinput"
+        android:layout_centerHorizontal="true"
+        android:text="查询"
+        android:textStyle="bold"/>
+    </RelativeLayout>
+
+</RelativeLayout>

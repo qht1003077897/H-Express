@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="80dp">
+
+
+    <ImageView
+        android:id="@+id/iv_fragment_order_signed_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="15dp"
+        android:src="@mipmap/bottom_home_click"/>
+
+    <TextView
+        android:id="@+id/tv_fragment_order_signed_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/iv_fragment_order_signed_image"
+        android:layout_marginTop="@dimen/dp_14"
+        android:layout_marginLeft="20dp"
+        android:text="未签收"/>
+
+    <TextView
+        android:id="@+id/tv_fragment_order_signed_com"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/iv_fragment_order_signed_image"
+        android:layout_below="@+id/tv_fragment_order_signed_state"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="@dimen/dp_4"
+        android:textColor="@color/line_4"
+        android:text="圆通"/>
+
+    <TextView
+        android:id="@+id/tv_fragment_order_signed_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/iv_fragment_order_signed_image"
+        android:layout_below="@+id/tv_fragment_order_signed_com"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="@dimen/dp_4"
+        android:textColor="@color/line_3"
+        android:text="12345678945617"/>
+
+    <TextView
+        android:id="@+id/tv_fragment_order_signed_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/line_4"
+        android:text="2017-01-12"
+        android:layout_above="@+id/iv_fragment_order_signed_image"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+</RelativeLayout>

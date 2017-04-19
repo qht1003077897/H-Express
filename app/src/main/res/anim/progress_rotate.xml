@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--设置动画渲染器为先加速在减速(开始速度最快 逐渐减慢)-->
+    <rotate
+        android:duration="700"
+        android:fromDegrees="0"
+        android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:repeatCount="-1"
+        android:toDegrees="359" />
+</set>

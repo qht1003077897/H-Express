@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--标准颜色-->
+    <color name="red">#FF0000</color>
+    <color name="blue">#0000FF</color>
+
+    <color name="blue_sky">#87CEEB</color><!--天蓝色-->
+    <color name="blue_daoqi">#1E90FF</color><!--道奇蓝-->
+
+    <!--toolbar颜色-->
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!--底部点击颜色-->
+    <color name="bottom_click">#176ce3</color>
+    <color name="bottom_normal">#707070</color>
+
+    <color name="line_1">#F5F5F5</color><!--近乎白色浅灰-->
+    <color name="line_2">#DCDCDC</color><!--浅灰2-->
+    <color name="line_3">#D3D3D3</color><!--浅灰3-->
+    <color name="line_4">#C0C0C0</color><!--银灰4-->
+    <color name="line_5">#A9A9A9</color><!--深灰4-->
+
+</resources>

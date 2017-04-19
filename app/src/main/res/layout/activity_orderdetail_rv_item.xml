@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="80dp" >
+
+    <TextView
+        android:id="@+id/tv_rv_activity_orderdetail_time"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:paddingLeft="10dp"
+        android:textColor="@color/line_5"/>
+
+<!--1、必须设置上padding,上padding的大小决定了上线条的长度   2、总是保持以宽高最小值为准的正方形  -->
+<com.qht.blog2.View.TimeLineMarkerView
+    android:id="@+id/tv_rv_activity_orderdetail_timelineview"
+    android:layout_width="80dp"
+    android:layout_height="80dp"
+    android:layout_toRightOf="@+id/tv_rv_activity_orderdetail_time"
+    android:layout_marginLeft="5dp"
+    android:paddingTop="30dp"
+    app:beginLine="@color/blue_sky"
+    app:endLine="@color/blue_sky"
+    app:marker="@drawable/timeline_bg_blue"
+    app:lineSize="2dp"
+    app:markerSize="24dp" >
+</com.qht.blog2.View.TimeLineMarkerView>
+
+    <TextView
+        android:id="@+id/tv_rv_activity_orderdetail_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_toRightOf="@+id/tv_rv_activity_orderdetail_timelineview"
+        android:layout_centerVertical="true"
+        android:textColor="@color/line_5"/>
+
+    <View
+        android:id="@+id/tv_rv_activity_orderdetail_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignLeft="@+id/tv_rv_activity_orderdetail_content"
+        android:background="@android:color/darker_gray"
+        android:layout_below="@+id/tv_rv_activity_orderdetail_content"
+        android:layout_marginTop="@dimen/dp_4">
+
+    </View>
+</RelativeLayout>
