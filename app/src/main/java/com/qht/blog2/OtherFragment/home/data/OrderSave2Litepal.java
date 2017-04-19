@@ -34,6 +34,7 @@ public class OrderSave2Litepal {
                     DataSupport.update(OrderInfoLitePal.class, values, 1);
                 }
             }
+
             if(List.size()<=0){
                 OrderInfoLitePal bean=new OrderInfoLitePal();
                 bean.setCom(response.getCom());

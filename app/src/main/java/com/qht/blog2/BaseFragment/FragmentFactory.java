@@ -1,9 +1,11 @@
 package com.qht.blog2.BaseFragment;
 
 import android.support.v4.app.Fragment;
+
 import com.qht.blog2.OtherFragment.order.orderAll.UI.FragmentOrder_ALL;
 import com.qht.blog2.OtherFragment.order.orderSigned.UI.FragmentOrder_Signed;
 import com.qht.blog2.OtherFragment.order.orderUnSign.UI.FragmentOrder_UnSign;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +37,6 @@ public class FragmentFactory {
          default:
              break;
      }
-    return currentFragment;
+        return currentFragment;
     }
 }

@@ -6,6 +6,7 @@ import org.litepal.crud.DataSupport;
  * Created by QHT on 2017-04-18.
  */
 public class OrderInfoLitePal extends DataSupport {
+
     String nu;
     String com;
     String state;

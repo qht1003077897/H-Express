@@ -33,5 +33,6 @@ import com.qht.blog2.Util.ResourceUtil;
         public CharSequence getPageTitle(int position) {
             return titles[position];
         }
-    }
+
+}
 

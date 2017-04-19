@@ -11,10 +11,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.qht.blog2.BaseBean.OrderInfoLitePal;
+import com.qht.blog2.BaseEventBus.EventBusUtil;
 import com.qht.blog2.BaseFragment.BaseFragment;
+import com.qht.blog2.OtherFragment.order.FragmentSecond;
+import com.qht.blog2.OtherFragment.order.event.OrderSignedEvent;
 import com.qht.blog2.OtherFragment.order.orderSigned.adapter.OrderSigned_RV_Adapter;
 import com.qht.blog2.R;
 
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 import org.litepal.crud.DataSupport;
 
 import java.util.List;
@@ -32,7 +37,8 @@ public class FragmentOrder_Signed extends BaseFragment {
     RecyclerView rvFragmentOrderSigned;
 
     private Activity mActivity;
-
+    private OrderSigned_RV_Adapter  madapter;
+    private List<OrderInfoLitePal> list;
     /**
      * 设置根布局资源id
      *
@@ -54,17 +60,53 @@ public class FragmentOrder_Signed extends BaseFragment {
 
     private void initData() {
         //状态为3 则已签收
-        List<OrderInfoLitePal> list = DataSupport
+         list = DataSupport
                 .where("state like ? ", "%" + "3" + "%" ).find(OrderInfoLitePal.class);
         rvFragmentOrderSigned.setLayoutManager(new LinearLayoutManager(mActivity));
-        OrderSigned_RV_Adapter  madapter = new OrderSigned_RV_Adapter(list, mActivity);
+        madapter = new OrderSigned_RV_Adapter(list, mActivity);
         rvFragmentOrderSigned.setAdapter(madapter);
+
     }
+
+    /**
+     * 接收消息函数在主线程,当切换到已签收页面时才执行右移动画
+     * From: FragmentSecond.onPageSelected()
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(OrderSignedEvent response) {
+        // from :MainActivity.onClick()
+        if(FragmentSecond.viewPagePosition==1 && response.from.equals("MainActivity")){
+            if(list.size()>0){
+                if(!response.open){
+                    madapter.slideOpen();
+                    }
+                 if(response.open){
+                    madapter.slideClose();
+                    }
+                }
+        }
+        // from :FragmentSecond.onPageSelected()
+        else if(response.position==1 && response.from.equals("FragmentSecond")){
+            if(list.size()>0){
+               madapter.slideClose();
+        }
+    }}
 
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         this.mActivity=activity;
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBusUtil.register(this);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBusUtil.unregister(this);
     }
 }

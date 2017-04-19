@@ -1,9 +1,9 @@
 package com.qht.blog2.BaseAdapter.BaseSlideRecycleView.holder;
 
 import android.animation.ValueAnimator;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.chad.library.adapter.base.BaseViewHolder;
 import com.qht.blog2.BaseAdapter.BaseSlideRecycleView.ISlide;
 import com.qht.blog2.BaseAdapter.BaseSlideRecycleView.helper.SlideAnimationHelper;
 
@@ -11,7 +11,7 @@ import com.qht.blog2.BaseAdapter.BaseSlideRecycleView.helper.SlideAnimationHelpe
  * Created by zhan on 2017/2/6.
  */
 
-public abstract class SlideViewHolder extends RecyclerView.ViewHolder implements ISlide {
+public abstract class SlideViewHolder extends BaseViewHolder implements ISlide {
 
   private static final int DURATION_OPEN = 300;
   private static final int DURATION_CLOSE = 150;

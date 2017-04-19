@@ -1,6 +1,8 @@
 package com.qht.blog2.OtherFragment.order;
 
 
+import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -8,13 +10,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.qht.blog2.BaseAdapter.BasePageAdapter;
+import com.qht.blog2.BaseAdapter.BaseViewPage.BasePageAdapter;
+import com.qht.blog2.BaseEventBus.EventBusUtil;
 import com.qht.blog2.BaseFragment.BaseFragment;
+import com.qht.blog2.OtherFragment.order.event.OrderSignedEvent;
 import com.qht.blog2.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import shanyao.tabpagerindictor.TabPageIndicator;
 
 public class FragmentSecond extends BaseFragment {
@@ -24,6 +27,17 @@ public class FragmentSecond extends BaseFragment {
     TabPageIndicator indicator;
     @BindView(R.id.viewPager)
     ViewPager viewPager;
+
+    private Context mActivity;
+    /**
+     *保存viewpage当前位置，供子fragment判断当前是否是本fragment然后onEvent接收事件处理item动画
+     */
+    public static int viewPagePosition;
+
+    /**
+     *保存viewpage上次位置，为了切换下一个页面时将"编辑"和item右移还原到正常状态
+     */
+    private int lastViewPageIndex;
 
     @Override
     public int getContentViewId() {
@@ -36,14 +50,37 @@ public class FragmentSecond extends BaseFragment {
         // TODO: inflate a fragment view
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
         ButterKnife.bind(this, rootView);
+        initViewPage();
+        return rootView;
+    }
 
+    private void initViewPage() {
         BasePageAdapter adapter = new BasePageAdapter(getFragmentManager());
         viewPager.setAdapter(adapter);// 设置adapter
         indicator.setViewPager(viewPager);// 绑定indicator
         setTabPagerIndicator();
-        return rootView;
-    }
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                lastViewPageIndex=viewPagePosition;
+                viewPagePosition=position;
+                // To:FragmentOrder_Signed.onEvent()  切换，则恢复动画
+                EventBusUtil.postSync(new OrderSignedEvent(true,"FragmentSecond",lastViewPageIndex,this));
+                // To:MainActivity.onEvent() 切换，则还原编辑字样
+                EventBusUtil.postSync(new OrderSignedEvent(true,"FragmentSecond",-1,this));
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+    }
     /**
      * 仿今日头条顶部导航
      * 通过一些set方法，设置控件的属性
@@ -56,9 +93,12 @@ public class FragmentSecond extends BaseFragment {
         indicator.setIndicatorColor(Color.parseColor("#43A44b"));// 设置底部导航线的颜色
         indicator.setTextColorSelected(Color.parseColor("#43A44b"));// 设置tab标题选中的颜色
         indicator.setTextColor(Color.parseColor("#797979"));// 设置tab标题未被选中的颜色
-        indicator.setTextSize(16);// 设置字体大小
+        indicator.setTextSize(22);// 设置字体大小
     }
-    @OnClick(R.id.indicator)
-    public void onClick() {
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        this.mActivity=activity;
     }
 }
