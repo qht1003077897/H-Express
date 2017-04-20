@@ -8,10 +8,13 @@ import com.qht.blog2.BaseEventBus.Event;
 public class OrderSignedEvent extends Event {
     public int position;
     public String from;
-    public  boolean open;
-    public OrderSignedEvent(boolean open, String from, int position, Object source) {
+    public  boolean needclose;
+    public  boolean needselect;
+
+    public OrderSignedEvent(boolean needclose,boolean needselect, String from, int position, Object source) {
         super(source);
-        this.open=open;
+        this.needclose=needclose;
+        this.needselect=needselect;
         this.from=from;
         this.position=position;
     }

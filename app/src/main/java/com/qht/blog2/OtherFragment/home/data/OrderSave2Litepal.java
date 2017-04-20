@@ -24,7 +24,7 @@ public class OrderSave2Litepal {
 
         if(response.getMessage().equals("ok")){
             List<OrderInfoLitePal> List = DataSupport
-                    .where("nu like ? ", "%" + response.getNu() + "%" ).find(OrderInfoLitePal.class);
+                    .where("nu = ? ", response.getNu()).find(OrderInfoLitePal.class);
             for (OrderInfoLitePal bean: List) {
                 if(bean.getNu().equals(response.getNu())){
                     //每查询一次，及时更新订单状态和查看时间

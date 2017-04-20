@@ -3,7 +3,6 @@ package com.qht.blog2.OtherFragment.order;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -70,9 +69,9 @@ public class FragmentSecond extends BaseFragment {
                 lastViewPageIndex=viewPagePosition;
                 viewPagePosition=position;
                 // To:FragmentOrder_Signed.onEvent()  切换，则恢复动画
-                EventBusUtil.postSync(new OrderSignedEvent(true,"FragmentSecond",lastViewPageIndex,this));
+                EventBusUtil.postSync(new OrderSignedEvent(true,false,"FragmentSecond",lastViewPageIndex,this));
                 // To:MainActivity.onEvent() 切换，则还原编辑字样
-                EventBusUtil.postSync(new OrderSignedEvent(true,"FragmentSecond",-1,this));
+                EventBusUtil.postSync(new OrderSignedEvent(true,false,"FragmentSecond",-1,this));
             }
 
             @Override
@@ -88,12 +87,12 @@ public class FragmentSecond extends BaseFragment {
      */
     private void setTabPagerIndicator() {
         indicator.setIndicatorMode(TabPageIndicator.IndicatorMode.MODE_WEIGHT_NOEXPAND_SAME);// 设置模式，一定要先设置模式
-        indicator.setDividerColor(Color.parseColor("#00bbcf"));// 设置分割线的颜色
+        indicator.setDividerColor(getResources().getColor(R.color.colorPrimary));// 设置分割线的颜色
         indicator.setDividerPadding(10);//设置
-        indicator.setIndicatorColor(Color.parseColor("#43A44b"));// 设置底部导航线的颜色
-        indicator.setTextColorSelected(Color.parseColor("#43A44b"));// 设置tab标题选中的颜色
-        indicator.setTextColor(Color.parseColor("#797979"));// 设置tab标题未被选中的颜色
-        indicator.setTextSize(22);// 设置字体大小
+        indicator.setIndicatorColor(getResources().getColor(R.color.red));// 设置底部导航线的颜色
+        indicator.setTextColorSelected(getResources().getColor(R.color.colorPrimary));// 设置tab标题选中的颜色
+        indicator.setTextColor(getResources().getColor(R.color.line_4));// 设置tab标题未被选中的颜色
+        indicator.setTextSize(23);// 设置字体大小
     }
 
     @Override

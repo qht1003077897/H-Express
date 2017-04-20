@@ -4,13 +4,22 @@
               android:layout_width="match_parent"
               android:layout_height="80dp">
 
+<CheckBox
+    android:id="@+id/cb_fragment_order_signed_select"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerVertical="true"
+    android:layout_marginLeft="-30dp"
+    android:button="@drawable/checkbox_bg_shape">
+</CheckBox>
 
     <ImageView
         android:id="@+id/iv_fragment_order_signed_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/cb_fragment_order_signed_select"
         android:src="@mipmap/bottom_home_click"/>
 
     <TextView

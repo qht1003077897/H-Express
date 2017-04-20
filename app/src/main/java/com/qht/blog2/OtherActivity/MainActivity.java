@@ -65,6 +65,8 @@ public class MainActivity extends ToolBarActivity {
     LinearLayout   contentLayout;
     @BindView(R.id.line)
     View           line;
+    @BindView(R.id.toolbar_sub2title)
+    TextView       toolbarSub2title;
 
 
     // 底部标签切换的Fragment
@@ -73,7 +75,6 @@ public class MainActivity extends ToolBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getToolbarTitle().setText("主界面");
         initTab();
         initBadge();
     }
@@ -101,11 +102,11 @@ public class MainActivity extends ToolBarActivity {
         if (oneFragment == null) {
             oneFragment = new FragmentFrist();
         }
-
+        getToolbarTitle().setText("查询");
         if (!oneFragment.isAdded()) {
             // 提交事务
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.content_layout, oneFragment).commit();
+                    .add(R.id.content_layout, oneFragment,"1").commit();
 
             // 记录当前Fragment
             currentFragment = oneFragment;
@@ -125,18 +126,6 @@ public class MainActivity extends ToolBarActivity {
                     R.color.bottom_normal));
 
         }
-
-    }
-    @OnClick(R.id.toolbar_subtitle)
-    public void onClick() {
-        if ("编辑".equals( getSubTitle().getText().toString())) {
-            getSubTitle().setText("取消");
-            // To:FragmentOrder_Signed.onEvent()
-            EventBusUtil.postSync(new OrderSignedEvent(false,"MainActivity",-1,this));
-        } else if ("取消".equals( getSubTitle().getText().toString())) {
-            getSubTitle().setText("编辑");
-            EventBusUtil.postSync(new OrderSignedEvent(true,"MainActivity",-1,this));
-        }
     }
 
     /**
@@ -145,33 +134,81 @@ public class MainActivity extends ToolBarActivity {
      */
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(OrderSignedEvent response) {
-        if( response.from.equals("FragmentSecond") && response.position==-1){
+        if (response.from.equals("FragmentSecond") && response.position == -1) {
             getSubTitle().setText("编辑");
+            getSub2Title().setVisibility(View.GONE);
         }
     }
 
 
-
-    @OnClick({R.id.ll_bottom_rl_one, R.id.ll_bottom_rl_two, R.id.ll_bottom_rl_three, R.id.ll_bottom_rl_four})
+    @OnClick({R.id.ll_bottom_rl_one, R.id.ll_bottom_rl_two, R.id.ll_bottom_rl_three, R.id.ll_bottom_rl_four,
+             R.id.toolbar_subtitle,R.id.toolbar_sub2title})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ll_bottom_rl_one:
                 getSubTitle().setVisibility(View.GONE);
+                getSub2Title().setVisibility(View.GONE);
+                getToolbarTitle().setText("查询");
+                reViewStatus("1");
                 clickTab1Layout();
                 break;
             case R.id.ll_bottom_rl_two:
                 getSubTitle().setVisibility(View.VISIBLE);
+                getToolbarTitle().setText("订单状态");
                 getSubTitle().setText("编辑");
+                reViewStatus("2");
                 clickTab2Layout();
                 break;
             case R.id.ll_bottom_rl_three:
                 getSubTitle().setVisibility(View.GONE);
+                getSub2Title().setVisibility(View.GONE);
+                getToolbarTitle().setText("消息");
+                reViewStatus("3");
                 clickTab3Layout();
                 break;
             case R.id.ll_bottom_rl_four:
                 getSubTitle().setVisibility(View.GONE);
+                getSub2Title().setVisibility(View.GONE);
+                getToolbarTitle().setText("我的");
+                reViewStatus("4");
                 clickTab4Layout();
                 break;
+            case R.id.toolbar_subtitle:
+                if ("编辑".equals(getSubTitle().getText().toString())) {
+                    getSubTitle().setText("取消");
+                    getSub2Title().setVisibility(View.VISIBLE);
+                    getSub2Title().setText("全选");
+                    // To:FragmentOrder_Signed.onEvent(),参数 -1 无意义
+                    EventBusUtil.postSync(new OrderSignedEvent(false,false, "MainActivity", -1, this));
+                } else if ("取消".equals(getSubTitle().getText().toString())) {
+                    getSubTitle().setText("编辑");
+                    getSub2Title().setVisibility(View.GONE);
+                    // To:FragmentOrder_Signed.onEvent()
+                    EventBusUtil.postSync(new OrderSignedEvent(true,false,"MainActivity", -1, this));
+                }
+                break;
+            case R.id.toolbar_sub2title:
+                if ("全选".equals(getSub2Title().getText().toString())) {
+                    getSub2Title().setText("取消全选");
+                    // To:FragmentOrder_Signed.onEvent(),参数-1无意义
+                    EventBusUtil.postSync(new OrderSignedEvent(false,true,"MainActivity_Allselect", -1, this));
+                } else if ("取消全选".equals(getSub2Title().getText().toString())) {
+                    getSub2Title().setText("全选");
+                    // To:FragmentOrder_Signed.onEvent()
+                    EventBusUtil.postSync(new OrderSignedEvent(false,false, "MainActivity_Allselect", -1, this));
+                }
+
+                break;
+        }
+    }
+
+    /**
+     * 切换底部fragment时，订单页面(fragment)返回初始化状态
+     */
+    private void reViewStatus(String s) {
+        if(!currentFragment.getTag().equals(s)){
+            // To:FragmentOrder_Signed.onEvent()
+            EventBusUtil.postSync(new OrderSignedEvent(true, false,"MainActivityInit", -1, this));
         }
     }
 
@@ -182,7 +219,7 @@ public class MainActivity extends ToolBarActivity {
         if (oneFragment == null) {
             oneFragment = new FragmentFrist();
         }
-        addOrShowFragment(getSupportFragmentManager().beginTransaction(), oneFragment);
+        addOrShowFragment(getSupportFragmentManager().beginTransaction(), oneFragment,"1");
 
         llBottomIvOne.setImageResource(R.mipmap.bottom_home_click);
         llBottomTvOne.setTextColor(getResources()
@@ -205,7 +242,7 @@ public class MainActivity extends ToolBarActivity {
         if (twoFragment == null) {
             twoFragment = new FragmentSecond();
         }
-        addOrShowFragment(getSupportFragmentManager().beginTransaction(), twoFragment);
+        addOrShowFragment(getSupportFragmentManager().beginTransaction(), twoFragment,"2");
 
         llBottomIvOne.setImageResource(R.mipmap.bottom_home_normal);
         llBottomTvOne.setTextColor(getResources()
@@ -229,7 +266,7 @@ public class MainActivity extends ToolBarActivity {
         if (threeFragment == null) {
             threeFragment = new FragmentThird();
         }
-        addOrShowFragment(getSupportFragmentManager().beginTransaction(), threeFragment);
+        addOrShowFragment(getSupportFragmentManager().beginTransaction(), threeFragment,"3");
 
         llBottomIvOne.setImageResource(R.mipmap.bottom_home_normal);
         llBottomTvOne.setTextColor(getResources()
@@ -252,7 +289,8 @@ public class MainActivity extends ToolBarActivity {
         if (fourFragment == null) {
             fourFragment = new FragmentFour();
         }
-        addOrShowFragment(getSupportFragmentManager().beginTransaction(), fourFragment);
+
+        addOrShowFragment(getSupportFragmentManager().beginTransaction(), fourFragment,"4");
 
         llBottomIvOne.setImageResource(R.mipmap.bottom_home_normal);
         llBottomTvOne.setTextColor(getResources()
@@ -275,17 +313,18 @@ public class MainActivity extends ToolBarActivity {
      * @param fragment
      */
     private void addOrShowFragment(FragmentTransaction transaction,
-                                   Fragment fragment) {
+                                   Fragment fragment,String  tag) {
         if (currentFragment == fragment)
             return;
         if (!fragment.isAdded()) { // 如果当前fragment未被添加，则添加到Fragment管理器中
             transaction.hide(currentFragment)
-                    .add(R.id.content_layout, fragment).commit();
+                    .add(R.id.content_layout, fragment,tag).commit();
         } else {
             transaction.hide(currentFragment).show(fragment).commit();
         }
         currentFragment = fragment;
     }
+
     @Override
     public void onStart() {
         super.onStart();
@@ -297,5 +336,6 @@ public class MainActivity extends ToolBarActivity {
         super.onDestroy();
         EventBusUtil.unregister(this);
     }
+
 }
 

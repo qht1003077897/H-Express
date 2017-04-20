@@ -17,7 +17,7 @@ public abstract class ToolBarActivity extends statusActivity {
     private TextView mToolbarTitle;
     private TextView mToolbarSubTitle;
     private Toolbar mToolbar;
-
+    private TextView mToolbarSub2Title;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +29,9 @@ public abstract class ToolBarActivity extends statusActivity {
           */
         mToolbarTitle = (TextView) findViewById(R.id.toolbar_title);
         mToolbarSubTitle = (TextView) findViewById(R.id.toolbar_subtitle);
+        mToolbarSub2Title= (TextView) findViewById(R.id.toolbar_sub2title);
         getSubTitle().setVisibility(View.GONE);//隐藏副标题
+        getSub2Title().setVisibility(View.GONE);
         if (mToolbar != null) {
             //将Toolbar显示到界面
             setSupportActionBar(mToolbar);
@@ -94,6 +96,14 @@ public abstract class ToolBarActivity extends statusActivity {
     public TextView getSubTitle(){
         return mToolbarSubTitle;
     }
+    /**
+     * 获取头部标题的TextView
+     * @return
+     */
+    public TextView getSub2Title(){
+        return mToolbarSub2Title;
+    }
+
 
     /**
      * 设置头部标题

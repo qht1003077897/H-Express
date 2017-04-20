@@ -61,7 +61,7 @@ public class FragmentOrder_Signed extends BaseFragment {
     private void initData() {
         //状态为3 则已签收
          list = DataSupport
-                .where("state like ? ", "%" + "3" + "%" ).find(OrderInfoLitePal.class);
+                .where("state = ? ",  "3" ).find(OrderInfoLitePal.class);
         rvFragmentOrderSigned.setLayoutManager(new LinearLayoutManager(mActivity));
         madapter = new OrderSigned_RV_Adapter(list, mActivity);
         rvFragmentOrderSigned.setAdapter(madapter);
@@ -74,24 +74,50 @@ public class FragmentOrder_Signed extends BaseFragment {
      */
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(OrderSignedEvent response) {
-        // from :MainActivity.onClick()
+        // from :MainActivity.onClick()  编辑动作
         if(FragmentSecond.viewPagePosition==1 && response.from.equals("MainActivity")){
             if(list.size()>0){
-                if(!response.open){
-                    madapter.slideOpen();
-                    }
-                 if(response.open){
+                if(response.needclose){
                     madapter.slideClose();
-                    }
+                    notifydata(false);
+                    }else{
+                    madapter.slideOpen();
                 }
+            }
         }
         // from :FragmentSecond.onPageSelected()
+        //response.position==1 如果lastViewPageIndex为本页面，则关闭动画，并且全部字段置为未选择，相当于初始化
         else if(response.position==1 && response.from.equals("FragmentSecond")){
-            if(list.size()>0){
-               madapter.slideClose();
+            InitStatus(true,false);
         }
-    }}
-
+            // from :MainActivity.onClick()
+            //response.position==1 意味着在本页面，全部字段置为true
+        else if(FragmentSecond.viewPagePosition==1 && response.from.equals("MainActivity_Allselect")){
+            InitStatus(response.needclose,response.needselect);
+        }
+        // from :MainActivity.reViewStatus()
+        //来自MainActivity的初始化请求(因为底部fragmnet切换)
+        else if(response.from.equals("MainActivityInit")){
+            InitStatus(true,false);
+        }
+    }
+        /**
+        *页面切换情况下返回初始化状态
+        */
+        public void  InitStatus(boolean isneedclose,boolean needselect){
+            if(list.size()>0){
+                if(isneedclose){
+                    madapter.slideClose();
+                }
+                notifydata(needselect);
+            }
+        }
+        public void notifydata(boolean needselect){
+            for (OrderInfoLitePal order: list) {
+                order.setIsselect(needselect);
+            }
+            madapter.notifyDataSetChanged();
+        }
 
     @Override
     public void onAttach(Activity activity) {

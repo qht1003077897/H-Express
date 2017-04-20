@@ -6,8 +6,7 @@
     <!-- TODO: Update blank fragment layout -->
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_orderall"
-        android:divider="#ffff0000"
-        android:dividerHeight="10dp"
+        android:dividerHeight="0dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

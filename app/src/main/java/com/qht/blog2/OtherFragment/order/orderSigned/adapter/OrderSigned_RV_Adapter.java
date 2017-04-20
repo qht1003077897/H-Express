@@ -4,8 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -49,6 +47,7 @@ public class OrderSigned_RV_Adapter extends BaseQuickAdapter<OrderInfoLitePal> {
         baseViewHolder.setText(R.id.tv_fragment_order_signed_num,orderInfoLitePal.getNu());
         baseViewHolder.setText(R.id.tv_fragment_order_signed_state, OrderState.caseState(orderInfoLitePal.getState()));
         baseViewHolder.setText(R.id.tv_fragment_order_signed_time,orderInfoLitePal.getTime());
+        baseViewHolder.setChecked(R.id.cb_fragment_order_signed_select,orderInfoLitePal.isselect());
     }
     public void slideOpen() {
         mISlideHelper.slideOpen();
@@ -61,19 +60,10 @@ public class OrderSigned_RV_Adapter extends BaseQuickAdapter<OrderInfoLitePal> {
     public class OneSlideViewHolder extends SlideViewHolder {
 
         private View     mContentRl;
-        private TextView itemcomTv;
-        private TextView itemnumTv;
-        private TextView itemstateTv;
-        private TextView itemtimeTv;
-        private ImageView itemimageIV;
+
         public OneSlideViewHolder(View itemView) {
             super(itemView);
             mContentRl = itemView.findViewById(R.id.rl_fragment_order_signed);
-            itemcomTv = (TextView) itemView.findViewById(R.id.tv_fragment_order_signed_com);
-            itemtimeTv = (TextView) itemView.findViewById(R.id.tv_fragment_order_signed_time);
-            itemnumTv = (TextView) itemView.findViewById(R.id.tv_fragment_order_signed_num);
-            itemstateTv = (TextView) itemView.findViewById(R.id.tv_fragment_order_signed_state);
-            itemimageIV= (ImageView) itemView.findViewById(R.id.iv_fragment_order_signed_image);
         }
 
         public void bind() {
