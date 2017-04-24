@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.CompoundButton;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.BaseViewHolder;
 import com.qht.blog2.BaseAdapter.BaseSlideRecycleView.ISlideHelper;
 import com.qht.blog2.BaseAdapter.BaseSlideRecycleView.holder.SlideViewHolder;
 import com.qht.blog2.BaseBean.OrderInfoLitePal;
@@ -24,13 +23,13 @@ import java.util.List;
  * 参考:  https://github.com/ruzhan123/ViewHolder-Slide-Helper
  * 自己结合 BaseQuickAdapter
  */
-public class OrderAll_RV_Adapter extends BaseQuickAdapter<OrderInfoLitePal> {
+public class OrderAll_RV_Adapter extends BaseQuickAdapter<OrderInfoLitePal,OrderAll_RV_Adapter.OneSlideViewHolder> {
 
     private ISlideHelper mISlideHelper = new ISlideHelper();
     private Context context;
 
     @Override
-    public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public OneSlideViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         OneSlideViewHolder oneSlideViewHolder = new OneSlideViewHolder(
                 LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_order_signed_rv_item, parent, false));
         //add holder
@@ -38,13 +37,8 @@ public class OrderAll_RV_Adapter extends BaseQuickAdapter<OrderInfoLitePal> {
         return oneSlideViewHolder;
     }
 
-    public OrderAll_RV_Adapter(List<OrderInfoLitePal> list, Context context) {
-        super(list);
-        this.context=context;
-    }
-
     @Override
-    protected void convert(final BaseViewHolder baseViewHolder, OrderInfoLitePal orderInfoLitePal) {
+    protected void convert(final OneSlideViewHolder baseViewHolder, OrderInfoLitePal orderInfoLitePal) {
         ((OneSlideViewHolder) baseViewHolder).bind();
         baseViewHolder.setText(R.id.tv_fragment_order_signed_com,orderInfoLitePal.getCom());
         baseViewHolder.setText(R.id.tv_fragment_order_signed_num,orderInfoLitePal.getNu());
@@ -64,6 +58,12 @@ public class OrderAll_RV_Adapter extends BaseQuickAdapter<OrderInfoLitePal> {
             }
         });
     }
+
+    public OrderAll_RV_Adapter(List<OrderInfoLitePal> list, Context context) {
+        super(list);
+        this.context=context;
+    }
+
     public void slideOpen() {
         mISlideHelper.slideOpen();
     }

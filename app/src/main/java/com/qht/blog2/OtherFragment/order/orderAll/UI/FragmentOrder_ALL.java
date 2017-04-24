@@ -13,30 +13,43 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.baoyz.widget.PullRefreshLayout;
+import com.qht.blog2.BaseBean.OrderInfoBean;
 import com.qht.blog2.BaseBean.OrderInfoLitePal;
 import com.qht.blog2.BaseEventBus.EventBusUtil;
 import com.qht.blog2.BaseFragment.BaseFragment;
+import com.qht.blog2.Net.MyStringCallBack;
+import com.qht.blog2.Net.Ok_Request;
+import com.qht.blog2.OtherActivity.orderdetail.UI.OrderDetailActivity;
+import com.qht.blog2.OtherActivity.orderdetail.data.OrderDetailEvent;
+import com.qht.blog2.OtherFragment.home.data.OrderSave2Litepal;
 import com.qht.blog2.OtherFragment.order.FragmentSecond;
 import com.qht.blog2.OtherFragment.order.event.OrderEvent;
 import com.qht.blog2.OtherFragment.order.orderAll.adapter.OrderAll_RV_Adapter;
 import com.qht.blog2.OtherFragment.order.orderAll.data.OrderAllEvent;
 import com.qht.blog2.R;
+import com.qht.blog2.Util.DialogUtil;
+import com.qht.blog2.Util.TextUtil;
+import com.qht.blog2.Util.ToastUtil;
+import com.qht.blog2.Util.UrlUtil;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 import org.litepal.crud.DataSupport;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import okhttp3.Call;
+import okhttp3.Request;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentOrder_ALL extends BaseFragment {
+public class FragmentOrder_ALL extends BaseFragment{
 
     @BindView(R.id.rv_orderall)
     RecyclerView      rvOrderall;
@@ -76,7 +89,6 @@ public class FragmentOrder_ALL extends BaseFragment {
         QueryData();
         rvOrderall.setLayoutManager(new LinearLayoutManager(mActivity));
         madapter = new OrderAll_RV_Adapter(list, mActivity);
-        rvOrderall.setAdapter(madapter);
         swipeRefreshLayoutOrderall.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -88,6 +100,51 @@ public class FragmentOrder_ALL extends BaseFragment {
                         swipeRefreshLayoutOrderall.setRefreshing(false);
                     }
                 });
+            }
+        });
+//        rvOrderall.addOnItemTouchListener(new OnItemClickListener() {
+//            @Override
+//            public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
+//                LogUtil.e("onSimpleItemClick");
+//                RequestNet(list.get(position).getNu(),list.get(position).getCom());
+//            }
+//        });
+        rvOrderall.setAdapter(madapter);
+    }
+
+    private void RequestNet(String nu,String com){
+        if(TextUtil.isEmpty(nu) || TextUtil.isEmpty(com)){
+            return;
+        }
+        HashMap<String, String> map = new HashMap<>();
+        map.put("type", com);//参数
+        map.put("postid", nu);
+        Ok_Request.getAsyncData(getActivity(), map, UrlUtil.GetKuaiDi, new MyStringCallBack() {
+            /**
+             * UI Thread
+             */
+            @Override
+            public void onBefore(Request request, int id) {
+                DialogUtil.showProgressDialog(getActivity(), true);
+            }
+
+            @Override
+            public void onAfter(int id) {
+                DialogUtil.hideProgressDialog();
+            }
+
+            @Override
+            public void onError(Call call, Exception e, int id) {
+                ToastUtil.showToastLong(e.getMessage());
+            }
+
+            @Override
+            public void onResponse(OrderInfoBean response, int id) {
+                if (response != null) {
+                    EventBusUtil.postSticky(new OrderDetailEvent(response,mActivity));
+                    OrderSave2Litepal.savequery(response);
+                    gotoActivity(mActivity, OrderDetailActivity.class);
+                }
             }
         });
     }
@@ -102,7 +159,6 @@ public class FragmentOrder_ALL extends BaseFragment {
             llOrderall.setVisibility(View.VISIBLE);
         }
         list.get(response.position).setIsselect(response.checked);
-
     }
 
     /**
@@ -172,10 +228,10 @@ public class FragmentOrder_ALL extends BaseFragment {
             if (list.get(i).isselect()) {
                 int id = list.get(i).getId();
                 list.remove(i);
+                madapter.notifyItemRemoved(i);
                 DataSupport.delete(OrderInfoLitePal.class, id);
             }
         }
-        notifydata();
     }
 
     /**

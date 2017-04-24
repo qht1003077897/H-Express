@@ -22,6 +22,7 @@ public abstract class ToolBarActivity extends statusActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
+
          /*
           toolbar.setLogo(R.mipmap.ic_launcher);
           toolbar.setTitle("Title");

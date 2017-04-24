@@ -36,7 +36,7 @@ dependencies {
     compile ('com.google.code.gson:gson:2.6.2')
     compile ('q.rorbin:badgeview:1.1.0')//底部按钮红点  https://github.com/qstumn/BadgeView
     compile ('com.android.support:recyclerview-v7:24.0.+')
-    compile ('com.github.CymChad:BaseRecyclerViewAdapterHelper:v1.9.7')// RecycleViewBaseAdapter  http://blog.csdn.net/juhua2012/article/details/52038421
+    compile ('com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.13')// RecycleViewBaseAdapter  https://github.com/CymChad/BaseRecyclerViewAdapterHelper
     compile ('com.contrarywind:Android-PickerView:3.2.4')  //滚轮条件选择器 https://github.com/Bigkoo/Android-PickerView
 //    compile 'com.github.vipulasri:timelineview:1.0.5'
     compile 'com.nightonke:boommenu:2.0.9'//Menu菜单   https://github.com/Nightonke/BoomMenu

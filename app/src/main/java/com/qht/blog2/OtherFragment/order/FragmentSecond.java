@@ -92,7 +92,7 @@ public class FragmentSecond extends BaseFragment {
         indicator.setIndicatorColor(getResources().getColor(R.color.red));// 设置底部导航线的颜色
         indicator.setTextColorSelected(getResources().getColor(R.color.colorPrimary));// 设置tab标题选中的颜色
         indicator.setTextColor(getResources().getColor(R.color.line_4));// 设置tab标题未被选中的颜色
-        indicator.setTextSize(23);// 设置字体大小
+        indicator.setTextSize(30);// 设置字体大小
     }
 
     @Override

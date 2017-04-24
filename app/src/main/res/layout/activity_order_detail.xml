@@ -20,14 +20,14 @@
             android:layout_height="wrap_content"
             android:src="@mipmap/bottom_home_click"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/dp_14"/>
+            android:layout_marginLeft="14dp"/>
 
         <TextView
             android:id="@+id/tv_activity_orderdetail_head_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/Iv_activity_orderdetail_head"
-            android:layout_marginLeft="@dimen/dp_22"
+            android:layout_marginLeft="22dp"
             android:layout_marginTop="@dimen/dp_10"
             android:text="已签收"
             android:textSize="@dimen/sp_16"
@@ -38,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/Iv_activity_orderdetail_head"
-            android:layout_marginLeft="@dimen/dp_22"
+            android:layout_marginLeft="22dp"
             android:layout_marginTop="@dimen/dp_4"
             android:layout_below="@+id/tv_activity_orderdetail_head_status"
             android:text="备注"
@@ -50,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/Iv_activity_orderdetail_head"
-            android:layout_marginLeft="@dimen/dp_22"
+            android:layout_marginLeft="22dp"
             android:layout_marginTop="@dimen/dp_4"
             android:layout_below="@+id/tv_activity_orderdetail_head_remark"
             android:text="@string/ordernum"

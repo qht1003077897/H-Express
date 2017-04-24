@@ -131,6 +131,7 @@ public class OrderDetailActivity extends ToolBarActivity {
 
     /**
      * 接收消息函数在主线程，且为粘性事件
+     *  From FramgmentOne
      */
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     public void onEvent(OrderDetailEvent response) {

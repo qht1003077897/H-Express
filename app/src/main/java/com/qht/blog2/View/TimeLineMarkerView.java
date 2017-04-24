@@ -13,7 +13,6 @@ import com.qht.blog2.R;
 /**
  * Created by QHT on 2017-04-14.
  *
- * 引用自github： https://github.com/qiujuer/BeFoot/tree/master/blog/sample/TimeLine/app
  */
 public class TimeLineMarkerView extends View {
 

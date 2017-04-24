@@ -32,7 +32,7 @@
             android:inputType="phone"
             android:singleLine="true"
             android:textSize="@dimen/sp_16"
-            android:drawablePadding="@dimen/dp_14"
+            android:drawablePadding="14dp"
             android:drawableLeft="@mipmap/fragment_home_ordernum"/>
 
     </android.support.design.widget.TextInputLayout>
@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:singleLine="true"
             android:textSize="@dimen/sp_16"
-            android:drawablePadding="@dimen/dp_14"
+            android:drawablePadding="14dp"
             android:drawableLeft="@mipmap/fragment_home_company"
             android:inputType="text" />
 

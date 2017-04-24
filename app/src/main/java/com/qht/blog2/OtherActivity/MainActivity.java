@@ -3,7 +3,6 @@ package com.qht.blog2.OtherActivity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -24,7 +23,6 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import q.rorbin.badgeview.QBadgeView;
 
 
 public class MainActivity extends ToolBarActivity {
@@ -80,14 +78,14 @@ public class MainActivity extends ToolBarActivity {
     }
 
     private void initBadge() {
-        QBadgeView bagdeview2 = new QBadgeView(this);
-        QBadgeView bagdeview3 = new QBadgeView(this);
-        bagdeview2.bindTarget(llBottomRlTwo).setBadgeNumber(2)
-                .setBadgeGravity(Gravity.TOP | Gravity.END)
-                .setGravityOffset(40, 0, true);
-        bagdeview3.bindTarget(llBottomRlThree).setBadgeNumber(3)
-                .setBadgeGravity(Gravity.TOP | Gravity.END)
-                .setGravityOffset(40, 0, true);
+//        QBadgeView bagdeview2 = new QBadgeView(this);
+//        QBadgeView bagdeview3 = new QBadgeView(this);
+//        bagdeview2.bindTarget(llBottomRlTwo).setBadgeNumber(2)
+//                .setBadgeGravity(Gravity.TOP | Gravity.END)
+//                .setGravityOffset(40, 0, true);
+//        bagdeview3.bindTarget(llBottomRlThree).setBadgeNumber(3)
+//                .setBadgeGravity(Gravity.TOP | Gravity.END)
+//                .setGravityOffset(40, 0, true);
     }
 
     @Override
