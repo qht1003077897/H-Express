@@ -16,7 +16,7 @@ import com.qht.blog2.OtherFragment.home.UI.FragmentFrist;
 import com.qht.blog2.OtherFragment.me.UI.FragmentFour;
 import com.qht.blog2.OtherFragment.notice.UI.FragmentThird;
 import com.qht.blog2.OtherFragment.order.FragmentSecond;
-import com.qht.blog2.OtherFragment.order.event.OrderSignedEvent;
+import com.qht.blog2.OtherFragment.order.event.OrderEvent;
 import com.qht.blog2.R;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -133,7 +133,7 @@ public class MainActivity extends ToolBarActivity {
      * From: FragmentSecond.onPageSelected()
      */
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onEvent(OrderSignedEvent response) {
+    public void onEvent(OrderEvent response) {
         if (response.from.equals("FragmentSecond") && response.position == -1) {
             getSubTitle().setText("编辑");
             getSub2Title().setVisibility(View.GONE);
@@ -179,23 +179,23 @@ public class MainActivity extends ToolBarActivity {
                     getSub2Title().setVisibility(View.VISIBLE);
                     getSub2Title().setText("全选");
                     // To:FragmentOrder_Signed.onEvent(),参数 -1 无意义
-                    EventBusUtil.postSync(new OrderSignedEvent(false,false, "MainActivity", -1, this));
+                    EventBusUtil.postSync(new OrderEvent(false,false, "MainActivity", -1, this));
                 } else if ("取消".equals(getSubTitle().getText().toString())) {
                     getSubTitle().setText("编辑");
                     getSub2Title().setVisibility(View.GONE);
                     // To:FragmentOrder_Signed.onEvent()
-                    EventBusUtil.postSync(new OrderSignedEvent(true,false,"MainActivity", -1, this));
+                    EventBusUtil.postSync(new OrderEvent(true,false,"MainActivity", -1, this));
                 }
                 break;
             case R.id.toolbar_sub2title:
                 if ("全选".equals(getSub2Title().getText().toString())) {
                     getSub2Title().setText("取消全选");
                     // To:FragmentOrder_Signed.onEvent(),参数-1无意义
-                    EventBusUtil.postSync(new OrderSignedEvent(false,true,"MainActivity_Allselect", -1, this));
+                    EventBusUtil.postSync(new OrderEvent(false,true,"MainActivity_Allselect", -1, this));
                 } else if ("取消全选".equals(getSub2Title().getText().toString())) {
                     getSub2Title().setText("全选");
                     // To:FragmentOrder_Signed.onEvent()
-                    EventBusUtil.postSync(new OrderSignedEvent(false,false, "MainActivity_Allselect", -1, this));
+                    EventBusUtil.postSync(new OrderEvent(false,false, "MainActivity_Allselect", -1, this));
                 }
 
                 break;
@@ -208,7 +208,7 @@ public class MainActivity extends ToolBarActivity {
     private void reViewStatus(String s) {
         if(!currentFragment.getTag().equals(s)){
             // To:FragmentOrder_Signed.onEvent()
-            EventBusUtil.postSync(new OrderSignedEvent(true, false,"MainActivityInit", -1, this));
+            EventBusUtil.postSync(new OrderEvent(true, false,"MainActivityInit", -1, this));
         }
     }
 

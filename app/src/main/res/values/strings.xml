@@ -15,4 +15,5 @@
         <item>已签收</item>
         <item>未签收</item>
     </array>
+    <string name="ordernum">快递单号：</string>
 </resources>

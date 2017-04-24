@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import com.qht.blog2.BaseAdapter.BaseViewPage.BasePageAdapter;
 import com.qht.blog2.BaseEventBus.EventBusUtil;
 import com.qht.blog2.BaseFragment.BaseFragment;
-import com.qht.blog2.OtherFragment.order.event.OrderSignedEvent;
+import com.qht.blog2.OtherFragment.order.event.OrderEvent;
 import com.qht.blog2.R;
 
 import butterknife.BindView;
@@ -69,9 +69,9 @@ public class FragmentSecond extends BaseFragment {
                 lastViewPageIndex=viewPagePosition;
                 viewPagePosition=position;
                 // To:FragmentOrder_Signed.onEvent()  切换，则恢复动画
-                EventBusUtil.postSync(new OrderSignedEvent(true,false,"FragmentSecond",lastViewPageIndex,this));
+                EventBusUtil.postSync(new OrderEvent(true,false,"FragmentSecond",lastViewPageIndex,this));
                 // To:MainActivity.onEvent() 切换，则还原编辑字样
-                EventBusUtil.postSync(new OrderSignedEvent(true,false,"FragmentSecond",-1,this));
+                EventBusUtil.postSync(new OrderEvent(true,false,"FragmentSecond",-1,this));
             }
 
             @Override

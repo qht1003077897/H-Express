@@ -7,12 +7,21 @@ import org.litepal.crud.DataSupport;
  */
 public class OrderInfoLitePal extends DataSupport {
 
-    String nu;
-    String com;
-    String state;
+
+    int     id;
+    String  nu;
+    String  com;
+    String  state;
     String  time;
     boolean isselect;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getTime() {
         return time;

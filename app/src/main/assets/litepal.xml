@@ -7,7 +7,7 @@
 
 <!--版本2 OrderInfoLitePal增加isselect字段-->
     <!--版本3  OrderInfoLitePal增加time字段-->
-<version value="3"/>
+<version value="4"/>
 
 <list>
     <mapping class="com.qht.blog2.BaseBean.OrderInfoLitePal"/>

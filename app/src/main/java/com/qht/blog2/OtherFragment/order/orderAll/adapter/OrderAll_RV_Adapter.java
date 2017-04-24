@@ -4,13 +4,16 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.qht.blog2.BaseAdapter.BaseSlideRecycleView.ISlideHelper;
 import com.qht.blog2.BaseAdapter.BaseSlideRecycleView.holder.SlideViewHolder;
 import com.qht.blog2.BaseBean.OrderInfoLitePal;
+import com.qht.blog2.BaseEventBus.EventBusUtil;
 import com.qht.blog2.OtherActivity.orderdetail.data.OrderState;
+import com.qht.blog2.OtherFragment.order.orderAll.data.OrderAllEvent;
 import com.qht.blog2.R;
 
 import java.util.List;
@@ -41,13 +44,25 @@ public class OrderAll_RV_Adapter extends BaseQuickAdapter<OrderInfoLitePal> {
     }
 
     @Override
-    protected void convert(BaseViewHolder baseViewHolder, OrderInfoLitePal orderInfoLitePal) {
+    protected void convert(final BaseViewHolder baseViewHolder, OrderInfoLitePal orderInfoLitePal) {
         ((OneSlideViewHolder) baseViewHolder).bind();
         baseViewHolder.setText(R.id.tv_fragment_order_signed_com,orderInfoLitePal.getCom());
         baseViewHolder.setText(R.id.tv_fragment_order_signed_num,orderInfoLitePal.getNu());
         baseViewHolder.setText(R.id.tv_fragment_order_signed_state, OrderState.caseState(orderInfoLitePal.getState()));
         baseViewHolder.setText(R.id.tv_fragment_order_signed_time,orderInfoLitePal.getTime());
         baseViewHolder.setChecked(R.id.cb_fragment_order_signed_select,orderInfoLitePal.isselect());
+        if(!orderInfoLitePal.getState().equals("3")){
+            baseViewHolder.setTextColor(R.id.tv_fragment_order_signed_state,context.getResources().getColor(R.color.red));
+        }else{
+            baseViewHolder.setTextColor(R.id.tv_fragment_order_signed_state,context.getResources().getColor(R.color.black));
+        }
+        baseViewHolder.setOnCheckedChangeListener(R.id.cb_fragment_order_signed_select, new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                // To:FragmentOrder_All 改变list的isselect字段
+                EventBusUtil.postSync(new OrderAllEvent(baseViewHolder.getAdapterPosition(),b,this));
+            }
+        });
     }
     public void slideOpen() {
         mISlideHelper.slideOpen();
@@ -79,12 +94,10 @@ public class OrderAll_RV_Adapter extends BaseQuickAdapter<OrderInfoLitePal> {
 
         @Override
         public void onBindSlideClose(int state) {
-
         }
 
         @Override
         public void doAnimationSetOpen(int state) {
-
         }
 
 

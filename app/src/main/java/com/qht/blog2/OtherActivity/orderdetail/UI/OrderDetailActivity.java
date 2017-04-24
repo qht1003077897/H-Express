@@ -1,6 +1,7 @@
 package com.qht.blog2.OtherActivity.orderdetail.UI;
 
 import android.annotation.SuppressLint;
+import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import com.nightonke.boommenu.BoomButtons.TextInsideCircleButton;
 import com.nightonke.boommenu.BoomMenuButton;
 import com.qht.blog2.BaseActivity.ToolBarActivity;
 import com.qht.blog2.BaseBean.OrderInfoDetailBean;
+import com.qht.blog2.BaseBean.OrderInfoLitePal;
 import com.qht.blog2.BaseEventBus.EventBusUtil;
 import com.qht.blog2.OtherActivity.orderdetail.adapter.OrderDetail_RV_Adapter;
 import com.qht.blog2.OtherActivity.orderdetail.data.OrderDetailEvent;
@@ -25,6 +27,7 @@ import com.qht.blog2.Util.TimeUtil;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+import org.litepal.crud.DataSupport;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,10 +77,22 @@ public class OrderDetailActivity extends ToolBarActivity {
                         @Override
                         public void onBoomButtonClick(int index) {
                          switch (index){
-                             case 0:
-                              case 1:
-                             case 2:
+                             case 0://未签收
+                                 ContentValues value0 = new ContentValues();
+                                 value0.put("state", "5");
+                                 DataSupport.updateAll(OrderInfoLitePal.class, value0, "nu = ?", tvActivityOrderdetailHeadNum.getText().toString());
+                                 List<OrderInfoLitePal> bean=  DataSupport.where("nu = ? ", tvActivityOrderdetailHeadNum.getText().toString()).find(OrderInfoLitePal.class);
+                                 tvActivityOrderdetailHeadStatus.setText("未签收");
+                                 break;
+                             case 1://已经签收
+                                 ContentValues value1 = new ContentValues();
+                                 value1.put("state", "3");
+                                 DataSupport.updateAll(OrderInfoLitePal.class, value1, "nu = ?", tvActivityOrderdetailHeadNum.getText().toString());
+                                 tvActivityOrderdetailHeadStatus.setText("已签收");
+                                 break;
+                             case 2://备注
                                  showEditDialog();
+                                 break;
                             }
                         }
                     })
@@ -131,7 +146,7 @@ public class OrderDetailActivity extends ToolBarActivity {
     private void setHeadView(OrderDetailEvent response) {
         if (null != datas && datas.size() > 0) {
             tvActivityOrderdetailHeadStatus.setText(OrderState.caseState(response.Data.getState()));
-            tvActivityOrderdetailHeadNum.setText("快递单号：" + response.Data.getNu());
+            tvActivityOrderdetailHeadNum.setText(response.Data.getNu());
             int i = datas.size() - 1;//开始时间为最后一条信息
             OrderInfoDetailBean bean = (OrderInfoDetailBean) datas.get(i);
             String startTime = bean.getTime();

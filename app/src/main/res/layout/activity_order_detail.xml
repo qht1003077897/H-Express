@@ -46,14 +46,26 @@
             android:textColor="@android:color/darker_gray"/>
 
         <TextView
-            android:id="@+id/tv_activity_orderdetail_head_num"
+            android:id="@+id/tv_activity_orderdetail_head_numhead"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/Iv_activity_orderdetail_head"
             android:layout_marginLeft="@dimen/dp_22"
             android:layout_marginTop="@dimen/dp_4"
             android:layout_below="@+id/tv_activity_orderdetail_head_remark"
-            android:text="快递单号"
+            android:text="@string/ordernum"
+            android:textSize="@dimen/sp_16"
+            android:textColor="@android:color/black"/>
+
+        <TextView
+            android:id="@+id/tv_activity_orderdetail_head_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tv_activity_orderdetail_head_numhead"
+            android:layout_marginLeft="@dimen/dp_4"
+            android:layout_marginTop="@dimen/dp_4"
+            android:layout_below="@+id/tv_activity_orderdetail_head_remark"
+            android:text="123456789"
             android:textSize="@dimen/sp_16"
             android:textColor="@android:color/black"/>
 

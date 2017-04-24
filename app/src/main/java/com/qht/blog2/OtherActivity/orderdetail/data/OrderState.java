@@ -5,14 +5,6 @@ package com.qht.blog2.OtherActivity.orderdetail.data;
  */
 public class OrderState {
 
-    public static  class ItemType {
-        public final static int NORMAL = 0;
-        public final static int START = 4;
-        public final static int END = 8;
-        public final static int ATOM = 16;
-    }
-
-
 
     public static String caseState(String state) {
       String statu=null;
@@ -39,7 +31,7 @@ public class OrderState {
             break;
 
             case "5":
-                statu= "已派件";
+                statu= "派件中";
             break;
 
             case "6":

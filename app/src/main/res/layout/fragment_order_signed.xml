@@ -3,9 +3,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_fragment_order_signed"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <!-- TODO: Update blank fragment layout -->
 
+    <!-- TODO: Update blank fragment layout -->
+    <com.baoyz.widget.PullRefreshLayout
+        android:id="@+id/swipeRefreshLayout_ordersigned"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_fragment_order_signed"
+            android:dividerHeight="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </com.baoyz.widget.PullRefreshLayout>
+    <LinearLayout
+        android:id="@+id/ll_ordersigned"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:visibility="gone">
+        <Button
+            android:id="@+id/btn_ordersigned_delete"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="delete"
+            android:layout_weight="0.2"
+            />
+
+    </LinearLayout>
 </FrameLayout>

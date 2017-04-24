@@ -41,4 +41,5 @@ dependencies {
 //    compile 'com.github.vipulasri:timelineview:1.0.5'
     compile 'com.nightonke:boommenu:2.0.9'//Menu菜单   https://github.com/Nightonke/BoomMenu
     compile 'org.litepal.android:core:1.5.1'  //数据库LitePal  https://github.com/LitePalFramework/LitePal
+    compile 'com.baoyz.pullrefreshlayout:library:1.2.0'  //recyclerview 下拉刷新 https://github.com/baoyongzhang/android-PullRefreshLayout
 }
