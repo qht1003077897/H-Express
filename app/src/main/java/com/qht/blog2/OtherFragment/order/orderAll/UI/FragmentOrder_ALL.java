@@ -31,15 +31,12 @@ import com.qht.blog2.Util.DialogUtil;
 import com.qht.blog2.Util.TextUtil;
 import com.qht.blog2.Util.ToastUtil;
 import com.qht.blog2.Util.UrlUtil;
-
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 import org.litepal.crud.DataSupport;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;

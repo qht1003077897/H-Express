@@ -23,6 +23,7 @@ public class OrderInfoLitePal extends DataSupport {
         this.id = id;
     }
 
+
     public String getTime() {
         return time;
     }
