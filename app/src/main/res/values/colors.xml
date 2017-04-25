@@ -5,6 +5,7 @@
     <color name="blue">#0000FF</color>
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
+    <color name="lv_click_color">#77AAAAAA</color>
 
     <color name="blue_sky">#87CEEB</color><!--天蓝色-->
     <color name="blue_daoqi">#1E90FF</color><!--道奇蓝-->

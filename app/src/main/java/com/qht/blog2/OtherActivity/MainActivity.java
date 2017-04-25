@@ -3,29 +3,42 @@ package com.qht.blog2.OtherActivity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.qht.blog2.BaseActivity.ToolBarActivity;
+import com.qht.blog2.BaseAdapter.BaseListView.ViewCreator;
+import com.qht.blog2.BaseBean.SlideLeftBean;
 import com.qht.blog2.BaseEventBus.EventBusUtil;
+import com.qht.blog2.OtherActivity.slide_Left.adapter.Side_LeftAdapter;
 import com.qht.blog2.OtherFragment.home.UI.FragmentFrist;
 import com.qht.blog2.OtherFragment.me.UI.FragmentFour;
 import com.qht.blog2.OtherFragment.notice.UI.FragmentThird;
 import com.qht.blog2.OtherFragment.order.FragmentSecond;
 import com.qht.blog2.OtherFragment.order.event.OrderEvent;
 import com.qht.blog2.R;
+import com.qht.blog2.Util.ToastUtil;
+import com.qht.blog2.View.DragLayout;
+import com.qht.blog2.View.RoundAngleImageView;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
 
-public class MainActivity extends ToolBarActivity {
+public class MainActivity extends ToolBarActivity  implements ViewCreator<SlideLeftBean,Side_LeftAdapter.SlideLeftHolder> {
 
 
     @BindView(R.id.ll_bottom_iv_one)
@@ -44,38 +57,94 @@ public class MainActivity extends ToolBarActivity {
     TextView  llBottomTvThree;
 
     @BindView(R.id.ll_bottom_iv_four)
-    ImageView      llBottomIvFour;
+    ImageView           llBottomIvFour;
     @BindView(R.id.ll_bottom_tv_four)
-    TextView       llBottomTvFour;
+    TextView            llBottomTvFour;
     @BindView(R.id.ll_bottom_rl_one)
-    RelativeLayout llBottomRlOne;
+    RelativeLayout      llBottomRlOne;
     @BindView(R.id.ll_bottom_rl_two)
-    RelativeLayout llBottomRlTwo;
+    RelativeLayout      llBottomRlTwo;
     @BindView(R.id.ll_bottom_rl_three)
-    RelativeLayout llBottomRlThree;
+    RelativeLayout      llBottomRlThree;
     @BindView(R.id.ll_bottom_rl_four)
-    RelativeLayout llBottomRlFour;
+    RelativeLayout      llBottomRlFour;
     @BindView(R.id.toolbar_subtitle)
-    TextView       toolbarSubtitle;
+    TextView            toolbarSubtitle;
     @BindView(R.id.ll_bottom_tab)
-    LinearLayout   llBottomTab;
+    LinearLayout        llBottomTab;
     @BindView(R.id.content_layout)
-    LinearLayout   contentLayout;
+    LinearLayout        contentLayout;
     @BindView(R.id.line)
-    View           line;
+    View                line;
     @BindView(R.id.toolbar_sub2title)
-    TextView       toolbarSub2title;
+    TextView            toolbarSub2title;
+    @BindView(R.id.iv_bottom)
+    RoundAngleImageView ivBottom;
+    @BindView(R.id.lv)
+    ListView            lv;
+    @BindView(R.id.dl)
+    DragLayout          dl;
 
 
     // 底部标签切换的Fragment
     private Fragment oneFragment, twoFragment, threeFragment, fourFragment, currentFragment;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initTab();
+        setStatusBar();
+        initView();
         initBadge();
+        initTab();
     }
+
+    private void initView() {
+        getToolbar().setNavigationIcon(getResources().getDrawable(R.mipmap.home_menu_48));
+        getToolbar().setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dl.open();
+            }
+        });
+        Side_LeftAdapter mAdapter = new Side_LeftAdapter(getItemBeans(), this);
+        lv.setAdapter(mAdapter);
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                ToastUtil.showToastShort("click+"+i+"");
+            }
+        });
+    }
+
+//    private void initDragLayout() {
+//        dl.setDragListener(new DragLayout.DragListener() {
+//            //界面打开的时候
+//            @Override
+//            public void onOpen() {
+//            }
+//            //界面关闭的时候
+//            @Override
+//            public void onClose() {
+//            }
+//
+//            //界面滑动的时候
+//            @Override
+//            public void onDrag(float percent) {
+//            }
+//        });
+//    }
+
+    public  List<SlideLeftBean> getItemBeans(){
+        List<SlideLeftBean> itemBeans=new ArrayList<>();
+        itemBeans.add(new SlideLeftBean(R.drawable.sidebar_purse,"QQ钱包",false));
+        itemBeans.add(new SlideLeftBean(R.drawable.sidebar_decoration,"个性装扮",false));
+        itemBeans.add(new SlideLeftBean(R.drawable.sidebar_favorit,"我的收藏",false));
+        itemBeans.add(new SlideLeftBean(R.drawable.sidebar_album,"我的相册",false));
+        itemBeans.add(new SlideLeftBean(R.drawable.sidebar_file,"我的文件",false));
+        return  itemBeans;
+    }
+
 
     private void initBadge() {
 //        QBadgeView bagdeview2 = new QBadgeView(this);
@@ -104,7 +173,7 @@ public class MainActivity extends ToolBarActivity {
         if (!oneFragment.isAdded()) {
             // 提交事务
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.content_layout, oneFragment,"1").commit();
+                    .add(R.id.content_layout, oneFragment, "1").commit();
 
             // 记录当前Fragment
             currentFragment = oneFragment;
@@ -140,7 +209,7 @@ public class MainActivity extends ToolBarActivity {
 
 
     @OnClick({R.id.ll_bottom_rl_one, R.id.ll_bottom_rl_two, R.id.ll_bottom_rl_three, R.id.ll_bottom_rl_four,
-             R.id.toolbar_subtitle,R.id.toolbar_sub2title})
+            R.id.toolbar_subtitle, R.id.toolbar_sub2title})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ll_bottom_rl_one:
@@ -177,23 +246,23 @@ public class MainActivity extends ToolBarActivity {
                     getSub2Title().setVisibility(View.VISIBLE);
                     getSub2Title().setText("全选");
                     // To:FragmentOrder_Signed.onEvent(),参数 -1 无意义
-                    EventBusUtil.postSync(new OrderEvent(false,false, "MainActivity", -1, this));
+                    EventBusUtil.postSync(new OrderEvent(false, false, "MainActivity", -1, this));
                 } else if ("取消".equals(getSubTitle().getText().toString())) {
                     getSubTitle().setText("编辑");
                     getSub2Title().setVisibility(View.GONE);
                     // To:FragmentOrder_Signed.onEvent()
-                    EventBusUtil.postSync(new OrderEvent(true,false,"MainActivity", -1, this));
+                    EventBusUtil.postSync(new OrderEvent(true, false, "MainActivity", -1, this));
                 }
                 break;
             case R.id.toolbar_sub2title:
                 if ("全选".equals(getSub2Title().getText().toString())) {
                     getSub2Title().setText("取消全选");
                     // To:FragmentOrder_Signed.onEvent(),参数-1无意义
-                    EventBusUtil.postSync(new OrderEvent(false,true,"MainActivity_Allselect", -1, this));
+                    EventBusUtil.postSync(new OrderEvent(false, true, "MainActivity_Allselect", -1, this));
                 } else if ("取消全选".equals(getSub2Title().getText().toString())) {
                     getSub2Title().setText("全选");
                     // To:FragmentOrder_Signed.onEvent()
-                    EventBusUtil.postSync(new OrderEvent(false,false, "MainActivity_Allselect", -1, this));
+                    EventBusUtil.postSync(new OrderEvent(false, false, "MainActivity_Allselect", -1, this));
                 }
 
                 break;
@@ -204,9 +273,9 @@ public class MainActivity extends ToolBarActivity {
      * 切换底部fragment时，订单页面(fragment)返回初始化状态
      */
     private void reViewStatus(String s) {
-        if(!currentFragment.getTag().equals(s)){
+        if (!currentFragment.getTag().equals(s)) {
             // To:FragmentOrder_Signed.onEvent()
-            EventBusUtil.postSync(new OrderEvent(true, false,"MainActivityInit", -1, this));
+            EventBusUtil.postSync(new OrderEvent(true, false, "MainActivityInit", -1, this));
         }
     }
 
@@ -217,7 +286,7 @@ public class MainActivity extends ToolBarActivity {
         if (oneFragment == null) {
             oneFragment = new FragmentFrist();
         }
-        addOrShowFragment(getSupportFragmentManager().beginTransaction(), oneFragment,"1");
+        addOrShowFragment(getSupportFragmentManager().beginTransaction(), oneFragment, "1");
 
         llBottomIvOne.setImageResource(R.mipmap.bottom_home_click);
         llBottomTvOne.setTextColor(getResources()
@@ -240,7 +309,7 @@ public class MainActivity extends ToolBarActivity {
         if (twoFragment == null) {
             twoFragment = new FragmentSecond();
         }
-        addOrShowFragment(getSupportFragmentManager().beginTransaction(), twoFragment,"2");
+        addOrShowFragment(getSupportFragmentManager().beginTransaction(), twoFragment, "2");
 
         llBottomIvOne.setImageResource(R.mipmap.bottom_home_normal);
         llBottomTvOne.setTextColor(getResources()
@@ -264,7 +333,7 @@ public class MainActivity extends ToolBarActivity {
         if (threeFragment == null) {
             threeFragment = new FragmentThird();
         }
-        addOrShowFragment(getSupportFragmentManager().beginTransaction(), threeFragment,"3");
+        addOrShowFragment(getSupportFragmentManager().beginTransaction(), threeFragment, "3");
 
         llBottomIvOne.setImageResource(R.mipmap.bottom_home_normal);
         llBottomTvOne.setTextColor(getResources()
@@ -288,7 +357,7 @@ public class MainActivity extends ToolBarActivity {
             fourFragment = new FragmentFour();
         }
 
-        addOrShowFragment(getSupportFragmentManager().beginTransaction(), fourFragment,"4");
+        addOrShowFragment(getSupportFragmentManager().beginTransaction(), fourFragment, "4");
 
         llBottomIvOne.setImageResource(R.mipmap.bottom_home_normal);
         llBottomTvOne.setTextColor(getResources()
@@ -311,16 +380,21 @@ public class MainActivity extends ToolBarActivity {
      * @param fragment
      */
     private void addOrShowFragment(FragmentTransaction transaction,
-                                   Fragment fragment,String  tag) {
+                                   Fragment fragment, String tag) {
         if (currentFragment == fragment)
             return;
         if (!fragment.isAdded()) { // 如果当前fragment未被添加，则添加到Fragment管理器中
             transaction.hide(currentFragment)
-                    .add(R.id.content_layout, fragment,tag).commit();
+                    .add(R.id.content_layout, fragment, tag).commit();
         } else {
             transaction.hide(currentFragment).show(fragment).commit();
         }
         currentFragment = fragment;
+    }
+
+    @Override
+    protected boolean isShowBacking() {
+        return false;
     }
 
     @Override
@@ -335,5 +409,15 @@ public class MainActivity extends ToolBarActivity {
         EventBusUtil.unregister(this);
     }
 
+    @Override
+    public Side_LeftAdapter.SlideLeftHolder createHolder(int position, ViewGroup parent) {
+       return new Side_LeftAdapter.SlideLeftHolder(LayoutInflater.from(MainActivity.this).inflate(R.layout.left_item_layout, parent, false));
+    }
+
+    @Override
+    public void bindData(int position, Side_LeftAdapter.SlideLeftHolder holder, SlideLeftBean data) {
+        holder.iv.setImageResource(data.getImg());
+        holder.text.setText(data.getTitle());
+    }
 }
 

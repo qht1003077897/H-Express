@@ -12,4 +12,10 @@
         <!--线段粗细-->
         <attr name="lineSize" format="dimension" />
     </declare-styleable>
+
+    <!--自定义圆头像-->
+    <declare-styleable name="RoundAngleImageView">
+        <attr name="roundWidth" format="dimension" />
+        <attr name="roundHeight" format="dimension" />
+    </declare-styleable>
 </resources>

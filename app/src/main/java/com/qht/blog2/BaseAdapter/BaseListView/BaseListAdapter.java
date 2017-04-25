@@ -19,7 +19,8 @@ this(new ArrayList<T>(),mViewCreator);
 }
 
 public BaseListAdapter( List<T> data,ViewCreator<T,H>  creator){
-    mData = data == null ? new ArrayList<T>() : mData;
+
+    mData = data == null ? new ArrayList<T>() : data;
     mViewCreator = creator;
 }
 
@@ -73,32 +74,3 @@ public static abstract class ViewHolder {
     }
 }
 }
-
-/*
-使用实例
-public class SampleFragment extends Fragment implements ViewCreator<User,SampleFragment.UserViewHolder> {
-
-    private BaseListAdapter<User, UserViewHolder> mAdapter = new BaseListAdapter<User, UserViewHolder>(this);
-
-    @Override
-    public UserViewHolder createHolder(int position, ViewGroup parent) {
-        return new UserViewHolder(LayoutInflater.from(getActivity()).inflate(R.layout.item_user, parent, false));
-    }
-
-    @Override
-    public void bindData(int position, UserViewHolder holder, User user) {
-        holder.name.setText(user.name);
-        holder.email.setText(user.email);
-    }
-
-    static class UserViewHolder extends BaseListAdapter.ViewHolder {
-        public final TextView name;
-        public final TextView email;
-
-        public UserViewHolder(View itemView) {
-            super(itemView);
-            name = (TextView) itemView.findViewById(R.id.name);
-            email = (TextView) itemView.findViewById(R.id.email);
-        }
-    }
-}*/

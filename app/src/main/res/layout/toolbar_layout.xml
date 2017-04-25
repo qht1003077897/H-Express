@@ -8,6 +8,7 @@
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
     android:background="@color/colorPrimary"
+    android:paddingTop="22dp"
     app:popupTheme="@style/MenuStyle">
     <!--自定义toolbar的title 和subtitle -->
 

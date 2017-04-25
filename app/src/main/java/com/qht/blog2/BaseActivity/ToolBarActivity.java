@@ -98,7 +98,7 @@ public abstract class ToolBarActivity extends statusActivity {
         return mToolbarSubTitle;
     }
     /**
-     * 获取头部标题的TextView
+     * 获取副头部标题的TextView
      * @return
      */
     public TextView getSub2Title(){

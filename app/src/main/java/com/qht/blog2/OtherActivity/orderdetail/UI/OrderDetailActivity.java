@@ -65,6 +65,7 @@ public class OrderDetailActivity extends ToolBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setStatusBar();
         ButterKnife.bind(this);
         getToolbarTitle().setText("订单详情");
         initMenu();
