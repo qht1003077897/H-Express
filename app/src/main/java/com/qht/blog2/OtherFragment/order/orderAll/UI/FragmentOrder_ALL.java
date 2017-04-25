@@ -31,12 +31,15 @@ import com.qht.blog2.Util.DialogUtil;
 import com.qht.blog2.Util.TextUtil;
 import com.qht.blog2.Util.ToastUtil;
 import com.qht.blog2.Util.UrlUtil;
+
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 import org.litepal.crud.DataSupport;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -99,9 +102,16 @@ public class FragmentOrder_ALL extends BaseFragment{
                 });
             }
         });
-//        rvOrderall.addOnItemTouchListener(new OnItemClickListener() {
+//        madapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
 //            @Override
-//            public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
+//            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+//                LogUtil.e("onSimpleItemClick");
+//                RequestNet(list.get(position).getNu(),list.get(position).getCom());
+//            }
+//        });
+//        rvOrderall.addOnItemTouchListener(new OnItemChildClickListener() {
+//            @Override
+//            public void onSimpleItemChildClick(BaseQuickAdapter adapter, View view, int position) {
 //                LogUtil.e("onSimpleItemClick");
 //                RequestNet(list.get(position).getNu(),list.get(position).getCom());
 //            }

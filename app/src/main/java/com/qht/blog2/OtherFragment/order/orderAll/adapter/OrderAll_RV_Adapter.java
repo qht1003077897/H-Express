@@ -45,6 +45,7 @@ public class OrderAll_RV_Adapter extends BaseQuickAdapter<OrderInfoLitePal,Order
         baseViewHolder.setText(R.id.tv_fragment_order_signed_state, OrderState.caseState(orderInfoLitePal.getState()));
         baseViewHolder.setText(R.id.tv_fragment_order_signed_time,orderInfoLitePal.getTime());
         baseViewHolder.setChecked(R.id.cb_fragment_order_signed_select,orderInfoLitePal.isselect());
+        baseViewHolder.addOnClickListener(R.id.ll_fragment_order_signed_arrow);
         if(!orderInfoLitePal.getState().equals("3")){
             baseViewHolder.setTextColor(R.id.tv_fragment_order_signed_state,context.getResources().getColor(R.color.red));
         }else{

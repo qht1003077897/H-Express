@@ -74,7 +74,7 @@ public class TabPageIndicator extends HorizontalScrollView {
     private int indicatorPaddingLeft = 0;// 距离左边的距离
     private int indicatorPaddingRight = 0;// 距离右边的距离
 
-    private int tabTextSize = 16;//标题的字体大小
+    private int tabTextSize = 19;//标题的字体大小
     private int tabTextColor = 0xFF666666;// 标题未被选中时字体颜色
     private int tabTextColorSelected = Color.parseColor("#ffffff");// 标题被选中时字体颜色
 
