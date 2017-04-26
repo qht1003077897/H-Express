@@ -10,11 +10,6 @@
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/action_item2"
-        android:title="@string/toorbar_share"
-        app:showAsAction="never"
-        />
-    <item
         android:id="@+id/action_item3"
         android:title="@string/toorbar_scale"
         app:showAsAction="never"

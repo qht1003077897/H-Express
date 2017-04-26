@@ -7,12 +7,11 @@ import android.content.SharedPreferences.Editor;
 public class SharePreferenceUtil {
 
 	public static SharedPreferences sp;
-	public static Context context;
 	/*
       *在Application中进行初始化，设置context
       */
-	public void initSharePreferenceUtil(Context context){
-		this.context=context;
+	public static void initSharePreferenceUtil(Context context){
+		sp=context.getSharedPreferences(ConstantUtil.APPLICATION_NAME, Context.MODE_PRIVATE);
 	}
 
 
@@ -28,9 +27,16 @@ public class SharePreferenceUtil {
 	}
 	
 	public static SharedPreferences getSP(){
-		return context.getSharedPreferences(ConstantUtil.APPLICATION_NAME, Context.MODE_PRIVATE);
+		return sp;
 	}
-	
+
+	public static String getStringSP(String key,String defult){
+		return sp.getString(key,defult);
+	}
+
+	public static boolean getBooleanSP(String key){
+		return sp.getBoolean(key,false);
+	}
 	public static void setStringSP(String key,String value){
 		if(null==sp){
 			sp=getSP();
@@ -40,6 +46,9 @@ public class SharePreferenceUtil {
 		editor.commit();
 	}
 	public static void setStringsSP(String[] key,String[] value){
+		if(null==sp){
+			sp=getSP();
+		}
 		Editor editor=sp.edit();
 		for(int i=0;i<key.length;i++){
 			editor.putString(key[i], value[i]);
@@ -48,12 +57,18 @@ public class SharePreferenceUtil {
 	}
 
 	public static void setBooleanSP(String key,boolean value){
+		if(null==sp){
+			sp=getSP();
+		}
 		Editor editor=sp.edit();
 		editor.putBoolean(key, value);
 		editor.commit();
 	}
 
 	public static void removeStringSP(String key){
+		if(null==sp){
+			sp=getSP();
+		}
 		Editor editor=sp.edit();
 		editor.remove(key);
 		editor.commit();
@@ -61,6 +76,9 @@ public class SharePreferenceUtil {
 
 
 	public static void removeStringsSP(String[] key){
+		if(null==sp){
+			sp=getSP();
+		}
 		Editor editor=sp.edit();
 		for(int i=0;i<key.length;i++){
 			editor.remove(key[i]);
@@ -69,6 +87,9 @@ public class SharePreferenceUtil {
 	}
 
 	public static void removeBooleanSP(String key){
+		if(null==sp){
+			sp=getSP();
+		}
 		Editor editor=sp.edit();
 		editor.remove(key);
 		editor.commit();

@@ -23,7 +23,7 @@ public abstract class statusActivity extends superActivity {
             //透明导航栏
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         }
-
+        setStatusBar();
 //        setstatusColor(this, getResources().getColor(R.color.colorPrimary));//和toolbar一个颜色
     }
     /**

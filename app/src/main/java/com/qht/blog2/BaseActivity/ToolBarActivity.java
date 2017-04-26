@@ -59,13 +59,10 @@ public abstract class ToolBarActivity extends statusActivity {
         // TODO Auto-generated method stub
         switch (item.getItemId()) {
             case R.id.action_item1:
-                ToastUtil.showToastShort("回到首页");
-                break;
-            case R.id.action_item2:
-                ToastUtil.showToastShort("分享");
+                ToastUtil.showToastShort(getResources().getString(R.string.toorbar_backhome));
                 break;
             case R.id.action_item3:
-                ToastUtil.showToastShort("扫一扫");
+                ToastUtil.showToastShort(getResources().getString(R.string.toorbar_scale));
                 break;
             default:
                 break;

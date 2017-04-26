@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.nightonke.boommenu.BoomButtons.OnBMClickListener;
 import com.nightonke.boommenu.BoomButtons.TextInsideCircleButton;
 import com.nightonke.boommenu.BoomMenuButton;
@@ -24,6 +25,7 @@ import com.qht.blog2.R;
 import com.qht.blog2.Util.DialogUtil;
 import com.qht.blog2.Util.Gson_ErrorLinkTreeMap_Helper;
 import com.qht.blog2.Util.TimeUtil;
+import com.qht.blog2.Util.UrlUtil;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -34,6 +36,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 public class OrderDetailActivity extends ToolBarActivity {
 
@@ -146,6 +149,7 @@ public class OrderDetailActivity extends ToolBarActivity {
      */
     @SuppressLint("SetTextI18n")
     private void setHeadView(OrderDetailEvent response) {
+        setImage(response.Data.getCom());
         if (null != datas && datas.size() > 0) {
             tvActivityOrderdetailHeadStatus.setText(OrderState.caseState(response.Data.getState()));
             tvActivityOrderdetailHeadNum.setText(response.Data.getNu());
@@ -157,6 +161,14 @@ public class OrderDetailActivity extends ToolBarActivity {
             String endTime = bean2.getTime();
             tvActivityOrderdetailTime.setText("耗时：" + TimeUtil.getTimeDifferenceDay(startTime, endTime));
         }
+    }
+
+    private void setImage(String com) {
+        Glide.with(OrderDetailActivity.this)
+             .load(UrlUtil.GetBASEKuaiDiCOMIMAGE+com+".png")
+             .bitmapTransform(new CropCircleTransformation(OrderDetailActivity.this))
+             .override(100,100)
+             .into(IvActivityOrderdetailHead);
     }
 
     /**

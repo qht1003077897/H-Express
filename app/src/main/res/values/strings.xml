@@ -8,9 +8,23 @@
     <string name="notice">消息</string>
     <string name="me">我的</string>
 
+
+    <!--left-->
+    <string name="suggest">意见反馈</string>
+    <string name="share">分享</string>
+    <string name="about">关于</string>
+    <string name="loginout">退出</string>
+    <string name="personqq">本人QQ:1003077897</string>
+
+    <string name="share_title">H快递开源中，欢迎star</string>
+    <string name="share_summary">个人项目，总结学习</string>
+    <string name="share_target_url">http://blog.csdn.net/u012534831/article/details/70670170</string>
+    <string name="share_image_url">http://q.qlogo.cn/qqapp/1106047893/3796D115B9C4A75D1D36585463B21299/100</string>
+    <string name="share_appname">H快递</string>
+
+
     <!--toorbar内容-->
     <string name="toorbar_backhome">回到首页</string>
-    <string name="toorbar_share">分享</string>
     <string name="toorbar_scale">扫一扫</string>
 
     <!--空view重试按钮-->
@@ -23,4 +37,11 @@
         <item>未签收</item>
     </array>
     <string name="ordernum">快递单号：</string>
+
+
+
+    <!--setting-->
+    <string name="clear_imagecache">清除图片缓存</string>
+    <string name="clear_ordercache">清除订单缓存</string>
+    <string name="cachesize">0.0M</string>
 </resources>

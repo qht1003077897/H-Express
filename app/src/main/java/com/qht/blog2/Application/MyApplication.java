@@ -1,6 +1,7 @@
 package com.qht.blog2.Application;
 
 import com.qht.blog2.Net.OK_LoggingInterceptor;
+import com.qht.blog2.Util.SharePreferenceUtil;
 import com.zhy.http.okhttp.OkHttpUtils;
 import org.litepal.LitePalApplication;
 import java.util.concurrent.TimeUnit;
@@ -18,7 +19,7 @@ public class MyApplication  extends LitePalApplication {
     public void onCreate() {
         super.onCreate();
         instance =this;
-
+        SharePreferenceUtil.initSharePreferenceUtil(getApplicationContext());
         OkHttpClient okHttpClient = new OkHttpClient.Builder()//init OkHttp3.0
                 .connectTimeout(8000L, TimeUnit.MILLISECONDS)
                 .readTimeout(8000L, TimeUnit.MILLISECONDS)

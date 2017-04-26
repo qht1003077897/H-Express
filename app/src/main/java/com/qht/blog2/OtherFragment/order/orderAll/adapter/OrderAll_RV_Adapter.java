@@ -5,7 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.qht.blog2.BaseAdapter.BaseSlideRecycleView.ISlideHelper;
 import com.qht.blog2.BaseAdapter.BaseSlideRecycleView.holder.SlideViewHolder;
@@ -14,8 +16,11 @@ import com.qht.blog2.BaseEventBus.EventBusUtil;
 import com.qht.blog2.OtherActivity.orderdetail.data.OrderState;
 import com.qht.blog2.OtherFragment.order.orderAll.data.OrderAllEvent;
 import com.qht.blog2.R;
+import com.qht.blog2.Util.UrlUtil;
 
 import java.util.List;
+
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 /**
  * Created by QHT on 2017-04-18.
@@ -46,6 +51,10 @@ public class OrderAll_RV_Adapter extends BaseQuickAdapter<OrderInfoLitePal,Order
         baseViewHolder.setText(R.id.tv_fragment_order_signed_time,orderInfoLitePal.getTime());
         baseViewHolder.setChecked(R.id.cb_fragment_order_signed_select,orderInfoLitePal.isselect());
         baseViewHolder.addOnClickListener(R.id.ll_fragment_order_signed_arrow);
+        Glide.with(context)
+                .load(UrlUtil.GetBASEKuaiDiCOMIMAGE+orderInfoLitePal.getCom()+".png")
+                .bitmapTransform(new CropCircleTransformation(context))
+                .into(baseViewHolder.image);
         if(!orderInfoLitePal.getState().equals("3")){
             baseViewHolder.setTextColor(R.id.tv_fragment_order_signed_state,context.getResources().getColor(R.color.red));
         }else{
@@ -75,10 +84,13 @@ public class OrderAll_RV_Adapter extends BaseQuickAdapter<OrderInfoLitePal,Order
 
     public class OneSlideViewHolder extends SlideViewHolder {
 
-        private View     mContentRl;
+        private View      mContentRl;
+        private ImageView image;
+
         public OneSlideViewHolder(View itemView) {
             super(itemView);
             mContentRl = itemView.findViewById(R.id.rl_fragment_order_signed);
+            image = (ImageView)itemView.findViewById(R.id.iv_fragment_order_signed_image);
         }
 
         public void bind() {

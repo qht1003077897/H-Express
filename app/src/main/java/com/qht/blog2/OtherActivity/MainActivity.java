@@ -1,5 +1,6 @@
 package com.qht.blog2.OtherActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -13,32 +14,40 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.qht.blog2.BaseActivity.ToolBarActivity;
 import com.qht.blog2.BaseAdapter.BaseListView.ViewCreator;
 import com.qht.blog2.BaseBean.SlideLeftBean;
 import com.qht.blog2.BaseEventBus.EventBusUtil;
+import com.qht.blog2.OtherActivity.setting.UI.SettingActivity;
 import com.qht.blog2.OtherActivity.slide_Left.adapter.Side_LeftAdapter;
+import com.qht.blog2.OtherActivity.slide_Left.data.Left_itemdata;
+import com.qht.blog2.OtherActivity.slide_Left.data.QQLogin_PersonInfoEvent;
+import com.qht.blog2.OtherActivity.slide_Left.qqlogin.QQLogin;
 import com.qht.blog2.OtherFragment.home.UI.FragmentFrist;
 import com.qht.blog2.OtherFragment.me.UI.FragmentFour;
 import com.qht.blog2.OtherFragment.notice.UI.FragmentThird;
 import com.qht.blog2.OtherFragment.order.FragmentSecond;
 import com.qht.blog2.OtherFragment.order.event.OrderEvent;
 import com.qht.blog2.R;
-import com.qht.blog2.Util.ToastUtil;
+import com.qht.blog2.Util.LogUtil;
+import com.qht.blog2.Util.SharePreferenceUtil;
+import com.qht.blog2.Util.TextUtil;
 import com.qht.blog2.View.DragLayout;
-import com.qht.blog2.View.RoundAngleImageView;
+import com.tencent.connect.UserInfo;
+import com.tencent.connect.common.Constants;
+import com.tencent.tauth.Tencent;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import butterknife.BindView;
 import butterknife.OnClick;
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 
-public class MainActivity extends ToolBarActivity  implements ViewCreator<SlideLeftBean,Side_LeftAdapter.SlideLeftHolder> {
+public class MainActivity extends ToolBarActivity implements ViewCreator<SlideLeftBean, Side_LeftAdapter.SlideLeftHolder> {
 
 
     @BindView(R.id.ll_bottom_iv_one)
@@ -57,47 +66,62 @@ public class MainActivity extends ToolBarActivity  implements ViewCreator<SlideL
     TextView  llBottomTvThree;
 
     @BindView(R.id.ll_bottom_iv_four)
-    ImageView           llBottomIvFour;
+    ImageView      llBottomIvFour;
     @BindView(R.id.ll_bottom_tv_four)
-    TextView            llBottomTvFour;
+    TextView       llBottomTvFour;
     @BindView(R.id.ll_bottom_rl_one)
-    RelativeLayout      llBottomRlOne;
+    RelativeLayout llBottomRlOne;
     @BindView(R.id.ll_bottom_rl_two)
-    RelativeLayout      llBottomRlTwo;
+    RelativeLayout llBottomRlTwo;
     @BindView(R.id.ll_bottom_rl_three)
-    RelativeLayout      llBottomRlThree;
+    RelativeLayout llBottomRlThree;
     @BindView(R.id.ll_bottom_rl_four)
-    RelativeLayout      llBottomRlFour;
+    RelativeLayout llBottomRlFour;
     @BindView(R.id.toolbar_subtitle)
-    TextView            toolbarSubtitle;
+    TextView       toolbarSubtitle;
     @BindView(R.id.ll_bottom_tab)
-    LinearLayout        llBottomTab;
+    LinearLayout   llBottomTab;
     @BindView(R.id.content_layout)
-    LinearLayout        contentLayout;
+    LinearLayout   contentLayout;
     @BindView(R.id.line)
-    View                line;
+    View           line;
     @BindView(R.id.toolbar_sub2title)
-    TextView            toolbarSub2title;
+    TextView       toolbarSub2title;
     @BindView(R.id.iv_bottom)
-    RoundAngleImageView ivBottom;
+    ImageView      ivBottom;
     @BindView(R.id.lv)
-    ListView            lv;
+    ListView       lv;
     @BindView(R.id.dl)
-    DragLayout          dl;
+    DragLayout     dl;
+    @BindView(R.id.left_name)
+    TextView       leftName;
+    @BindView(R.id.ll_left_setting)
+    LinearLayout   llLeftSetting;
+    @BindView(R.id.ll_left_night)
+    LinearLayout   llLeftNight;
+    @BindView(R.id.tv_left_weather)
+    TextView       tvLeftWeather;
+    @BindView(R.id.tv_left_city)
+    TextView       tvLeftCity;
 
 
     // 底部标签切换的Fragment
     private Fragment oneFragment, twoFragment, threeFragment, fourFragment, currentFragment;
-
+    private QQLogin login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setStatusBar();
         initView();
-        initBadge();
+        initQlogin();
         initTab();
     }
+
+    @Override
+    public int getContentViewId() {
+        return R.layout.activity_main;
+    }
+
 
     private void initView() {
         getToolbar().setNavigationIcon(getResources().getDrawable(R.mipmap.home_menu_48));
@@ -107,59 +131,80 @@ public class MainActivity extends ToolBarActivity  implements ViewCreator<SlideL
                 dl.open();
             }
         });
-        Side_LeftAdapter mAdapter = new Side_LeftAdapter(getItemBeans(), this);
+        Side_LeftAdapter mAdapter = new Side_LeftAdapter(Left_itemdata.getItemBeans(), this);
         lv.setAdapter(mAdapter);
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                ToastUtil.showToastShort("click+"+i+"");
+                switch (i) {
+                    case 0:
+                        break;
+                    case 1:
+                        //分享
+                        login.share();
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        //退出登录
+                        login.loginout();
+                        Glide.with(MainActivity.this)
+                                .load(R.drawable.left_image)
+                                .bitmapTransform(new CropCircleTransformation(MainActivity.this))
+                                .into(ivBottom);
+                        leftName.setText("点击登录");
+                        leftName.setClickable(true);
+                        break;
+
+                }
             }
         });
     }
 
-//    private void initDragLayout() {
-//        dl.setDragListener(new DragLayout.DragListener() {
-//            //界面打开的时候
-//            @Override
-//            public void onOpen() {
-//            }
-//            //界面关闭的时候
-//            @Override
-//            public void onClose() {
-//            }
-//
-//            //界面滑动的时候
-//            @Override
-//            public void onDrag(float percent) {
-//            }
-//        });
-//    }
-
-    public  List<SlideLeftBean> getItemBeans(){
-        List<SlideLeftBean> itemBeans=new ArrayList<>();
-        itemBeans.add(new SlideLeftBean(R.drawable.sidebar_purse,"QQ钱包",false));
-        itemBeans.add(new SlideLeftBean(R.drawable.sidebar_decoration,"个性装扮",false));
-        itemBeans.add(new SlideLeftBean(R.drawable.sidebar_favorit,"我的收藏",false));
-        itemBeans.add(new SlideLeftBean(R.drawable.sidebar_album,"我的相册",false));
-        itemBeans.add(new SlideLeftBean(R.drawable.sidebar_file,"我的文件",false));
-        return  itemBeans;
+    private void initQlogin() {
+        login = new QQLogin(MainActivity.this);
+        String openid = SharePreferenceUtil.getStringSP("openid", "");
+        String access_token = SharePreferenceUtil.getStringSP("access_token", "");
+        String expires_in = SharePreferenceUtil.getStringSP("expires_in", "");
+        if (!TextUtil.isEmpty(openid) && !TextUtil.isEmpty(access_token) && !TextUtil.isEmpty(expires_in)) {
+            login.mTencent.setOpenId(openid);
+            login.mTencent.setAccessToken(access_token, expires_in);
+        }
+        String image = SharePreferenceUtil.getStringSP("figureurl_qq_2", "");
+        String name = SharePreferenceUtil.getStringSP("nickname", "点击登录");
+        Glide.with(MainActivity.this)
+                .load(image)
+                .placeholder(R.drawable.left_image)
+                .bitmapTransform(new CropCircleTransformation(MainActivity.this))
+                .into(ivBottom);
+        leftName.setText("昵称:" + name);
+        if (!leftName.getText().equals("点击登录")) {
+            leftName.setClickable(false);
+        }
     }
 
-
-    private void initBadge() {
-//        QBadgeView bagdeview2 = new QBadgeView(this);
-//        QBadgeView bagdeview3 = new QBadgeView(this);
-//        bagdeview2.bindTarget(llBottomRlTwo).setBadgeNumber(2)
-//                .setBadgeGravity(Gravity.TOP | Gravity.END)
-//                .setGravityOffset(40, 0, true);
-//        bagdeview3.bindTarget(llBottomRlThree).setBadgeNumber(3)
-//                .setBadgeGravity(Gravity.TOP | Gravity.END)
-//                .setGravityOffset(40, 0, true);
+    /**
+     * From: FragmentSecond.onPageSelected()
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEventOrderInfo(OrderEvent response) {
+        if (response.from.equals("FragmentSecond") && response.position == -1) {
+            getSubTitle().setText("编辑");
+            getSub2Title().setVisibility(View.GONE);
+        }
     }
 
-    @Override
-    public int getContentViewId() {
-        return R.layout.activity_main;
+    /**
+     * From: QQLogin()
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEventPersonInfo(QQLogin_PersonInfoEvent response) {
+        leftName.setText("昵称:" + response.name.toString());
+        leftName.setClickable(false);
+        Glide.with(MainActivity.this)
+                .load(response.imageurl).bitmapTransform(new CropCircleTransformation(MainActivity.this))
+                .diskCacheStrategy(DiskCacheStrategy.RESULT)
+                .into(ivBottom);
     }
 
     /**
@@ -192,90 +237,6 @@ public class MainActivity extends ToolBarActivity  implements ViewCreator<SlideL
             llBottomTvFour.setTextColor(getResources().getColor(
                     R.color.bottom_normal));
 
-        }
-    }
-
-    /**
-     * 接收消息函数在主线程
-     * From: FragmentSecond.onPageSelected()
-     */
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onEvent(OrderEvent response) {
-        if (response.from.equals("FragmentSecond") && response.position == -1) {
-            getSubTitle().setText("编辑");
-            getSub2Title().setVisibility(View.GONE);
-        }
-    }
-
-
-    @OnClick({R.id.ll_bottom_rl_one, R.id.ll_bottom_rl_two, R.id.ll_bottom_rl_three, R.id.ll_bottom_rl_four,
-            R.id.toolbar_subtitle, R.id.toolbar_sub2title})
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.ll_bottom_rl_one:
-                getSubTitle().setVisibility(View.GONE);
-                getSub2Title().setVisibility(View.GONE);
-                getToolbarTitle().setText("查询");
-                reViewStatus("1");
-                clickTab1Layout();
-                break;
-            case R.id.ll_bottom_rl_two:
-                getSubTitle().setVisibility(View.VISIBLE);
-                getToolbarTitle().setText("订单状态");
-                getSubTitle().setText("编辑");
-                reViewStatus("2");
-                clickTab2Layout();
-                break;
-            case R.id.ll_bottom_rl_three:
-                getSubTitle().setVisibility(View.GONE);
-                getSub2Title().setVisibility(View.GONE);
-                getToolbarTitle().setText("消息");
-                reViewStatus("3");
-                clickTab3Layout();
-                break;
-            case R.id.ll_bottom_rl_four:
-                getSubTitle().setVisibility(View.GONE);
-                getSub2Title().setVisibility(View.GONE);
-                getToolbarTitle().setText("我的");
-                reViewStatus("4");
-                clickTab4Layout();
-                break;
-            case R.id.toolbar_subtitle:
-                if ("编辑".equals(getSubTitle().getText().toString())) {
-                    getSubTitle().setText("取消");
-                    getSub2Title().setVisibility(View.VISIBLE);
-                    getSub2Title().setText("全选");
-                    // To:FragmentOrder_Signed.onEvent(),参数 -1 无意义
-                    EventBusUtil.postSync(new OrderEvent(false, false, "MainActivity", -1, this));
-                } else if ("取消".equals(getSubTitle().getText().toString())) {
-                    getSubTitle().setText("编辑");
-                    getSub2Title().setVisibility(View.GONE);
-                    // To:FragmentOrder_Signed.onEvent()
-                    EventBusUtil.postSync(new OrderEvent(true, false, "MainActivity", -1, this));
-                }
-                break;
-            case R.id.toolbar_sub2title:
-                if ("全选".equals(getSub2Title().getText().toString())) {
-                    getSub2Title().setText("取消全选");
-                    // To:FragmentOrder_Signed.onEvent(),参数-1无意义
-                    EventBusUtil.postSync(new OrderEvent(false, true, "MainActivity_Allselect", -1, this));
-                } else if ("取消全选".equals(getSub2Title().getText().toString())) {
-                    getSub2Title().setText("全选");
-                    // To:FragmentOrder_Signed.onEvent()
-                    EventBusUtil.postSync(new OrderEvent(false, false, "MainActivity_Allselect", -1, this));
-                }
-
-                break;
-        }
-    }
-
-    /**
-     * 切换底部fragment时，订单页面(fragment)返回初始化状态
-     */
-    private void reViewStatus(String s) {
-        if (!currentFragment.getTag().equals(s)) {
-            // To:FragmentOrder_Signed.onEvent()
-            EventBusUtil.postSync(new OrderEvent(true, false, "MainActivityInit", -1, this));
         }
     }
 
@@ -392,9 +353,116 @@ public class MainActivity extends ToolBarActivity  implements ViewCreator<SlideL
         currentFragment = fragment;
     }
 
+    /**
+     * 切换底部fragment时，订单页面(fragment)返回初始化状态
+     */
+    private void reViewStatus(String s) {
+        if (!currentFragment.getTag().equals(s)) {
+            // To:FragmentOrder_Signed.onEvent()
+            EventBusUtil.postSync(new OrderEvent(true, false, "MainActivityInit", -1, this));
+        }
+    }
+
     @Override
     protected boolean isShowBacking() {
         return false;
+    }
+
+    @Override
+    public Side_LeftAdapter.SlideLeftHolder createHolder(int position, ViewGroup parent) {
+        return new Side_LeftAdapter.SlideLeftHolder(LayoutInflater.from(MainActivity.this).inflate(R.layout.left_item_layout, parent, false));
+    }
+
+    @Override
+    public void bindData(int position, Side_LeftAdapter.SlideLeftHolder holder, SlideLeftBean data) {
+        holder.iv.setImageResource(data.getImg());
+        holder.text.setText(data.getTitle());
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == Constants.REQUEST_LOGIN) {
+            if (resultCode == -1) {
+                Tencent.onActivityResultData(requestCode, resultCode, data, login.loginListener);
+                LogUtil.e(data.getDataString());
+                Tencent.handleResultData(data, login.loginListener);
+                UserInfo info = new UserInfo(this, login.mTencent.getQQToken());
+                info.getUserInfo(login.userInfoListener);
+            }
+        }
+    }
+
+    @OnClick({R.id.ll_bottom_rl_one, R.id.ll_bottom_rl_two, R.id.ll_bottom_rl_three, R.id.ll_bottom_rl_four,
+            R.id.toolbar_subtitle, R.id.toolbar_sub2title, R.id.left_name,R.id.ll_left_setting, R.id.ll_left_night})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.ll_bottom_rl_one:
+                getSubTitle().setVisibility(View.GONE);
+                getSub2Title().setVisibility(View.GONE);
+                getToolbarTitle().setText("查询");
+                reViewStatus("1");
+                clickTab1Layout();
+                break;
+            case R.id.ll_bottom_rl_two:
+                getSubTitle().setVisibility(View.VISIBLE);
+                getToolbarTitle().setText("订单状态");
+                getSubTitle().setText("编辑");
+                reViewStatus("2");
+                clickTab2Layout();
+                break;
+            case R.id.ll_bottom_rl_three:
+                getSubTitle().setVisibility(View.GONE);
+                getSub2Title().setVisibility(View.GONE);
+                getToolbarTitle().setText("消息");
+                reViewStatus("3");
+                clickTab3Layout();
+                break;
+            case R.id.ll_bottom_rl_four:
+                getSubTitle().setVisibility(View.GONE);
+                getSub2Title().setVisibility(View.GONE);
+                getToolbarTitle().setText("我的");
+                reViewStatus("4");
+                clickTab4Layout();
+                break;
+            case R.id.toolbar_subtitle:
+                if ("编辑".equals(getSubTitle().getText().toString())) {
+                    getSubTitle().setText("取消");
+                    getSub2Title().setVisibility(View.VISIBLE);
+                    getSub2Title().setText("全选");
+                    // To:FragmentOrder_Signed.onEvent(),参数 -1 无意义
+                    EventBusUtil.postSync(new OrderEvent(false, false, "MainActivity", -1, this));
+                } else if ("取消".equals(getSubTitle().getText().toString())) {
+                    getSubTitle().setText("编辑");
+                    getSub2Title().setVisibility(View.GONE);
+                    // To:FragmentOrder_Signed.onEvent()
+                    EventBusUtil.postSync(new OrderEvent(true, false, "MainActivity", -1, this));
+                }
+                break;
+            case R.id.toolbar_sub2title:
+                if ("全选".equals(getSub2Title().getText().toString())) {
+                    getSub2Title().setText("取消全选");
+                    // To:FragmentOrder_Signed.onEvent(),参数-1无意义
+                    EventBusUtil.postSync(new OrderEvent(false, true, "MainActivity_Allselect", -1, this));
+                } else if ("取消全选".equals(getSub2Title().getText().toString())) {
+                    getSub2Title().setText("全选");
+                    // To:FragmentOrder_Signed.onEvent()
+                    EventBusUtil.postSync(new OrderEvent(false, false, "MainActivity_Allselect", -1, this));
+                }
+                break;
+            case R.id.left_name:
+                //开始qq授权登录
+                login.mTencent.login(this, login.SCOPE, login.loginListener);
+                break;
+            case R.id.ll_left_setting:
+                //设置
+                startActivity(new Intent(MainActivity.this, SettingActivity.class));
+                break;
+            case R.id.ll_left_night:
+                //夜间模式
+                break;
+
+        }
     }
 
     @Override
@@ -409,15 +477,5 @@ public class MainActivity extends ToolBarActivity  implements ViewCreator<SlideL
         EventBusUtil.unregister(this);
     }
 
-    @Override
-    public Side_LeftAdapter.SlideLeftHolder createHolder(int position, ViewGroup parent) {
-       return new Side_LeftAdapter.SlideLeftHolder(LayoutInflater.from(MainActivity.this).inflate(R.layout.left_item_layout, parent, false));
-    }
-
-    @Override
-    public void bindData(int position, Side_LeftAdapter.SlideLeftHolder holder, SlideLeftBean data) {
-        holder.iv.setImageResource(data.getImg());
-        holder.text.setText(data.getTitle());
-    }
 }
 
