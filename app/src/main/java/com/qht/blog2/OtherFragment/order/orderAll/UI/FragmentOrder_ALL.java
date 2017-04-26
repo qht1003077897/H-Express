@@ -87,20 +87,6 @@ public class FragmentOrder_ALL extends BaseFragment{
                 });
             }
         });
-//        madapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
-//            @Override
-//            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-//                LogUtil.e("onSimpleItemClick");
-//                RequestNet(list.get(position).getNu(),list.get(position).getCom());
-//            }
-//        });
-//        rvOrderall.addOnItemTouchListener(new OnItemChildClickListener() {
-//            @Override
-//            public void onSimpleItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-//                LogUtil.e("onSimpleItemClick");
-//                RequestNet(list.get(position).getNu(),list.get(position).getCom());
-//            }
-//        });
         rvOrderall.setAdapter(madapter);
     }
 
