@@ -1,3 +1,36 @@
+![这里写图片描述](http://img.blog.csdn.net/20170427215859131?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjUzNDgzMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)![这里写图片描述](http://img.blog.csdn.net/20170427215910952?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjUzNDgzMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
+
+----------
+
+
+![这里写图片描述](http://img.blog.csdn.net/20170427220250668?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjUzNDgzMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)![这里写图片描述](http://img.blog.csdn.net/20170427220301699?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjUzNDgzMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
+
+----------
+
+
+![这里写图片描述](http://img.blog.csdn.net/20170427220309106?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjUzNDgzMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)![这里写图片描述](http://img.blog.csdn.net/20170427220423283?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjUzNDgzMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
+
+**-------------------------------------------------------------------------------------------------------------------------**
+
+
+
+
+
+2017-04-27
+----------
+
+ 1. 完成订单模块(包括已完成、已签收、未签收订单查看、编辑、单选、多选、全选、删除功能，包括手工设置订单状态为 已/未 签收)
+ 2. 增加 夜间/白天 主题切换
+ 3. 加入第三方(QQ)登录、退出登录、分享功能
+ 4. 可清除缓存
+ 5. 实时天气温度信息
+
+ 
+----------
+
 
 2017-04-18
 ----------
