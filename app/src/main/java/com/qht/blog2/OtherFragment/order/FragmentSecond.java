@@ -92,7 +92,7 @@ public class FragmentSecond extends BaseFragment {
         indicator.setIndicatorColor(getResources().getColor(android.R.color.holo_orange_light));// 设置底部导航线的颜色/和底部分割线保持一致(橘黄色)
         indicator.setTextColorSelected(getResources().getColor(R.color.colorPrimary));// 设置tab标题选中的颜色
         indicator.setTextColor(getResources().getColor(R.color.line_4));// 设置tab标题未被选中的颜色
-        indicator.setTextSize(25);// 设置字体大小
+        indicator.setTextSizedp(15);// 设置字体大小
     }
 
     @Override

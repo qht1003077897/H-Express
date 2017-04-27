@@ -597,6 +597,12 @@ public class TabPageIndicator extends HorizontalScrollView {
         updateTabStyles();
     }
 
+    public void setTextSizedp(int textSizedp) {
+
+        this.tabTextSize = dip2px(textSizedp);
+        updateTabStyles();
+    }
+
     public int getTextSize() {
         return tabTextSize;
     }
