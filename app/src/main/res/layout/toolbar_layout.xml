@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/toolbar"
-    app:titleTextColor="@android:color/white"
+    app:titleTextColor="@color/whitetext"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
     android:background="@color/colorPrimary"
@@ -22,7 +22,7 @@
         android:ellipsize="end"
         android:text="title"
         android:scrollHorizontally="true"
-        android:textColor="@android:color/white"
+        android:textColor="@color/whitetext"
         android:layout_gravity="center" />
     <TextView
         android:id="@+id/toolbar_subtitle"
@@ -30,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:singleLine="true"
-        android:textColor="@android:color/white"
+        android:textColor="@color/whitetext"
         android:text="subtitle"
         android:paddingRight="10dp"
         android:layout_gravity="right" />
@@ -43,5 +43,5 @@
         android:ellipsize="end"
         android:text="sub2title"
         android:scrollHorizontally="true"
-        android:textColor="@android:color/white"/>
+        android:textColor="@color/whitetext"/>
 </android.support.v7.widget.Toolbar>

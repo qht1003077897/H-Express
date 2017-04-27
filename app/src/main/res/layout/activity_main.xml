@@ -9,9 +9,10 @@
     <include layout="@layout/left_view_layout"/>
 
     <com.qht.blog2.View.CustomRelativeLayout
+        android:id="@+id/crl"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFFFFF">
+        android:background="@color/whitebg">
 
 
     <include
@@ -27,6 +28,7 @@
         android:layout_alignParentBottom="true"
         android:gravity="center_vertical"
         android:orientation="horizontal"
+        android:background="@android:color/white"
         android:baselineAligned="true">
 
         <RelativeLayout
@@ -50,7 +52,7 @@
                 android:layout_below="@id/ll_bottom_iv_one"
                 android:layout_centerHorizontal="true"
                 android:text="@string/home"
-                android:textColor="@android:color/black"
+                android:textColor="@color/black"
                 android:textSize="12sp" />
         </RelativeLayout>
 
@@ -74,7 +76,7 @@
                 android:layout_below="@+id/ll_bottom_iv_two"
                 android:layout_centerHorizontal="true"
                 android:text="@string/order"
-                android:textColor="@android:color/black"
+                android:textColor="@color/black"
                 android:textSize="12sp" />
         </RelativeLayout>
 
@@ -99,7 +101,7 @@
                 android:layout_below="@+id/ll_bottom_iv_three"
                 android:layout_centerHorizontal="true"
                 android:text="@string/notice"
-                android:textColor="@android:color/black"
+                android:textColor="@color/black"
                 android:textSize="12sp" />
         </RelativeLayout>
 
@@ -124,7 +126,7 @@
                 android:layout_below="@+id/ll_bottom_iv_four"
                 android:layout_centerHorizontal="true"
                 android:text="@string/me"
-                android:textColor="@android:color/black"
+                android:textColor="@color/black"
                 android:textSize="12sp" />
         </RelativeLayout>
     </LinearLayout>

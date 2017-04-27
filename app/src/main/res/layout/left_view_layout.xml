@@ -1,6 +1,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rl_left_bg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="70dp"
@@ -42,7 +43,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="15dp"
                     android:text=""
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/black"
                     android:textSize="15sp" />
                 <ImageButton
                     android:id="@+id/left_qrcode"
@@ -68,7 +69,7 @@
             <TextView
                 android:layout_marginLeft="5dp"
                 android:textSize="13sp"
-                android:textColor="#676767"
+                android:textColor="@color/black"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/personqq"/>

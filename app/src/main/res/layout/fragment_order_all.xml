@@ -12,7 +12,8 @@
             android:id="@+id/rv_orderall"
             android:dividerHeight="0dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:background="@color/whitebg"/>
 
     </com.baoyz.widget.PullRefreshLayout>
 

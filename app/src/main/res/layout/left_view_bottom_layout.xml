@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="设置"
-            android:textColor="@android:color/white"
+            android:textColor="@color/whitetext"
             android:textSize="13sp"/>
     </LinearLayout>
     <LinearLayout
@@ -39,11 +39,12 @@
             android:layout_height="20dp"
             android:background="@drawable/left_btn_night_selector"/>
         <TextView
+            android:id="@+id/tv_left_night"
             android:layout_marginLeft="3dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="夜间"
-            android:textColor="@android:color/white"
+            android:textColor="@color/whitetext"
             android:textSize="13sp"/>
     </LinearLayout>
     <LinearLayout
@@ -60,10 +61,10 @@
             <TextView
                 android:id="@+id/tv_left_weather"
                 android:paddingLeft="10dp"
-                android:text="18"
+                android:text="--"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@android:color/white"
+                android:textColor="@color/whitetext"
                 android:textSize="30sp"/>
             <ImageView
                 android:layout_marginLeft="5dp"
@@ -76,7 +77,7 @@
         <TextView
             android:id="@+id/tv_left_city"
             android:textSize="13sp"
-            android:textColor="@android:color/white"
+            android:textColor="@color/whitetext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="西安"/>

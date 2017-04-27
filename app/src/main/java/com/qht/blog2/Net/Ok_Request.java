@@ -4,6 +4,8 @@ import android.content.Context;
 
 import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.builder.GetBuilder;
+import com.zhy.http.okhttp.builder.PostStringBuilder;
 import com.zhy.http.okhttp.callback.Callback;
 import java.io.IOException;
 import java.util.HashMap;
@@ -27,13 +29,21 @@ public class Ok_Request {
      */
 
     public static   void getAsyncData(Context mContext, HashMap<String,String> map,final String url, Callback callback) {
-        OkHttpUtils
+       GetBuilder builder= OkHttpUtils
                 .get()
-                .params(map)
-                .tag(mContext)
-                .url(url)
-                .build()
-                .execute(callback);
+                .params(map);
+        if(null==mContext){
+             builder.url(url)
+                    .build()
+                    .execute(callback);
+        }else{
+                     builder
+                    .tag(mContext)
+                    .url(url)
+                    .build()
+                    .execute(callback);
+        }
+
     }
 
     /**
@@ -43,14 +53,23 @@ public class Ok_Request {
      * */
     public static <T> void  postAsyncData(Context mContext,HashMap<String,String> map,final String url,T t,Callback callback) {
 
-        OkHttpUtils
+        PostStringBuilder builder=OkHttpUtils
                 .postString()
-                .url(url)
-                .tag(mContext)
-                .mediaType(JSON)
-                .content(new Gson().toJson(t))
-                .build()
-                .execute(callback);
+                .url(url);
+        if(null==mContext){
+                    builder
+                    .mediaType(JSON)
+                    .content(new Gson().toJson(t))
+                    .build()
+                    .execute(callback);
+        }else{
+                    builder
+                    .tag(mContext)
+                    .mediaType(JSON)
+                    .content(new Gson().toJson(t))
+                    .build()
+                    .execute(callback);
+        }
     }
     /**
      * 同步get请求

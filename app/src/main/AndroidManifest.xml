@@ -17,7 +17,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppNightTheme">
         <activity android:name=".OtherActivity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -47,6 +47,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".OtherActivity.setting.UI.SettingActivity">
+        </activity>
+        <activity android:name=".OtherActivity.day2night_switchmode.SwitchModeActivity">
         </activity>
     </application>
 

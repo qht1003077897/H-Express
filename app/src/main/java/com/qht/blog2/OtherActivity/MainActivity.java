@@ -25,6 +25,8 @@ import com.qht.blog2.OtherActivity.slide_Left.adapter.Side_LeftAdapter;
 import com.qht.blog2.OtherActivity.slide_Left.data.Left_itemdata;
 import com.qht.blog2.OtherActivity.slide_Left.data.QQLogin_PersonInfoEvent;
 import com.qht.blog2.OtherActivity.slide_Left.qqlogin.QQLogin;
+import com.qht.blog2.OtherActivity.slide_Left.weather.Weather;
+import com.qht.blog2.OtherActivity.slide_Left.weather.weatherEvent;
 import com.qht.blog2.OtherFragment.home.UI.FragmentFrist;
 import com.qht.blog2.OtherFragment.me.UI.FragmentFour;
 import com.qht.blog2.OtherFragment.notice.UI.FragmentThird;
@@ -34,6 +36,7 @@ import com.qht.blog2.R;
 import com.qht.blog2.Util.LogUtil;
 import com.qht.blog2.Util.SharePreferenceUtil;
 import com.qht.blog2.Util.TextUtil;
+import com.qht.blog2.View.CustomRelativeLayout;
 import com.qht.blog2.View.DragLayout;
 import com.tencent.connect.UserInfo;
 import com.tencent.connect.common.Constants;
@@ -103,6 +106,12 @@ public class MainActivity extends ToolBarActivity implements ViewCreator<SlideLe
     TextView       tvLeftWeather;
     @BindView(R.id.tv_left_city)
     TextView       tvLeftCity;
+    @BindView(R.id.tv_left_night)
+    TextView       tvleftnight;
+    @BindView(R.id.crl)
+    CustomRelativeLayout crl;
+    @BindView(R.id.rl_left_bg)
+    RelativeLayout rlleftbg;
 
 
     // 底部标签切换的Fragment
@@ -115,6 +124,7 @@ public class MainActivity extends ToolBarActivity implements ViewCreator<SlideLe
         initView();
         initQlogin();
         initTab();
+        Weather.getweather();
     }
 
     @Override
@@ -124,6 +134,14 @@ public class MainActivity extends ToolBarActivity implements ViewCreator<SlideLe
 
 
     private void initView() {
+
+        if(enableNightMode){
+            tvleftnight.setText("夜间");
+            rlleftbg.setBackgroundResource(R.drawable.sidebar_bg_night);
+        }else{
+            tvleftnight.setText("白天");
+            rlleftbg.setBackgroundResource(R.drawable.sidebar_bg);
+        }
         getToolbar().setNavigationIcon(getResources().getDrawable(R.mipmap.home_menu_48));
         getToolbar().setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -205,6 +223,14 @@ public class MainActivity extends ToolBarActivity implements ViewCreator<SlideLe
                 .load(response.imageurl).bitmapTransform(new CropCircleTransformation(MainActivity.this))
                 .diskCacheStrategy(DiskCacheStrategy.RESULT)
                 .into(ivBottom);
+    }
+    /**
+     * From: Weather()
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEventweather(weatherEvent response) {
+        tvLeftWeather.setText(response.tem);
+        tvLeftCity.setText(response.city);
     }
 
     /**
@@ -460,9 +486,25 @@ public class MainActivity extends ToolBarActivity implements ViewCreator<SlideLe
                 break;
             case R.id.ll_left_night:
                 //夜间模式
+                if(tvleftnight.getText().toString().equals("夜间")){
+                    SharePreferenceUtil.setBooleanSP("enableNightMode",false);
+                    tvleftnight.setText("白天");
+                    setEnableNightMode(false,crl);
+                }else{
+                    SharePreferenceUtil.setBooleanSP("enableNightMode",true);
+                    tvleftnight.setText("夜间");
+                    setEnableNightMode(true,crl);
+
+                }
                 break;
 
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        // 不保存onSaveInstanceState，即不执行super方法，使Activity失去fragment状态，使fragment的hide/show正常显示
+        // 不然的话，调用hide/show 方法不会正常显示，不论底部怎么切换，一直停留 FirstFragment 页面。
     }
 
     @Override

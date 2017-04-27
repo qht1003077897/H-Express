@@ -39,7 +39,6 @@
     <string name="ordernum">快递单号：</string>
 
 
-
     <!--setting-->
     <string name="clear_imagecache">清除图片缓存</string>
     <string name="clear_ordercache">清除订单缓存</string>

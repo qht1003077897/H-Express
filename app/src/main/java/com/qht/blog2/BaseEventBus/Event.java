@@ -7,6 +7,9 @@ public class Event {
     private Object mSource;
 
     public Event(Object source) {
-        this.mSource = source;
+        if(null!=source){
+            this.mSource = source;
+        }
+
     }
 }

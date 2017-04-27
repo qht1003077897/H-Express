@@ -1,12 +1,21 @@
 <resources>
 
-    <!-- Base application theme. -->
+    <!-- Base application theme.  正常主题-->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:textColorSecondary">#ffffff</item>
+        <item name="android:textColorSecondary">@color/whitetext</item>
+        <item name="actionOverflowMenuStyle">@style/MenuStyle</item>
+    </style>
+    <!--night 夜间主题-->
+    <style name="AppNightTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorSecondary">@color/whitetext</item>
         <item name="actionOverflowMenuStyle">@style/MenuStyle</item>
     </style>
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
@@ -18,7 +27,7 @@
         <!--弹出菜单与标题栏的垂直间距-->
         <item name="android:dropDownVerticalOffset">10.0dip</item>
         <!--menu菜单的字体颜色-->
-        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorPrimary">@color/whitetext</item>
         <!--menu字体大小-->
         <item name="android:textSize">18sp</item>
     </style>
@@ -38,5 +47,7 @@
         <!--是否模糊-->
         <item name="android:backgroundDimEnabled">false</item>
     </style>
+
+
 
 </resources>
