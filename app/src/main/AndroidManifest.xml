@@ -39,17 +39,13 @@
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
-
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
-
                 <data android:scheme="tencent1106047893"/>
             </intent-filter>
         </activity>
-        <activity android:name=".OtherActivity.setting.UI.SettingActivity">
-        </activity>
-        <activity android:name=".OtherActivity.day2night_switchmode.SwitchModeActivity">
-        </activity>
+        <activity android:name=".OtherActivity.setting.UI.SettingActivity"/>
+        <activity android:name=".OtherActivity.day2night_switchmode.SwitchModeActivity"/>
     </application>
 
 </manifest>

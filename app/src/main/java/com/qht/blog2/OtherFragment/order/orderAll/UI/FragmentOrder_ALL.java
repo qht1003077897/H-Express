@@ -13,25 +13,40 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.baoyz.widget.PullRefreshLayout;
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.qht.blog2.BaseBean.OrderInfoBean;
 import com.qht.blog2.BaseBean.OrderInfoLitePal;
 import com.qht.blog2.BaseEventBus.EventBusUtil;
 import com.qht.blog2.BaseFragment.BaseFragment;
+import com.qht.blog2.Net.MyStringCallBack;
+import com.qht.blog2.Net.Ok_Request;
+import com.qht.blog2.OtherActivity.orderdetail.UI.OrderDetailActivity;
+import com.qht.blog2.OtherActivity.orderdetail.data.OrderDetailEvent;
+import com.qht.blog2.OtherFragment.home.data.OrderSave2Litepal;
 import com.qht.blog2.OtherFragment.order.FragmentSecond;
 import com.qht.blog2.OtherFragment.order.event.OrderEvent;
 import com.qht.blog2.OtherFragment.order.orderAll.adapter.OrderAll_RV_Adapter;
 import com.qht.blog2.OtherFragment.order.orderAll.data.OrderAllEvent;
 import com.qht.blog2.R;
+import com.qht.blog2.Util.DialogUtil;
+import com.qht.blog2.Util.LogUtil;
+import com.qht.blog2.Util.TextUtil;
+import com.qht.blog2.Util.ToastUtil;
+import com.qht.blog2.Util.UrlUtil;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 import org.litepal.crud.DataSupport;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import okhttp3.Call;
+import okhttp3.Request;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -87,45 +102,53 @@ public class FragmentOrder_ALL extends BaseFragment{
                 });
             }
         });
+        madapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+            @Override
+            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                LogUtil.e("onItemChildClick");
+                OrderInfoLitePal bean= (OrderInfoLitePal)adapter.getData().get(position);
+                RequestNet(bean.getNu(),bean.getCom());
+            }
+        });
         rvOrderall.setAdapter(madapter);
     }
 
-//    private void RequestNet(String nu,String com){
-//        if(TextUtil.isEmpty(nu) || TextUtil.isEmpty(com)){
-//            return;
-//        }
-//        HashMap<String, String> map = new HashMap<>();
-//        map.put("type", com);//参数
-//        map.put("postid", nu);
-//        Ok_Request.getAsyncData(getActivity(), map, UrlUtil.GetKuaiDi, new MyStringCallBack() {
-//            /**
-//             * UI Thread
-//             */
-//            @Override
-//            public void onBefore(Request request, int id) {
-//                DialogUtil.showProgressDialog(getActivity(), true);
-//            }
-//
-//            @Override
-//            public void onAfter(int id) {
-//                DialogUtil.hideProgressDialog();
-//            }
-//
-//            @Override
-//            public void onError(Call call, Exception e, int id) {
-//                ToastUtil.showToastLong(e.getMessage());
-//            }
-//
-//            @Override
-//            public void onResponse(OrderInfoBean response, int id) {
-//                if (response != null) {
-//                    EventBusUtil.postSticky(new OrderDetailEvent(response,mActivity));
-//                    OrderSave2Litepal.savequery(response);
-//                    gotoActivity(mActivity, OrderDetailActivity.class);
-//                }
-//            }
-//        });
-//    }
+    private void RequestNet(String nu,String com){
+        if(TextUtil.isEmpty(nu) || TextUtil.isEmpty(com)){
+            return;
+        }
+        HashMap<String, String> map = new HashMap<>();
+        map.put("type", com);//参数
+        map.put("postid", nu);
+        Ok_Request.getAsyncData(getActivity(), map, UrlUtil.GetKuaiDi, new MyStringCallBack() {
+            /**
+             * UI Thread
+             */
+            @Override
+            public void onBefore(Request request, int id) {
+                DialogUtil.showProgressDialog(getActivity(), true);
+            }
+
+            @Override
+            public void onAfter(int id) {
+                DialogUtil.hideProgressDialog();
+            }
+
+            @Override
+            public void onError(Call call, Exception e, int id) {
+                ToastUtil.showToastLong(e.getMessage());
+            }
+
+            @Override
+            public void onResponse(OrderInfoBean response, int id) {
+                if (response != null) {
+                    EventBusUtil.postSticky(new OrderDetailEvent(response,mActivity));
+                    OrderSave2Litepal.savequery(response);
+                    gotoActivity(mActivity, OrderDetailActivity.class);
+                }
+            }
+        });
+    }
 
     /**
      * From: OrderAll_RV_Adapter

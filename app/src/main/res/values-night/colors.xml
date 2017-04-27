@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--标准颜色-->
-    <color name="red">#FF0000</color>
+    <color name="red">#ff4444</color><!--夜间为暗红色-->
     <color name="blue">#0000FF</color>
     <color name="black">#000000</color><!--夜间黑色即为灰色-->
     <color name="whitetext">#FFFFFF</color><!--夜间白色即为白色-->

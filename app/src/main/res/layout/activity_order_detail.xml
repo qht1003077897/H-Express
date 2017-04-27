@@ -55,7 +55,7 @@
             android:layout_below="@+id/tv_activity_orderdetail_head_remark"
             android:text="@string/ordernum"
             android:textSize="@dimen/sp_16"
-            android:textColor="@android:color/black"/>
+            android:textColor="@color/line_4"/>
 
         <TextView
             android:id="@+id/tv_activity_orderdetail_head_num"
@@ -67,7 +67,7 @@
             android:layout_below="@+id/tv_activity_orderdetail_head_remark"
             android:text="123456789"
             android:textSize="@dimen/sp_16"
-            android:textColor="@android:color/black"/>
+            android:textColor="@color/line_4"/>
 
     </RelativeLayout>
     <View
@@ -87,7 +87,7 @@
         android:text="快递详情"
         android:textSize="@dimen/sp_16"
         android:layout_alignParentLeft="true"
-        android:textColor="@android:color/black"/>
+        android:textColor="@color/line_4"/>
 
 
     <TextView
@@ -100,7 +100,7 @@
         android:text="总耗时"
         android:textSize="@dimen/sp_16"
         android:layout_alignParentRight="true"
-        android:textColor="@android:color/holo_red_light"/>
+        android:textColor="@color/red"/>
     <View
         android:id="@+id/tv_activity_orderdetail_line2"
         android:layout_width="wrap_content"
