@@ -50,6 +50,7 @@ public class OrderSigned_RV_Adapter extends BaseQuickAdapter<OrderInfoLitePal,Or
         baseViewHolder.setText(R.id.tv_fragment_order_signed_state, OrderState.caseState(orderInfoLitePal.getState()));
         baseViewHolder.setText(R.id.tv_fragment_order_signed_time,orderInfoLitePal.getTime());
         baseViewHolder.setChecked(R.id.cb_fragment_order_signed_select,orderInfoLitePal.isselect());
+        baseViewHolder.addOnClickListener(R.id.rl_fragment_order_signed);
         Glide.with(context)
                 .load(UrlUtil.GetBASEKuaiDiCOMIMAGE+orderInfoLitePal.getCom()+".png")
                 .bitmapTransform(new CropCircleTransformation(context))

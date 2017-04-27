@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.baoyz.widget.PullRefreshLayout;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.qht.blog2.BaseBean.OrderInfoBean;
 import com.qht.blog2.BaseBean.OrderInfoLitePal;
 import com.qht.blog2.BaseEventBus.EventBusUtil;
@@ -28,6 +29,7 @@ import com.qht.blog2.OtherFragment.order.orderSigned.adapter.OrderSigned_RV_Adap
 import com.qht.blog2.OtherFragment.order.orderSigned.data.OrderSignedEvent;
 import com.qht.blog2.R;
 import com.qht.blog2.Util.DialogUtil;
+import com.qht.blog2.Util.LogUtil;
 import com.qht.blog2.Util.TextUtil;
 import com.qht.blog2.Util.ToastUtil;
 import com.qht.blog2.Util.UrlUtil;
@@ -90,7 +92,7 @@ public class FragmentOrder_Signed extends BaseFragment {
         QueryData();
         rvFragmentOrderSigned.setLayoutManager(new LinearLayoutManager(mActivity));
         madapter = new OrderSigned_RV_Adapter(list, mActivity);
-        rvFragmentOrderSigned.setAdapter(madapter);
+
         swipeRefreshLayoutOrdersigned.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -104,6 +106,15 @@ public class FragmentOrder_Signed extends BaseFragment {
                 });
             }
         });
+        madapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+            @Override
+            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                LogUtil.e("onItemChildClick");
+                OrderInfoLitePal bean= (OrderInfoLitePal)adapter.getData().get(position);
+                RequestNet(bean.getNu(),bean.getCom());
+            }
+        });
+        rvFragmentOrderSigned.setAdapter(madapter);
     }
 
     private void RequestNet(String nu,String com){

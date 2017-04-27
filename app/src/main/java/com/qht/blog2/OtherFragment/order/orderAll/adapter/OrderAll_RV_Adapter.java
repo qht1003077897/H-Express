@@ -9,6 +9,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
 import com.qht.blog2.BaseAdapter.BaseSlideRecycleView.ISlideHelper;
 import com.qht.blog2.BaseAdapter.BaseSlideRecycleView.holder.SlideViewHolder;
 import com.qht.blog2.BaseBean.OrderInfoLitePal;
@@ -39,17 +40,20 @@ public class OrderAll_RV_Adapter extends BaseQuickAdapter<OrderInfoLitePal,Order
                 LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_order_signed_rv_item, parent, false));
         //add holder
         mISlideHelper.add(oneSlideViewHolder);
+        oneSlideViewHolder.setAdapter(this);
         return oneSlideViewHolder;
     }
 
     @Override
     protected void convert(final OneSlideViewHolder baseViewHolder, OrderInfoLitePal orderInfoLitePal) {
         ((OneSlideViewHolder) baseViewHolder).bind();
+
         baseViewHolder.setText(R.id.tv_fragment_order_signed_com,orderInfoLitePal.getCom());
         baseViewHolder.setText(R.id.tv_fragment_order_signed_num,orderInfoLitePal.getNu());
         baseViewHolder.setText(R.id.tv_fragment_order_signed_state, OrderState.caseState(orderInfoLitePal.getState()));
         baseViewHolder.setText(R.id.tv_fragment_order_signed_time,orderInfoLitePal.getTime());
         baseViewHolder.setChecked(R.id.cb_fragment_order_signed_select,orderInfoLitePal.isselect());
+        baseViewHolder.addOnClickListener(R.id.rl_fragment_order_signed);
         Glide.with(context)
                 .load(UrlUtil.GetBASEKuaiDiCOMIMAGE+orderInfoLitePal.getCom()+".png")
                 .bitmapTransform(new CropCircleTransformation(context))
@@ -81,6 +85,10 @@ public class OrderAll_RV_Adapter extends BaseQuickAdapter<OrderInfoLitePal,Order
         mISlideHelper.slideClose();
     }
 
+
+
+
+
     public class OneSlideViewHolder extends SlideViewHolder {
 
         private View      mContentRl;
@@ -90,6 +98,11 @@ public class OrderAll_RV_Adapter extends BaseQuickAdapter<OrderInfoLitePal,Order
             super(itemView);
             mContentRl = itemView.findViewById(R.id.rl_fragment_order_signed);
             image = (ImageView)itemView.findViewById(R.id.iv_fragment_order_signed_image);
+        }
+
+        @Override
+        protected BaseViewHolder setAdapter(BaseQuickAdapter adapter) {
+            return super.setAdapter(adapter);
         }
 
         public void bind() {
