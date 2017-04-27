@@ -405,19 +405,6 @@ public class MainActivity extends ToolBarActivity implements ViewCreator<SlideLe
         holder.text.setText(data.getTitle());
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == Constants.REQUEST_LOGIN) {
-            if (resultCode == -1) {
-                Tencent.onActivityResultData(requestCode, resultCode, data, login.loginListener);
-                LogUtil.e(data.getDataString());
-                Tencent.handleResultData(data, login.loginListener);
-                UserInfo info = new UserInfo(this, login.mTencent.getQQToken());
-                info.getUserInfo(login.userInfoListener);
-            }
-        }
-    }
 
     @OnClick({R.id.ll_bottom_rl_one, R.id.ll_bottom_rl_two, R.id.ll_bottom_rl_three, R.id.ll_bottom_rl_four,
             R.id.toolbar_subtitle, R.id.toolbar_sub2title, R.id.left_name,R.id.ll_left_setting, R.id.ll_left_night})
@@ -501,12 +488,27 @@ public class MainActivity extends ToolBarActivity implements ViewCreator<SlideLe
         }
     }
 
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        /** QQ登录 */
+        if (requestCode == Constants.REQUEST_LOGIN) {
+            if (resultCode == -1) {
+                Tencent.onActivityResultData(requestCode, resultCode, data, login.loginListener);
+                LogUtil.e(data.getDataString());
+                Tencent.handleResultData(data, login.loginListener);
+                UserInfo info = new UserInfo(this, login.mTencent.getQQToken());
+                info.getUserInfo(login.userInfoListener);
+            }
+        }
+    }
+
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         // 不保存onSaveInstanceState，即不执行super方法，使Activity失去fragment状态，使fragment的hide/show正常显示
         // 不然的话，调用hide/show 方法不会正常显示，不论底部怎么切换，一直停留 FirstFragment 页面。
     }
-
     @Override
     public void onStart() {
         super.onStart();

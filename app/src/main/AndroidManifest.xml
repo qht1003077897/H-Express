@@ -10,6 +10,10 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:name=".Application.MyApplication"
@@ -46,6 +50,7 @@
         </activity>
         <activity android:name=".OtherActivity.setting.UI.SettingActivity"/>
         <activity android:name=".OtherActivity.day2night_switchmode.SwitchModeActivity"/>
+        <activity android:name="io.github.xudaojie.qrcodelib.CaptureActivity"/>
     </application>
 
 </manifest>

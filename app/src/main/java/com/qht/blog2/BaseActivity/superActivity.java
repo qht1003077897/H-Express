@@ -1,12 +1,9 @@
 package com.qht.blog2.BaseActivity;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
-import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 
@@ -63,20 +60,6 @@ public abstract class superActivity extends AppCompatActivity {
         Intent mode = new Intent(this, SwitchModeActivity.class);
         startActivity(mode);
         overridePendingTransition( R.anim.switchmode_activity_in,R.anim.switchmode_activity_out);// 淡出淡入动画效果
-//      recreate();
-    }
-
-    /**
-     * 获取view截图对应的bitmap
-     * @param v
-     * @return
-     */
-    public Bitmap loadBitmapFromView(View v) {
-        Bitmap b = Bitmap.createBitmap(width, height-statusBarHeight, Bitmap.Config.ARGB_8888);
-        Canvas c = new Canvas(b);
-        v.layout(0, 0, v.getLayoutParams().width, v.getLayoutParams().height);
-        v.draw(c);
-        return b;
     }
 
     @Override

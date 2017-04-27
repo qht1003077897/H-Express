@@ -1,6 +1,7 @@
 package com.qht.blog2.OtherFragment.home.UI;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+
 import com.bigkoo.pickerview.OptionsPickerView;
 import com.qht.blog2.BaseBean.OrderInfoBean;
 import com.qht.blog2.BaseEventBus.EventBusUtil;
@@ -22,18 +24,22 @@ import com.qht.blog2.OtherActivity.orderdetail.data.OrderDetailEvent;
 import com.qht.blog2.OtherFragment.home.data.CompanySingleton;
 import com.qht.blog2.OtherFragment.home.data.OrderSave2Litepal;
 import com.qht.blog2.R;
+import com.qht.blog2.Util.ConstantUtil;
 import com.qht.blog2.Util.DialogUtil;
 import com.qht.blog2.Util.PhoneUtil;
 import com.qht.blog2.Util.TextUtil;
 import com.qht.blog2.Util.ToastUtil;
 import com.qht.blog2.Util.UrlUtil;
 import com.qht.blog2.View.EmptyViewLayout;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import io.github.xudaojie.qrcodelib.CaptureActivity;
 import okhttp3.Call;
 import okhttp3.Request;
 
@@ -61,6 +67,7 @@ public class FragmentFrist extends BaseFragment {
     @BindView(R.id.emptyView)
     EmptyViewLayout emptyView;
 
+
     private Activity mActivity;
     /**
      * 设置根布局资源id
@@ -87,6 +94,8 @@ public class FragmentFrist extends BaseFragment {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.scan:
+                Intent intent = new Intent(mActivity, CaptureActivity.class);
+                startActivityForResult(intent, ConstantUtil.REQUEST_QR_CODE);
                 break;
             case R.id.arrow:
                 PhoneUtil.hideInputWindow(mActivity,view);
@@ -153,6 +162,22 @@ public class FragmentFrist extends BaseFragment {
         });
     }
 
+    /**
+     * http://blog.csdn.net/ruancoder/article/details/53490500
+     * 浅析Fragment中startActivityForResult()与getActivity().startActivityForResult()的异同
+     */
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        /** 二维码扫描 */
+        if (resultCode == mActivity.RESULT_OK
+                && requestCode == ConstantUtil.REQUEST_QR_CODE
+                && data != null) {
+            String result = data.getStringExtra("result");
+            //正则匹配数字
+            kuaidinum.setText(result);
+        }
+    }
 
     @Override
     public void onAttach(Activity activity) {
