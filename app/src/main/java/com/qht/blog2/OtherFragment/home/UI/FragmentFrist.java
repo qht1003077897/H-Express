@@ -27,6 +27,7 @@ import com.qht.blog2.R;
 import com.qht.blog2.Util.ConstantUtil;
 import com.qht.blog2.Util.DialogUtil;
 import com.qht.blog2.Util.PhoneUtil;
+import com.qht.blog2.Util.RegexUtil;
 import com.qht.blog2.Util.TextUtil;
 import com.qht.blog2.Util.ToastUtil;
 import com.qht.blog2.Util.UrlUtil;
@@ -175,7 +176,10 @@ public class FragmentFrist extends BaseFragment {
                 && data != null) {
             String result = data.getStringExtra("result");
             //正则匹配数字
-            kuaidinum.setText(result);
+            if(RegexUtil.matchNum(result)){
+                kuaidinum.setText(result);
+            }
+
         }
     }
 
