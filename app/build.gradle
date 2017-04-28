@@ -45,6 +45,6 @@ dependencies {
     compile 'com.baoyz.pullrefreshlayout:library:1.2.0'  //recyclerview 下拉刷新 https://github.com/baoyongzhang/android-PullRefreshLayout
     compile 'com.github.bumptech.glide:glide:3.7.0' // Glide  图片加载 https://github.com/bumptech/glide
     compile 'jp.wasabeef:glide-transformations:2.0.0' //配合Glide 使用的独立的图片处理库(包含圆角模糊等)
-    debugCompile 'com.amitshekhar.android:debug-db:1.0.0' // 数据库调试福利 https://github.com/amitshekhariitbhu/Android-Debug-Database
+    debugCompile 'com.amitshekhar.android:debug-db:1.0.0' // 数据库调试福利 (debug 下生效) https://github.com/amitshekhariitbhu/Android-Debug-Database
     compile 'com.github.XuDaojie:QRCode-Android:v0.4.2' // 轻量的二维码扫描 https://github.com/XuDaojie/QRCode-Android
 }
