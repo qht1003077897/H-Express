@@ -221,7 +221,7 @@ public class DragLayout extends FrameLayout {
         width = vgLeft.getMeasuredWidth();
         height = vgLeft.getMeasuredHeight();
         //可以水平拖拽滑动的距离 一共为屏幕宽度的80%
-        range = (int) (width * 0.8f);
+        range = (int) (width * 0.7f);
     }
 
     /**

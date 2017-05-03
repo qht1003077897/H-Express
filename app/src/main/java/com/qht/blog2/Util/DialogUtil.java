@@ -5,6 +5,8 @@ import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
+
 import com.qht.blog2.R;
 import com.qht.blog2.View.MyProgressDialog;
 
@@ -28,6 +30,23 @@ public class DialogUtil {
         builder.setNegativeButton("取消", listenerCancel);
         builder.create().show();
     }
+
+
+    /**
+     *纯文本显示对话框
+     */
+    public static void showAlertDialogText(Context context, String title,String text) {
+        LayoutInflater factory = LayoutInflater.from(context);//提示框
+        final View view = factory.inflate(R.layout.activity_about_licensedialog, null);
+        final TextView tv=(TextView)view.findViewById(R.id.tv_activity_about_licenses_dialog);
+        tv.setText(text);
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(context);
+        builder.setTitle(title);
+        builder.setView(view);
+        builder.setPositiveButton("确定", null);
+        builder.create().show();
+    }
+
     /**
      *可编辑对话框
      */

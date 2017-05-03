@@ -11,8 +11,8 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.FLASHLIGHT"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.CALL_PHONE"/>
 
@@ -44,14 +44,18 @@
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
+
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
+
                 <data android:scheme="tencent1106047893"/>
             </intent-filter>
         </activity>
         <activity android:name=".OtherActivity.setting.UI.SettingActivity"/>
         <activity android:name=".OtherActivity.day2night_switchmode.SwitchModeActivity"/>
         <activity android:name="io.github.xudaojie.qrcodelib.CaptureActivity"/>
+        <activity android:name=".OtherActivity.about.AboutActivity">
+        </activity>
     </application>
 
 </manifest>

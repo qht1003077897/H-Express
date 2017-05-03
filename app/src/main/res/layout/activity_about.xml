@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.qht.blog2.OtherActivity.about.AboutActivity">
+
+    <include layout="@layout/toolbar_layout"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="About"
+                android:layout_weight="1"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="20dp"
+                android:textSize="18sp"
+                android:textColor="@color/blue_daoqi"/>
+            <!--.............................................-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Description"
+                android:textSize="18sp"
+                android:layout_weight="1"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="本APP开发过程中配套有系列博客，和踩坑记录，详见博客地址"
+                android:paddingRight="@dimen/dp_10"
+                android:layout_weight="1"
+                android:textSize="14sp"
+                android:layout_marginLeft="15dp"/>
+            <!--.............................................-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Version"
+                    android:textSize="18sp"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/black"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1.0 debug"
+                android:textSize="14sp"
+                android:layout_weight="1"
+                android:layout_marginLeft="15dp"/>
+
+            <View android:layout_width="match_parent"
+                  android:layout_height="1dp"
+                  android:layout_marginLeft="15dp"
+                  android:layout_marginTop="15dp"
+                android:background="@color/line_3"/>
+            <!--.............................................-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Rate"
+                android:textSize="18sp"
+                android:layout_weight="1"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="如果你喜欢H-Express ，请在github上给个star，谢谢~~ \n如果您在使用过程中有任何问题，欢迎给我提Issue"
+                android:layout_weight="1"
+                android:textSize="14sp"
+                android:layout_marginLeft="15dp"/>
+
+            <View android:layout_width="match_parent"
+                  android:layout_height="1dp"
+                  android:layout_marginLeft="15dp"
+                  android:layout_marginTop="15dp"
+                  android:background="@color/line_3"/>
+            <!--.............................................-->
+            <TextView
+                android:id="@+id/tv_activity_about_licenses"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Licenses"
+                android:textSize="18sp"
+                android:layout_weight="1"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/blue_daoqi"/>
+
+
+            <View android:layout_width="match_parent"
+                  android:layout_height="1dp"
+                  android:layout_marginLeft="15dp"
+                  android:layout_marginTop="20dp"
+                  android:background="@color/line_3"/>
+            <!--.............................................-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thanks"
+                android:textSize="18sp"
+                android:layout_weight="1"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/blue_daoqi"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="快递100"
+                android:layout_weight="1"
+                android:textSize="15sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="快递助手"
+                android:layout_weight="1"
+                android:textSize="15sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"/>
+
+            <View android:layout_width="match_parent"
+                  android:layout_height="1dp"
+                  android:layout_marginLeft="15dp"
+                  android:layout_marginTop="20dp"
+                  android:background="@color/line_3"/>
+            <!--.............................................-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Source Code"
+                android:textSize="18sp"
+                android:layout_weight="1"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/blue_daoqi"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="https://github.com/qht1003077897/H-Express"
+                android:textIsSelectable="true"
+                android:layout_weight="1"
+                android:textSize="14sp"
+                android:layout_marginLeft="15dp"/>
+
+            <View android:layout_width="match_parent"
+                  android:layout_height="1dp"
+                  android:layout_marginLeft="15dp"
+                  android:layout_marginTop="20dp"
+                  android:background="@color/line_3"/>
+
+            <!--.............................................-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Blog"
+                android:textSize="18sp"
+                android:layout_weight="1"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/blue_daoqi"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="https://qht1003077897.github.io/"
+                android:textIsSelectable="true"
+                android:layout_weight="1"
+                android:textSize="14sp"
+                android:layout_marginLeft="15dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="http://blog.csdn.net/u012534831"
+                android:textIsSelectable="true"
+                android:layout_weight="1"
+                android:textSize="14sp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="15dp"/>
+
+            <View android:layout_width="match_parent"
+                  android:layout_height="1dp"
+                  android:layout_marginLeft="15dp"
+                  android:layout_marginTop="20dp"
+                  android:background="@color/line_3"/>
+            <!--.............................................-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Friends"
+                android:textSize="18sp"
+                android:layout_weight="1"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/blue_daoqi"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="QQ:1003077897"
+                android:textIsSelectable="true"
+                android:layout_weight="1"
+                android:textSize="14sp"
+                android:layout_marginLeft="15dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="微信:q2mAor"
+                android:textIsSelectable="true"
+                android:layout_weight="1"
+                android:textSize="14sp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="15dp"/>
+
+            <View android:layout_width="match_parent"
+                  android:layout_height="1dp"
+                  android:layout_marginLeft="15dp"
+                  android:layout_marginTop="20dp"
+                  android:background="@color/line_3"/>
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

@@ -105,30 +105,6 @@
                 android:textSize="12sp" />
         </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/ll_bottom_rl_four"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.0" >
-
-            <ImageView
-                android:id="@+id/ll_bottom_iv_four"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:contentDescription="@null" />
-
-
-            <TextView
-                android:id="@+id/ll_bottom_tv_four"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/ll_bottom_iv_four"
-                android:layout_centerHorizontal="true"
-                android:text="@string/me"
-                android:textColor="@color/black"
-                android:textSize="12sp" />
-        </RelativeLayout>
     </LinearLayout>
     <!-- 内容部分， fragment切换 -->
 

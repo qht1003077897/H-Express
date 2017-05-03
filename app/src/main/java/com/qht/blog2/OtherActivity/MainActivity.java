@@ -20,6 +20,7 @@ import com.qht.blog2.BaseActivity.ToolBarActivity;
 import com.qht.blog2.BaseAdapter.BaseListView.ViewCreator;
 import com.qht.blog2.BaseBean.SlideLeftBean;
 import com.qht.blog2.BaseEventBus.EventBusUtil;
+import com.qht.blog2.OtherActivity.about.AboutActivity;
 import com.qht.blog2.OtherActivity.setting.UI.SettingActivity;
 import com.qht.blog2.OtherActivity.slide_Left.adapter.Side_LeftAdapter;
 import com.qht.blog2.OtherActivity.slide_Left.data.Left_itemdata;
@@ -28,12 +29,13 @@ import com.qht.blog2.OtherActivity.slide_Left.qqlogin.QQLogin;
 import com.qht.blog2.OtherActivity.slide_Left.weather.Weather;
 import com.qht.blog2.OtherActivity.slide_Left.weather.weatherEvent;
 import com.qht.blog2.OtherFragment.home.UI.FragmentFrist;
-import com.qht.blog2.OtherFragment.me.UI.FragmentFour;
 import com.qht.blog2.OtherFragment.order.FragmentSecond;
 import com.qht.blog2.OtherFragment.order.event.OrderEvent;
 import com.qht.blog2.OtherFragment.send.FragmentThird;
 import com.qht.blog2.R;
+import com.qht.blog2.Util.DialogUtil;
 import com.qht.blog2.Util.LogUtil;
+import com.qht.blog2.Util.ResourceUtil;
 import com.qht.blog2.Util.SharePreferenceUtil;
 import com.qht.blog2.Util.TextUtil;
 import com.qht.blog2.View.CustomRelativeLayout;
@@ -68,18 +70,12 @@ public class MainActivity extends ToolBarActivity implements ViewCreator<SlideLe
     @BindView(R.id.ll_bottom_tv_three)
     TextView  llBottomTvThree;
 
-    @BindView(R.id.ll_bottom_iv_four)
-    ImageView      llBottomIvFour;
-    @BindView(R.id.ll_bottom_tv_four)
-    TextView       llBottomTvFour;
     @BindView(R.id.ll_bottom_rl_one)
     RelativeLayout llBottomRlOne;
     @BindView(R.id.ll_bottom_rl_two)
     RelativeLayout llBottomRlTwo;
     @BindView(R.id.ll_bottom_rl_three)
     RelativeLayout llBottomRlThree;
-    @BindView(R.id.ll_bottom_rl_four)
-    RelativeLayout llBottomRlFour;
     @BindView(R.id.toolbar_subtitle)
     TextView       toolbarSubtitle;
     @BindView(R.id.ll_bottom_tab)
@@ -156,12 +152,16 @@ public class MainActivity extends ToolBarActivity implements ViewCreator<SlideLe
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 switch (i) {
                     case 0:
+                        //意见反馈
+                        DialogUtil.showAlertDialogText(MainActivity.this, "意见反馈", ResourceUtil.getString(R.string.suggestback));
                         break;
                     case 1:
                         //分享
                         login.share();
                         break;
                     case 2:
+                        //关于
+                        startActivity(new Intent(MainActivity.this,AboutActivity.class));
                         break;
                     case 3:
                         //退出登录
@@ -259,9 +259,6 @@ public class MainActivity extends ToolBarActivity implements ViewCreator<SlideLe
             llbottomTvTwo.setTextColor(getResources().getColor(
                     R.color.bottom_normal));
 
-            llBottomIvFour.setImageResource(R.mipmap.bottom_me_normal);
-            llBottomTvFour.setTextColor(getResources().getColor(
-                    R.color.bottom_normal));
 
         }
     }
@@ -285,9 +282,6 @@ public class MainActivity extends ToolBarActivity implements ViewCreator<SlideLe
         llBottomIvTwo.setImageResource(R.mipmap.bottom_bill_normal);
         llbottomTvTwo.setTextColor(getResources().getColor(
                 R.color.bottom_normal));
-        llBottomIvFour.setImageResource(R.mipmap.bottom_me_normal);
-        llBottomTvFour.setTextColor(getResources().getColor(
-                R.color.bottom_normal));
     }
 
     /**
@@ -308,9 +302,6 @@ public class MainActivity extends ToolBarActivity implements ViewCreator<SlideLe
         llBottomIvTwo.setImageResource(R.mipmap.bottom_bill_click);
         llbottomTvTwo.setTextColor(getResources().getColor(
                 R.color.bottom_click));
-        llBottomIvFour.setImageResource(R.mipmap.bottom_me_normal);
-        llBottomTvFour.setTextColor(getResources().getColor(
-                R.color.bottom_normal));
 
     }
 
@@ -332,33 +323,8 @@ public class MainActivity extends ToolBarActivity implements ViewCreator<SlideLe
         llBottomIvTwo.setImageResource(R.mipmap.bottom_bill_normal);
         llbottomTvTwo.setTextColor(getResources().getColor(
                 R.color.bottom_normal));
-        llBottomIvFour.setImageResource(R.mipmap.bottom_me_normal);
-        llBottomTvFour.setTextColor(getResources().getColor(
-                R.color.bottom_normal));
     }
 
-    /**
-     * 点击第四个tab
-     */
-    private void clickTab4Layout() {
-        if (fourFragment == null) {
-            fourFragment = new FragmentFour();
-        }
-        addOrShowFragment(getSupportFragmentManager().beginTransaction(), fourFragment, "4");
-
-        llBottomIvOne.setImageResource(R.mipmap.bottom_home_normal);
-        llBottomTvOne.setTextColor(getResources()
-                .getColor(R.color.bottom_normal));
-        llBottomIvThree.setImageResource(R.mipmap.bottom_notice_normal);
-        llBottomTvThree.setTextColor(getResources().getColor(
-                R.color.bottom_normal));
-        llBottomIvTwo.setImageResource(R.mipmap.bottom_bill_normal);
-        llbottomTvTwo.setTextColor(getResources().getColor(
-                R.color.bottom_normal));
-        llBottomIvFour.setImageResource(R.mipmap.bottom_me_click);
-        llBottomTvFour.setTextColor(getResources().getColor(
-                R.color.bottom_click));
-    }
 
     /**
      * 添加或者显示碎片
@@ -407,7 +373,7 @@ public class MainActivity extends ToolBarActivity implements ViewCreator<SlideLe
     }
 
 
-    @OnClick({R.id.ll_bottom_rl_one, R.id.ll_bottom_rl_two, R.id.ll_bottom_rl_three, R.id.ll_bottom_rl_four,
+    @OnClick({R.id.ll_bottom_rl_one, R.id.ll_bottom_rl_two, R.id.ll_bottom_rl_three,
             R.id.toolbar_subtitle, R.id.toolbar_sub2title, R.id.left_name,R.id.ll_left_setting, R.id.ll_left_night})
     public void onClick(View view) {
         switch (view.getId()) {
@@ -432,13 +398,7 @@ public class MainActivity extends ToolBarActivity implements ViewCreator<SlideLe
                 reViewStatus("3");
                 clickTab3Layout();
                 break;
-            case R.id.ll_bottom_rl_four:
-                getSubTitle().setVisibility(View.GONE);
-                getSub2Title().setVisibility(View.GONE);
-                getToolbarTitle().setText("个人中心");
-                reViewStatus("4");
-                clickTab4Layout();
-                break;
+
             case R.id.toolbar_subtitle:
                 if ("编辑".equals(getSubTitle().getText().toString())) {
                     getSubTitle().setText("取消");
