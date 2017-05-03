@@ -1,3 +1,6 @@
+# H-Express Android App
+
+
 download这个项目，你可以学到：
 
  1. EventBus
@@ -11,7 +14,37 @@ download这个项目，你可以学到：
  9. RecyclerView使用
  10. BaseActivity、BaseFragment、BaseAdapter
  11. LitePal数据库使用
- 
+
+
+H-Express is an express delivery tracking app , built on OkHttp、EventBus、LitePal、Glide and ZXing.
+H-Express是一款快递追踪 APP,基于 OkHttp、EventBus、LitePal、Glide、RecyclerView、ZXing而构建。
+
+
+Clone the Repository:
+克隆仓库：
+
+```
+git clone https://github.com/qht1003077897/H-Express.git
+```
+
+
+Suggestion: It is better for you to update your Android Studio to version 2.0 when you open this project.
+建议：运行此项目最好使用 Android Studio 2.0 以上版本。
+
+### To-dos
+This project is still in progress. Here are the some features that I will finish in the future.
+这个项目还在开发当中，下面的条目是我以后的完善计划。
+
+- [x] 待定.
+
+### Help Me Improve This App
+### 帮助我完善这个 APP
+
++ As you can see at the screenshots, some images in H-Express app are not suitable. So If you want to improve the translation of H-Express, please email me.
+
+
++ 从截图中可以看到，H-Express 并不是很完善，因此如果你有更好的建议或者想帮助我一起完善 H-Express，请 Email 我。
+
 ----------
 
 
@@ -31,18 +64,6 @@ download这个项目，你可以学到：
 
 
 **-------------------------------------------------------------------------------------------------------------------------**
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 2017-04-27
