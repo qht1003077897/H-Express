@@ -1,3 +1,20 @@
+download这个项目，你可以学到：
+
+ 1. EventBus
+ 2. OkHttp
+ 3. butterknife
+ 4. Glide图片加载
+ 5. ZXing二维码扫描
+ 6. 白天/夜间模式切换
+ 7. 第三方QQ登录、分享
+ 8. 安卓爬虫
+ 9. RecyclerView使用
+ 10. BaseActivity、BaseFragment、BaseAdapter
+ 11. LitePal数据库使用
+ 
+----------
+
+
 ![这里写图片描述](http://img.blog.csdn.net/20170427215859131?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjUzNDgzMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)![这里写图片描述](http://img.blog.csdn.net/20170427215910952?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjUzNDgzMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 
