@@ -9,6 +9,7 @@
     android:layout_height="?attr/actionBarSize"
     android:background="@color/colorPrimary"
     android:paddingTop="22dp"
+    app:layout_scrollFlags="scroll|enterAlways"
     app:popupTheme="@style/MenuStyle">
     <!--自定义toolbar的title 和subtitle -->
 

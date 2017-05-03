@@ -5,7 +5,7 @@
     <!--bottom-->
     <string name="home">首页</string>
     <string name="order">订单</string>
-    <string name="notice">消息</string>
+    <string name="send">寄快递</string>
     <string name="me">我的</string>
 
 
@@ -36,6 +36,12 @@
         <item>已签收</item>
         <item>未签收</item>
     </array>
+
+    <array name="FragmentThree_viewpage_titles">
+        <item>网点</item>
+        <item>订单</item>
+        <item>客服</item>
+    </array>
     <string name="ordernum">快递单号：</string>
 
 
@@ -43,4 +49,7 @@
     <string name="clear_imagecache">清除图片缓存</string>
     <string name="clear_ordercache">清除订单缓存</string>
     <string name="cachesize">0.0M</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

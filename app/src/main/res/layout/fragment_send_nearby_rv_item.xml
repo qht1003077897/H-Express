@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/rl_fragment_send_nearby"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/whitebg">
+
+
+    <ImageView
+        android:id="@+id/iv_fragment_send_nearby_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:src="@mipmap/bottom_home_click"/>
+
+    <TextView
+        android:id="@+id/tv_fragment_send_nearby_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/iv_fragment_send_nearby_image"
+        android:layout_marginTop="14dp"
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/black"
+        android:text="中通mazida "/>
+
+    <TextView
+        android:id="@+id/tv_fragment_send_nearby_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tv_fragment_send_nearby_title"
+        android:layout_alignRight="@+id/ll_fragment_send_nearby_arrow"
+        android:layout_marginRight="15dp"
+        android:textColor="@color/red"
+        />
+
+    <TextView
+        android:id="@+id/tv_fragment_send_nearby_brand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/iv_fragment_send_nearby_image"
+        android:layout_below="@+id/tv_fragment_send_nearby_title"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="@dimen/dp_4"
+        android:textColor="@color/black"
+        android:text="圆通"/>
+    <TextView
+        android:id="@+id/tv_fragment_send_nearby_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/iv_fragment_send_nearby_image"
+        android:layout_below="@+id/tv_fragment_send_nearby_brand"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="@dimen/dp_4"
+        android:textColor="@color/black"
+        android:text=""/>
+    <TextView
+        android:id="@+id/tv_fragment_send_nearby_area"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/iv_fragment_send_nearby_image"
+        android:layout_below="@+id/tv_fragment_send_nearby_phone"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="@dimen/dp_4"
+        android:textColor="@color/black"
+        android:text=""/>
+
+
+<LinearLayout
+    android:id="@+id/ll_fragment_send_nearby_arrow"
+    android:layout_width="60dp"
+    android:layout_height="wrap_content"
+    android:layout_centerVertical="true"
+    android:layout_marginRight="10dp"
+    android:gravity="center"
+    android:layout_alignParentRight="true">
+    <ImageView
+        android:id="@+id/iv_fragment_send_nearby_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/phone"/>
+    </LinearLayout>
+
+<View
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:layout_alignParentBottom="true"
+    android:layout_toRightOf="@+id/iv_fragment_send_nearby_image"
+    android:background="@color/line_3">
+
+</View>
+</RelativeLayout>

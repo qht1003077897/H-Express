@@ -21,9 +21,9 @@ import com.qht.blog2.Net.MyStringCallBack;
 import com.qht.blog2.Net.Ok_Request;
 import com.qht.blog2.OtherActivity.orderdetail.UI.OrderDetailActivity;
 import com.qht.blog2.OtherActivity.orderdetail.data.OrderDetailEvent;
-import com.qht.blog2.OtherFragment.home.data.CompanySingleton;
 import com.qht.blog2.OtherFragment.home.data.OrderSave2Litepal;
 import com.qht.blog2.R;
+import com.qht.blog2.Util.CompanyUtil;
 import com.qht.blog2.Util.ConstantUtil;
 import com.qht.blog2.Util.DialogUtil;
 import com.qht.blog2.Util.PhoneUtil;
@@ -115,11 +115,11 @@ public class FragmentFrist extends BaseFragment {
             @Override
             public void onOptionsSelect(int options1, int option2, int options3 ,View v) {
                 //返回的分别是三个级别的选中位置
-                String tx= CompanySingleton.getInstance().Companylist.get(options1).toString();
+                String tx= CompanyUtil.getInstance().Companylist.get(options1).toString();
                 kuaidicompany.setText(tx);
             }
         }).build();
-        pvOptions.setPicker(CompanySingleton.getInstance().Companylist);
+        pvOptions.setPicker(CompanyUtil.getInstance().Companylist);
         pvOptions.show();
     }
 
@@ -128,7 +128,7 @@ public class FragmentFrist extends BaseFragment {
             return;
         }
         HashMap<String, String> map = new HashMap<>();
-        map.put("type", CompanySingleton.getInstance().Companymap.get(kuaidicompany.getText().toString()));//参数
+        map.put("type", CompanyUtil.getInstance().Companymap.get(kuaidicompany.getText().toString()));//参数
         map.put("postid", kuaidinum.getText().toString());
         Ok_Request.getAsyncData(getActivity(), map, UrlUtil.GetKuaiDi, new MyStringCallBack() {
             /**

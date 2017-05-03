@@ -5,6 +5,9 @@ import android.support.v4.app.Fragment;
 import com.qht.blog2.OtherFragment.order.orderAll.UI.FragmentOrder_ALL;
 import com.qht.blog2.OtherFragment.order.orderSigned.UI.FragmentOrder_Signed;
 import com.qht.blog2.OtherFragment.order.orderUnSign.UI.FragmentOrder_UnSign;
+import com.qht.blog2.OtherFragment.send.sendCompany.UI.FragmentSend_Company;
+import com.qht.blog2.OtherFragment.send.sendNearBy.UI.FragmentSend_NearBy;
+import com.qht.blog2.OtherFragment.send.sendReserve.UI.FragmentSend_Reserve;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +24,7 @@ public class FragmentFactory {
      *
      * @param position
      */
-    public static Fragment ShowFragment(int position) {
+    public static Fragment ShowOrderFragment(int position) {
 
          Fragment  currentFragment=null;
         switch (position){
@@ -37,6 +40,25 @@ public class FragmentFactory {
          default:
              break;
      }
+        return currentFragment;
+    }
+
+    public static Fragment ShowSendFragment(int position) {
+
+        Fragment  currentFragment=null;
+        switch (position){
+            case 0:
+                currentFragment=new FragmentSend_NearBy();
+                break;
+            case 1:
+                currentFragment=new FragmentSend_Company();
+                break;
+            case 2:
+                currentFragment=new FragmentSend_Reserve();
+                break;
+            default:
+                break;
+        }
         return currentFragment;
     }
 }

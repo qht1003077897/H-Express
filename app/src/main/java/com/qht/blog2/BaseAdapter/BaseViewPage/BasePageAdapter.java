@@ -5,23 +5,27 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.qht.blog2.BaseFragment.FragmentFactory;
-import com.qht.blog2.R;
 import com.qht.blog2.Util.ResourceUtil;
 
 /**
  * Created by QHT on 2017-04-11.
  */
    public class BasePageAdapter extends FragmentPagerAdapter {
-        String[] titles;
+        private String[] titles;
+        private String title;
 
-        public BasePageAdapter(FragmentManager fm) {
+        public BasePageAdapter(FragmentManager fm,int array,String title) {
             super(fm);
-            this.titles = ResourceUtil.getStringArray(R.array.FragmentTwo_viewpage_titles);
+            this.titles = ResourceUtil.getStringArray(array);
+            this.title  =title;
         }
 
         @Override
         public Fragment getItem(int position) {
-            return FragmentFactory.ShowFragment(position);
+            if(title.equals("FragmentSecond")){
+                return FragmentFactory.ShowOrderFragment(position);
+            }
+            return FragmentFactory.ShowSendFragment(position);
         }
 
         @Override

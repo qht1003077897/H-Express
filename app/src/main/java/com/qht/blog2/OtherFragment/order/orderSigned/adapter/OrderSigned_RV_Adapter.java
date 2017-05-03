@@ -9,6 +9,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
 import com.qht.blog2.BaseAdapter.BaseSlideRecycleView.ISlideHelper;
 import com.qht.blog2.BaseAdapter.BaseSlideRecycleView.holder.SlideViewHolder;
 import com.qht.blog2.BaseBean.OrderInfoLitePal;
@@ -39,6 +40,7 @@ public class OrderSigned_RV_Adapter extends BaseQuickAdapter<OrderInfoLitePal,Or
                 LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_order_signed_rv_item, parent, false));
         //add holder
         mISlideHelper.add(oneSlideViewHolder);
+        oneSlideViewHolder.setAdapter(this);
         return oneSlideViewHolder;
     }
 
@@ -87,7 +89,10 @@ public class OrderSigned_RV_Adapter extends BaseQuickAdapter<OrderInfoLitePal,Or
             mContentRl = itemView.findViewById(R.id.rl_fragment_order_signed);
             image = (ImageView)itemView.findViewById(R.id.iv_fragment_order_signed_image);
         }
-
+        @Override
+        protected BaseViewHolder setAdapter(BaseQuickAdapter adapter) {
+            return super.setAdapter(adapter);
+        }
         public void bind() {
             //slide offset
             setOffset(50);

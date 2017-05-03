@@ -37,6 +37,7 @@ public class FragmentSecond extends BaseFragment {
      *保存viewpage上次位置，为了切换下一个页面时将"编辑"和item右移还原到正常状态
      */
     private int lastViewPageIndex;
+    private String TAG= "FragmentSecond";
 
     @Override
     public int getContentViewId() {
@@ -54,7 +55,7 @@ public class FragmentSecond extends BaseFragment {
     }
 
     private void initViewPage() {
-        BasePageAdapter adapter = new BasePageAdapter(getFragmentManager());
+        BasePageAdapter adapter = new BasePageAdapter(getFragmentManager(),R.array.FragmentTwo_viewpage_titles,TAG);
         viewPager.setAdapter(adapter);// 设置adapter
         indicator.setViewPager(viewPager);// 绑定indicator
         setTabPagerIndicator();

@@ -14,7 +14,7 @@ import com.qht.blog2.View.MyProgressDialog;
 public class DialogUtil {
 
 
-    static MyProgressDialog showProgressDialog;
+    public static MyProgressDialog showProgressDialog;
     /**
      *普通提示对话框
      */
@@ -29,7 +29,6 @@ public class DialogUtil {
         builder.create().show();
     }
     /**
-<<<<<<< HEAD
      *可编辑对话框
      */
     public static void showAlertDialogEdit(Context context, String title,  DialogInterface.OnClickListener listenerSure,
@@ -48,9 +47,12 @@ public class DialogUtil {
 
     /**
      @param context
-     无参默认点击外部不可取消
+      无参默认点击外部不可取消
      */
     public static void showProgressDialog(Context context){
+        if(null==context){
+            return;
+        }
         if(null==showProgressDialog){
             showProgressDialog =new MyProgressDialog(context);
         }
@@ -64,6 +66,9 @@ public class DialogUtil {
      @param isCancel 点击返回键是否取消
      */
     public static void showProgressDialog(Context context,boolean isCancel){
+        if(null==context){
+            return;
+        }
         try {
             if(null==showProgressDialog){
                 showProgressDialog =new MyProgressDialog(context);
@@ -73,9 +78,7 @@ public class DialogUtil {
                 showProgressDialog.show();
             }
         }catch (Exception e){
-
         }
-
     }
 
     public static void hideProgressDialog(){

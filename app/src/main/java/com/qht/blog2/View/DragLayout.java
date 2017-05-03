@@ -240,12 +240,15 @@ public class DragLayout extends FrameLayout {
 
     /**
      * 拦截触摸事件
+     *
+     * 返回 false ，意味着不交给dragHelper 处理手势滑动事件，则滑动不显示侧边栏。
      * @param ev
      * @return
      */
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        return dragHelper.shouldInterceptTouchEvent(ev) && gestureDetector.onTouchEvent(ev);
+        return false;
+//        return dragHelper.shouldInterceptTouchEvent(ev) && gestureDetector.onTouchEvent(ev);
     }
 
     /**

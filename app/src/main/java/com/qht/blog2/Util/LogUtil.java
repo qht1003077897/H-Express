@@ -5,7 +5,7 @@ import android.util.Log;
 public class LogUtil {
 	static boolean deBug=true;
     static String Msg;
-    static String Tag="APPFrame";
+    static String Tag="H快递";
 
 	/*
 	 *在Application中进行初始化，设置debug的值

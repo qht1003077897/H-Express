@@ -100,7 +100,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/ll_bottom_iv_three"
                 android:layout_centerHorizontal="true"
-                android:text="@string/notice"
+                android:text="@string/send"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
         </RelativeLayout>

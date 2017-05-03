@@ -29,9 +29,9 @@ import com.qht.blog2.OtherActivity.slide_Left.weather.Weather;
 import com.qht.blog2.OtherActivity.slide_Left.weather.weatherEvent;
 import com.qht.blog2.OtherFragment.home.UI.FragmentFrist;
 import com.qht.blog2.OtherFragment.me.UI.FragmentFour;
-import com.qht.blog2.OtherFragment.notice.UI.FragmentThird;
 import com.qht.blog2.OtherFragment.order.FragmentSecond;
 import com.qht.blog2.OtherFragment.order.event.OrderEvent;
+import com.qht.blog2.OtherFragment.send.FragmentThird;
 import com.qht.blog2.R;
 import com.qht.blog2.Util.LogUtil;
 import com.qht.blog2.Util.SharePreferenceUtil;
@@ -270,6 +270,7 @@ public class MainActivity extends ToolBarActivity implements ViewCreator<SlideLe
      * 点击第一个tab
      */
     private void clickTab1Layout() {
+
         if (oneFragment == null) {
             oneFragment = new FragmentFrist();
         }
@@ -343,7 +344,6 @@ public class MainActivity extends ToolBarActivity implements ViewCreator<SlideLe
         if (fourFragment == null) {
             fourFragment = new FragmentFour();
         }
-
         addOrShowFragment(getSupportFragmentManager().beginTransaction(), fourFragment, "4");
 
         llBottomIvOne.setImageResource(R.mipmap.bottom_home_normal);
@@ -368,6 +368,7 @@ public class MainActivity extends ToolBarActivity implements ViewCreator<SlideLe
      */
     private void addOrShowFragment(FragmentTransaction transaction,
                                    Fragment fragment, String tag) {
+
         if (currentFragment == fragment)
             return;
         if (!fragment.isAdded()) { // 如果当前fragment未被添加，则添加到Fragment管理器中
@@ -419,7 +420,7 @@ public class MainActivity extends ToolBarActivity implements ViewCreator<SlideLe
                 break;
             case R.id.ll_bottom_rl_two:
                 getSubTitle().setVisibility(View.VISIBLE);
-                getToolbarTitle().setText("订单状态");
+                getToolbarTitle().setText("订单");
                 getSubTitle().setText("编辑");
                 reViewStatus("2");
                 clickTab2Layout();
@@ -427,14 +428,14 @@ public class MainActivity extends ToolBarActivity implements ViewCreator<SlideLe
             case R.id.ll_bottom_rl_three:
                 getSubTitle().setVisibility(View.GONE);
                 getSub2Title().setVisibility(View.GONE);
-                getToolbarTitle().setText("消息");
+                getToolbarTitle().setText("寄快递");
                 reViewStatus("3");
                 clickTab3Layout();
                 break;
             case R.id.ll_bottom_rl_four:
                 getSubTitle().setVisibility(View.GONE);
                 getSub2Title().setVisibility(View.GONE);
-                getToolbarTitle().setText("我的");
+                getToolbarTitle().setText("个人中心");
                 reViewStatus("4");
                 clickTab4Layout();
                 break;
