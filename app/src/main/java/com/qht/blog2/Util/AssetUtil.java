@@ -12,7 +12,9 @@ import java.io.InputStreamReader;
  */
 
     public class AssetUtil {
-
+    /**
+     * Created by QHT on 2017-05-02.
+     */
 
         public String getJson(Context context, String fileName) {
 
