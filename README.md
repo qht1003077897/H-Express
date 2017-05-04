@@ -167,7 +167,7 @@ git clone https://github.com/qht1003077897/H-Express.git
 
      MIT License
      
-    Copyright (c) [2016-2018] [qht1003077897]
+    Copyright (c) 2016-2018  qht1003077897
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
