@@ -33,11 +33,13 @@ public class UrlUtil {
      *  时效查询 baseurl ,通过爬取页面获得
      */
     public static String SxQueryUrl="http://www.kuaidihelp.com/sxchaxun/getshixiao?com=";
-
+    public static String testURL="http://www.kuaidihelp.com/sxchaxun/getshixiao?com=";
     /**
      * k780  天气接口
      */
     public static final String WEATHERADD = "http://api.k780.com:88/?app=weather.today&weaid="
             + "101110101"
             + "&appkey=15384&sign=e776696f34c04ebada95e0bdf14cbc7c&format=json";
+
+
 }
