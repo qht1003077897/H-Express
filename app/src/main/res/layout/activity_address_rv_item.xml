@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/rl_activity_address"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="@color/whitebg">
+
+    <TextView
+        android:id="@+id/tv_activity_address_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:text="祁宏涛"/>
+
+
+    <TextView
+        android:id="@+id/tv_activity_address_addr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_activity_address_name"
+        android:layout_marginTop="@dimen/dp_4"
+        android:text="打底裤的点卡数据的爱的"
+        android:textSize="14sp"
+        android:ellipsize="end"
+        android:layout_alignLeft="@+id/tv_activity_address_name"/>
+
+
+<LinearLayout
+    android:id="@+id/ll_activity_address_detail"
+    android:layout_width="60dp"
+    android:layout_height="wrap_content"
+    android:layout_centerVertical="true"
+    android:layout_marginRight="10dp"
+    android:gravity="center"
+    android:layout_alignParentRight="true">
+    <ImageView
+        android:id="@+id/iv_activity_address_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/activity_address_detail"/>
+    </LinearLayout>
+
+<View
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:layout_alignParentBottom="true"
+    android:background="@color/line_3"
+    android:layout_marginLeft="15dp">
+
+</View>
+</RelativeLayout>
