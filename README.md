@@ -1,5 +1,10 @@
 # H-Express Android App
 
+![这里写图片描述](http://img.blog.csdn.net/20170504170212518?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjUzNDgzMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
+
+----------
+
 
 download这个项目，你可以学到：
 
@@ -19,10 +24,8 @@ download这个项目，你可以学到：
 
 ----------
 
- - **H-Express** is an express delivery tracking app , built on
-   OkHttp、EventBus、LitePal、Glide and ZXing.
- - H-Express是一款快递追踪 APP,基于   
-   OkHttp、EventBus、LitePal、Glide、RecyclerView、ZXing而构建。
+ - **H-Express** is an express delivery tracking app , built on OkHttp、EventBus、LitePal、Glide and ZXing.
+ - H-Express 是一款快递追踪 APP，基于OkHttp、EventBus、LitePal、Glide、RecyclerView、ZXing而构建。
 
 
  - Clone the Repository: 
@@ -43,7 +46,10 @@ git clone https://github.com/qht1003077897/H-Express.git
    will finish in the future. 
  - 这个项目还在开发当中，下面的条目是我以后的完善计划。
  
-  [x] 待定.
+ √ 完成客服模块。
+ √ 加入网点地图模式。
+ √ 界面美化、按钮样式统一。
+ √ .....
 
 ### Help Me Improve This App
 
@@ -55,24 +61,33 @@ git clone https://github.com/qht1003077897/H-Express.git
 ----------
 
 
-![这里写图片描述](http://img.blog.csdn.net/20170427215859131?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjUzNDgzMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)![这里写图片描述](http://img.blog.csdn.net/20170427215910952?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjUzNDgzMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![这里写图片描述](http://img.blog.csdn.net/20170427215859131?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjUzNDgzMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)![这里写图片描述](http://img.blog.csdn.net/20170427220250668?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjUzNDgzMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 
 ----------
 
 
-![这里写图片描述](http://img.blog.csdn.net/20170427220250668?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjUzNDgzMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)![这里写图片描述](http://img.blog.csdn.net/20170427220301699?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjUzNDgzMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![这里写图片描述](http://img.blog.csdn.net/20170427220309106?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjUzNDgzMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)![这里写图片描述](http://img.blog.csdn.net/20170504170118094?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjUzNDgzMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 
 ----------
 
 
-![这里写图片描述](http://img.blog.csdn.net/20170427220309106?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjUzNDgzMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)![这里写图片描述](http://img.blog.csdn.net/20170427220423283?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjUzNDgzMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![这里写图片描述](http://img.blog.csdn.net/20170504170133439?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjUzNDgzMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)![这里写图片描述](http://img.blog.csdn.net/20170504170200690?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjUzNDgzMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
 
 
 **-------------------------------------------------------------------------------------------------------------------------**
 
+2017-05-03
+----------
 
+ 1. 完成“寄快递”部分功能（数据来自快递100 H5 解析，包括网点信息、时效天数）。
+ 2. 完成“添加常用地址”功能。
+ 3. 编写“关于”界面。
+
+ 
+----------
 2017-04-27
 ----------
 
