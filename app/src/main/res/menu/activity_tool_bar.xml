@@ -14,4 +14,10 @@
         android:title="@string/toorbar_scale"
         app:showAsAction="never"
         />
+    <item
+        android:id="@+id/action_item4"
+        android:icon="@mipmap/activity_address_add"
+        app:showAsAction="ifRoom"
+        android:visible="false"
+        />
 </menu>

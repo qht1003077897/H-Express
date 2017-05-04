@@ -19,11 +19,12 @@
     <application
         android:name=".Application.MyApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppNightTheme">
-        <activity android:name=".OtherActivity.MainActivity">
+        <activity android:name=".OtherActivity.MainActivity"
+                  android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -55,6 +56,10 @@
         <activity android:name=".OtherActivity.day2night_switchmode.SwitchModeActivity"/>
         <activity android:name="io.github.xudaojie.qrcodelib.CaptureActivity"/>
         <activity android:name=".OtherActivity.about.AboutActivity">
+        </activity>
+        <activity android:name=".OtherActivity.address.UI.Addressctivity">
+        </activity>
+        <activity android:name=".OtherActivity.address.UI.AddAdrActivity">
         </activity>
     </application>
 

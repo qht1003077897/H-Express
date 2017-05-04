@@ -85,7 +85,6 @@ public class OrderDetailActivity extends ToolBarActivity {
                                  ContentValues value0 = new ContentValues();
                                  value0.put("state", "5");
                                  DataSupport.updateAll(OrderInfoLitePal.class, value0, "nu = ?", tvActivityOrderdetailHeadNum.getText().toString());
-                                 List<OrderInfoLitePal> bean=  DataSupport.where("nu = ? ", tvActivityOrderdetailHeadNum.getText().toString()).find(OrderInfoLitePal.class);
                                  tvActivityOrderdetailHeadStatus.setText("未签收");
                                  break;
                              case 1://已经签收

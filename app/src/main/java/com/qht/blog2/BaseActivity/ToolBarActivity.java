@@ -1,5 +1,6 @@
 package com.qht.blog2.BaseActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -7,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.qht.blog2.OtherActivity.MainActivity;
 import com.qht.blog2.R;
 import com.qht.blog2.Util.ToastUtil;
 
@@ -59,15 +61,26 @@ public abstract class ToolBarActivity extends statusActivity {
         // TODO Auto-generated method stub
         switch (item.getItemId()) {
             case R.id.action_item1:
-                ToastUtil.showToastShort(getResources().getString(R.string.toorbar_backhome));
+                backhome();
                 break;
             case R.id.action_item3:
                 ToastUtil.showToastShort(getResources().getString(R.string.toorbar_scale));
+                scan();
                 break;
             default:
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    protected void backhome(){
+    //在MainActivity之上的activity会自动被清除
+    //符合栈的后进先出原则   singtask启动模式
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+    protected void scan(){
+
     }
     @Override
     protected void onStart() {

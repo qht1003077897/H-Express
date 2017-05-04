@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">H快递</string>
+    <string name="app_name">H-Express</string>
 
 
     <!--bottom-->
@@ -16,11 +16,11 @@
     <string name="loginout">退出</string>
     <string name="personqq">本人QQ:1003077897</string>
 
-    <string name="share_title">H快递开源中，欢迎star</string>
-    <string name="share_summary">个人项目，总结学习</string>
-    <string name="share_target_url">http://blog.csdn.net/u012534831/article/details/70670170</string>
-    <string name="share_image_url">http://q.qlogo.cn/qqapp/1106047893/3796D115B9C4A75D1D36585463B21299/100</string>
-    <string name="share_appname">H快递</string>
+    <string name="share_title">H-Express Open source</string>
+    <string name="share_summary">一款仿 快递100 的APP,点击即可查看源码,协议开源，欢迎 star</string>
+    <string name="share_target_url">https://github.com/qht1003077897/H-Express</string>
+    <string name="share_image_url">http://img.blog.csdn.net/20170504170212518?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjUzNDgzMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast</string>
+    <string name="share_appname">H-Express</string>
 
 
     <!--toorbar内容-->
@@ -46,8 +46,8 @@
 
 
     <!--setting-->
-    <string name="clear_imagecache">清除图片缓存</string>
-    <string name="clear_ordercache">清除订单缓存</string>
+    <string name="clear_imagecache">清除缓存</string>
+    <string name="commonaddress">常用地址</string>
     <string name="cachesize">0.0M</string>
 
 

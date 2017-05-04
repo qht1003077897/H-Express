@@ -7,9 +7,12 @@
 
 <!--版本2 OrderInfoLitePal增加isselect字段-->
     <!--版本3  OrderInfoLitePal增加time字段-->
-<version value="4"/>
+    <!--版本4  添加新表AddressBean-->
+    <!--版本5  AddressBean 添加ID-->
+<version value="6"/>
 
 <list>
     <mapping class="com.qht.blog2.BaseBean.OrderInfoLitePal"/>
+    <mapping class="com.qht.blog2.BaseBean.AddressBean"/>
 </list>
 </litepal>
