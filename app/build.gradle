@@ -47,5 +47,5 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:3.7.0'    // Glide  图片加载 https://github.com/bumptech/glide
     compile 'jp.wasabeef:glide-transformations:2.0.0'   //配合Glide 使用的独立的图片处理库(包含圆角模糊等)
     compile 'com.github.XuDaojie:QRCode-Android:v0.4.2'  // 轻量的二维码扫描 https://github.com/XuDaojie/QRCode-Android
-    compile 'org.jsoup:jsoup:1.10.2'  // jsoup Html解析工具，爬虫  http://jsoup.org/
+    compile 'org.jsoup:jsoup:1.10.2'  // jsoup Html解析工具爬虫  http://jsoup.org/
 }
