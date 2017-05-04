@@ -1,4 +1,4 @@
-package com.qht.blog2.OtherFragment.send.sendNearBy.adapter;
+package com.qht.blog2.OtherFragment.send.sendNetSite.adapter;
 
 import android.content.Context;
 import android.widget.ImageView;

@@ -5,9 +5,9 @@ import android.support.v4.app.Fragment;
 import com.qht.blog2.OtherFragment.order.orderAll.UI.FragmentOrder_ALL;
 import com.qht.blog2.OtherFragment.order.orderSigned.UI.FragmentOrder_Signed;
 import com.qht.blog2.OtherFragment.order.orderUnSign.UI.FragmentOrder_UnSign;
-import com.qht.blog2.OtherFragment.send.sendCompany.UI.FragmentSend_Company;
-import com.qht.blog2.OtherFragment.send.sendNearBy.UI.FragmentSend_NearBy;
-import com.qht.blog2.OtherFragment.send.sendReserve.UI.FragmentSend_Reserve;
+import com.qht.blog2.OtherFragment.send.sendOrder.UI.FragmentSend_Company;
+import com.qht.blog2.OtherFragment.send.sendNetSite.UI.FragmentSend_NearBy;
+import com.qht.blog2.OtherFragment.send.sendCustomerSer.UI.FragmentSend_Reserve;
 
 import java.util.ArrayList;
 import java.util.List;

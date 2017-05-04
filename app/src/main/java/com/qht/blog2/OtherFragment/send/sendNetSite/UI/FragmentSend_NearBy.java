@@ -1,4 +1,4 @@
-package com.qht.blog2.OtherFragment.send.sendNearBy.UI;
+package com.qht.blog2.OtherFragment.send.sendNetSite.UI;
 
 import android.Manifest;
 import android.app.Activity;
@@ -26,8 +26,8 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.qht.blog2.BaseBean.CityPickerBean;
 import com.qht.blog2.BaseBean.OrderNetSiteBean;
 import com.qht.blog2.BaseFragment.BaseFragment;
-import com.qht.blog2.OtherFragment.send.sendNearBy.adapter.Send_Nearby_Adapter;
-import com.qht.blog2.OtherFragment.send.sendNearBy.data.City2Url;
+import com.qht.blog2.OtherFragment.send.sendNetSite.adapter.Send_Nearby_Adapter;
+import com.qht.blog2.OtherFragment.send.sendNetSite.data.City2Url;
 import com.qht.blog2.R;
 import com.qht.blog2.Util.AssetUtil;
 import com.qht.blog2.Util.CompanyUtil;

@@ -2,7 +2,7 @@
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context="com.qht.blog2.OtherFragment.send.sendCompany.UI.FragmentSend_Company">
+             tools:context="com.qht.blog2.OtherFragment.send.sendOrder.UI.FragmentSend_Company">
 
 
 

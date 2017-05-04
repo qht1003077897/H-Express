@@ -448,7 +448,17 @@ public class MainActivity extends ToolBarActivity implements ViewCreator<SlideLe
 
         }
     }
-
+        /**
+        * 如果在 MainActivity 上返回首页，则不需要Intent ，而是切换到FirstFragment
+        * */
+         @Override
+         protected void backhome() {
+             getSubTitle().setVisibility(View.GONE);
+             getSub2Title().setVisibility(View.GONE);
+             getToolbarTitle().setText("查询");
+             reViewStatus("1");
+             clickTab1Layout();
+         }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

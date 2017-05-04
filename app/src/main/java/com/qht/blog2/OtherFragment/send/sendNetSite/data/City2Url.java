@@ -1,4 +1,4 @@
-package com.qht.blog2.OtherFragment.send.sendNearBy.data;
+package com.qht.blog2.OtherFragment.send.sendNetSite.data;
 
 /**
  * Created by QHT on 2017-05-02.
