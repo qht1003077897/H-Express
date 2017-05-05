@@ -1,6 +1,6 @@
 # H-Express Android App
 
-[![Platform](https://img.shields.io/badge/platform-Android-blue.svg)](https://github.com/marktony/ZhiHuDaily)![Release](https://img.shields.io/badge/debug-1.0.0-orange.svg)![Gradle](https://img.shields.io/badge/gradle-2.0.0-blue.svg)[![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg?style=plastic)]()
+![Platform](https://img.shields.io/badge/platform-Android-blue.svg)![Release](https://img.shields.io/badge/debug-1.0.0-orange.svg)![Gradle](https://img.shields.io/badge/gradle-2.0.0-blue.svg)[![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg?style=plastic)]()
 
 ![这里写图片描述](http://img.blog.csdn.net/20170504170212518?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjUzNDgzMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
