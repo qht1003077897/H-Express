@@ -15,6 +15,13 @@
     <uses-permission android:name="android.permission.FLASHLIGHT"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
 
     <application
         android:name=".Application.MyApplication"
@@ -23,8 +30,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppNightTheme">
-        <activity android:name=".OtherActivity.MainActivity"
-                  android:launchMode="singleTask">
+        <activity
+            android:name=".OtherActivity.MainActivity"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -55,12 +63,20 @@
         <activity android:name=".OtherActivity.setting.UI.SettingActivity"/>
         <activity android:name=".OtherActivity.day2night_switchmode.SwitchModeActivity"/>
         <activity android:name="io.github.xudaojie.qrcodelib.CaptureActivity"/>
-        <activity android:name=".OtherActivity.about.AboutActivity">
-        </activity>
-        <activity android:name=".OtherActivity.address.UI.Addressctivity">
-        </activity>
-        <activity android:name=".OtherActivity.address.UI.AddAdrActivity">
-        </activity>
+        <activity android:name=".OtherActivity.about.AboutActivity"/>
+        <activity android:name=".OtherActivity.address.UI.Addressctivity"/>
+        <activity android:name=".OtherActivity.address.UI.AddAdrActivity"/>
+
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="8D8c3SaFqRGhboWfLWmwwj5blC2mGpSc"/>
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote">
+        </service>
+
     </application>
 
 </manifest>

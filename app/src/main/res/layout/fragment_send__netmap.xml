@@ -1,0 +1,53 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context="com.qht.blog2.OtherFragment.send.sendNetMap.UI.FragmentSend_Company">
+
+    <LinearLayout
+        android:id="@+id/ll_fragment_send_start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@mipmap/fragment_nearby_site"
+            android:layout_gravity="center"/>
+
+        <EditText
+            android:id="@+id/et_fragment_send_netmap"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:layout_gravity="center"
+            android:hint="选择城市"/>
+
+        <ImageView
+            android:id="@+id/iv_fragment_send_netmaparrow"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@mipmap/arrow"
+            android:layout_gravity="center"/>
+        <Button
+            android:id="@+id/btn_fragment_send_netmap"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="搜索"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+    <com.baidu.mapapi.map.MapView
+        android:id="@+id/bmapView"
+        android:layout_width="fill_parent"
+        android:layout_below="@+id/ll_fragment_send_start"
+        android:layout_height="match_parent"
+        android:clickable="true" />
+
+</RelativeLayout>

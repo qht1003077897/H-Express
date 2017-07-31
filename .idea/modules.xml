@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/Blog2.iml" filepath="$PROJECT_DIR$/Blog2.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/tabpagerindictor/tabpagerindictor.iml" filepath="$PROJECT_DIR$/tabpagerindictor/tabpagerindictor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/timelinelibrary/timelinelibrary.iml" filepath="$PROJECT_DIR$/timelinelibrary/timelinelibrary.iml" />
     </modules>
   </component>
 </project>

@@ -7,8 +7,7 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.qht.blog2.BaseBean.OrderInfoDetailBean;
 import com.qht.blog2.OtherActivity.orderdetail.data.OrderSite;
 import com.qht.blog2.R;
-import com.qht.blog2.View.TimeLineMarkerView;
-
+import com.bt.timelinelibrary.TimeLineMarkerView;
 import java.util.List;
 
 /**

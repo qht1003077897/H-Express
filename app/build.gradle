@@ -22,14 +22,16 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile project(':tabpagerindictor')  //顶部Viewpage指示栏
-    compile files('libs/nineoldandroids-2.4.0.jar') //一个动画库
+    compile project(':tabpagerindictor')
+    //顶部Viewpage指示栏
+    compile files('libs/nineoldandroids-2.4.0.jar')
+    //一个动画库
     compile files('libs/open_sdk_r5788.jar')
     testCompile 'junit:junit:4.12'
-    compile('com.android.support:appcompat-v7:24.2.1')
-            { exclude module: 'support-v4' }
+    compile('com.android.support:appcompat-v7:24.2.1') { exclude module: 'support-v4' }
     apt('com.jakewharton:butterknife-compiler:8.5.1')
-    debugCompile 'com.amitshekhar.android:debug-db:1.0.0'   // 数据库调试福利 (debug 下生效) https://github.com/amitshekhariitbhu/Android-Debug-Database
+    debugCompile 'com.amitshekhar.android:debug-db:1.0.0'
+    // 数据库调试福利 (debug 下生效) https://github.com/amitshekhariitbhu/Android-Debug-Database
     compile 'com.android.support:support-v4:24.2.1'
     compile 'com.android.support:design:24.2.1'
     compile 'org.greenrobot:eventbus:3.0.0'
@@ -37,15 +39,28 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.5.1'
     compile 'com.squareup.okhttp3:logging-interceptor:3.6.0'
     compile 'com.google.code.gson:gson:2.6.2'
-    compile 'q.rorbin:badgeview:1.1.0'    //底部按钮红点  https://github.com/qstumn/BadgeView
+    compile 'q.rorbin:badgeview:1.1.0'
+    //底部按钮红点  https://github.com/qstumn/BadgeView
     compile 'com.android.support:recyclerview-v7:24.2.1'
-    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.14'    // RecycleViewBaseAdapter  https://github.com/CymChad/BaseRecyclerViewAdapterHelper
-    compile 'com.contrarywind:Android-PickerView:3.2.4'    //滚轮条件选择器 https://github.com/Bigkoo/Android-PickerView
-    compile 'com.nightonke:boommenu:2.0.9'    //Menu菜单   https://github.com/Nightonke/BoomMenu
-    compile 'org.litepal.android:core:1.5.1'   //数据库LitePal  https://github.com/LitePalFramework/LitePal
-    compile 'com.baoyz.pullrefreshlayout:library:1.2.0'    //recyclerview 下拉刷新 https://github.com/baoyongzhang/android-PullRefreshLayout
-    compile 'com.github.bumptech.glide:glide:3.7.0'    // Glide  图片加载 https://github.com/bumptech/glide
-    compile 'jp.wasabeef:glide-transformations:2.0.0'   //配合Glide 使用的独立的图片处理库(包含圆角模糊等)
-    compile 'com.github.XuDaojie:QRCode-Android:v0.4.2'  // 轻量的二维码扫描 https://github.com/XuDaojie/QRCode-Android
-    compile 'org.jsoup:jsoup:1.10.2'  // jsoup Html解析工具爬虫  http://jsoup.org/
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.14'
+    // RecycleViewBaseAdapter  https://github.com/CymChad/BaseRecyclerViewAdapterHelper
+    compile 'com.contrarywind:Android-PickerView:3.2.4'
+    //滚轮条件选择器 https://github.com/Bigkoo/Android-PickerView
+    compile 'com.nightonke:boommenu:2.0.9'
+    //Menu菜单   https://github.com/Nightonke/BoomMenu
+    compile 'org.litepal.android:core:1.5.1'
+    //数据库LitePal  https://github.com/LitePalFramework/LitePal
+    compile 'com.baoyz.pullrefreshlayout:library:1.2.0'
+    //recyclerview 下拉刷新 https://github.com/baoyongzhang/android-PullRefreshLayout
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    // Glide  图片加载 https://github.com/bumptech/glide
+    compile 'jp.wasabeef:glide-transformations:2.0.0'
+    //配合Glide 使用的独立的图片处理库(包含圆角模糊等)
+    compile 'com.github.XuDaojie:QRCode-Android:v0.4.2'
+    // 轻量的二维码扫描 https://github.com/XuDaojie/QRCode-Android
+    compile 'org.jsoup:jsoup:1.10.2'
+    // jsoup Html解析工具爬虫  http://jsoup.org/
+    compile files('libs/BaiduLBS_Android.jar')
+
+    compile project(':timelinelibrary')
 }

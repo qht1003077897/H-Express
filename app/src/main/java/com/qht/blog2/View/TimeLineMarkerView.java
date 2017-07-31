@@ -17,10 +17,10 @@ import com.qht.blog2.R;
 public class TimeLineMarkerView extends View {
 
     private int mMarkerSize = 24; //圆点大小
-    private int mLineSize = 2; //圆点颜色或者图片
+    private int mLineSize = 2; //线段粗细
     private Drawable mBeginLine; //上面线段颜色或者图片
     private Drawable mEndLine; //下面线段颜色或者图片
-    private Drawable mMarkerDrawable;
+    private Drawable mMarkerDrawable;//圆点颜色或者图片
 
     public TimeLineMarkerView(Context context) {
         this(context,null);
@@ -58,14 +58,33 @@ public class TimeLineMarkerView extends View {
 
         a.recycle();
 
-        if (mBeginLine != null)
-            mBeginLine.setCallback(this);
+//        if (mBeginLine != null)
+//            mBeginLine.setCallback(this);
+//
+//        if (mEndLine != null)
+//            mEndLine.setCallback(this);
+//
+//        if (mMarkerDrawable != null)
+//            mMarkerDrawable.setCallback(this);
+    }
 
-        if (mEndLine != null)
-            mEndLine.setCallback(this);
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        int w=getPaddingLeft()+getPaddingRight();
+        int h=getPaddingTop()+getPaddingBottom();
 
-        if (mMarkerDrawable != null)
-            mMarkerDrawable.setCallback(this);
+        if(mMarkerDrawable!=null){
+            w=w+mMarkerSize;
+            h=h+mMarkerSize;
+        }
+        w=Math.max(w,getMeasuredWidth());
+        h=Math.max(h,getMeasuredHeight());
+
+        int widthSize = resolveSizeAndState(w, widthMeasureSpec, 0);
+        int heightSize = resolveSizeAndState(h, widthMeasureSpec, 0);
+
+        setMeasuredDimension(widthSize,heightSize);
     }
 
     @Override
@@ -83,25 +102,6 @@ public class TimeLineMarkerView extends View {
         }
 
         super.onDraw(canvas);
-    }
-
-    @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        int w=getPaddingLeft()+getPaddingRight();
-        int h=getPaddingTop()+getPaddingBottom();
-
-        if(mMarkerDrawable!=null){
-          w=w+mMarkerSize;
-          h=h+mMarkerSize;
-        }
-        w=Math.max(w,getMeasuredWidth());
-        h=Math.max(h,getMeasuredHeight());
-
-        int widthSize = resolveSizeAndState(w, widthMeasureSpec, 0);
-        int heightSize = resolveSizeAndState(h, widthMeasureSpec, 0);
-
-        setMeasuredDimension(widthSize,heightSize);
     }
 
     @Override

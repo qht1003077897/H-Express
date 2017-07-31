@@ -3,9 +3,9 @@ package com.qht.blog2.Util;
 import android.util.Log;
 
 public class LogUtil {
-	static boolean deBug=true;
+	static boolean deBug=false;
     static String Msg;
-    static String Tag="H快递";
+    static String Tag="H-Express";
 
 	/*
 	 *在Application中进行初始化，设置debug的值

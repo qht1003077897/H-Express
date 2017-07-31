@@ -1,1 +1,1 @@
-include ':app',':tabpagerindictor'
+include ':app', ':tabpagerindictor', ':timelinelibrary'
