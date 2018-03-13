@@ -179,7 +179,6 @@ public class FragmentFrist extends BaseFragment {
             if(RegexUtil.matchNum(result)){
                 kuaidinum.setText(result);
             }
-
         }
     }
 

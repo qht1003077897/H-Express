@@ -38,7 +38,7 @@
         app:endLine="@color/blue_sky"
         app:marker="@drawable/timeline_bg_blue"
         app:lineSize="1dp"
-        app:markerSize="12dp" />
+        app:markerSize="9dp" />
     <TextView
         android:id="@+id/tv_rv_activity_orderdetail_content"
         android:layout_width="match_parent"

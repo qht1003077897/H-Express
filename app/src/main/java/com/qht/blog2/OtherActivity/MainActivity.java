@@ -130,7 +130,6 @@ public class MainActivity extends ToolBarActivity implements ViewCreator<SlideLe
 
 
     private void initView() {
-
         if(enableNightMode){
             tvleftnight.setText("夜间");
             rlleftbg.setBackgroundResource(R.drawable.sidebar_bg_night);

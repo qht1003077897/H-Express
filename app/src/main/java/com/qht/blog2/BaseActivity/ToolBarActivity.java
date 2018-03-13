@@ -159,5 +159,4 @@ public abstract class ToolBarActivity extends statusActivity {
     protected boolean isShowBacking(){
         return true;
     }
-
 }

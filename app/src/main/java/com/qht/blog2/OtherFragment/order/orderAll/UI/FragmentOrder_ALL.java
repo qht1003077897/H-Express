@@ -88,6 +88,12 @@ public class FragmentOrder_ALL extends BaseFragment{
         //获取所有保存的条目
         QueryData();
         rvOrderall.setLayoutManager(new LinearLayoutManager(mActivity));
+        rvOrderall.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+            }
+        });
         madapter = new OrderAll_RV_Adapter(list, mActivity);
         swipeRefreshLayoutOrderall.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
             @Override
